@@ -6,13 +6,13 @@
 /*   By: mmajani <mmajani@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 14:21:46 by mmajani           #+#    #+#             */
-/*   Updated: 2023/04/25 16:30:45 by mmajani          ###   ########lyon.fr   */
+/*   Updated: 2023/04/25 19:38:56 by mmajani          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cube.h"
 
-void	init_mlx(t_cube *cube)
+inline void	init_mlx(t_cube *cube)
 {
 	cube->win_x = 3840;
 	cube->win_y = 2160;
@@ -29,9 +29,9 @@ void	init_mlx(t_cube *cube)
 int	main(int ac, char **av)
 {
 	t_cube	cube;
-
+	(void)ac;
+	(void)av;
+	init_parsing(&cube);
 	init_mlx(&cube);
-	while (1)
-		;
 	return (0);
 }

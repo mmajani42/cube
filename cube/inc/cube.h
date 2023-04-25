@@ -6,7 +6,7 @@
 /*   By: mmajani <mmajani@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 15:29:07 by mmajani           #+#    #+#             */
-/*   Updated: 2023/04/25 19:08:42 by mmajani          ###   ########lyon.fr   */
+/*   Updated: 2023/04/25 19:32:54 by mmajani          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,17 +44,17 @@ typedef struct s_color
 	int		is_set;
 	int		r;
 	int		g;
-	int		b
+	int		b;
 }			t_color;
 
-typedef		struct s_cube
+typedef struct s_cube
 {
 	void		*mlx;
 	void		*mlx_win;
-	char		*no_texture_path;
-	char		*so_texture_path;
-	char		*we_texture_path;
-	char		*ea_texture_path;
+	char		*no;
+	char		*so;
+	char		*we;
+	char		*ea;
 	t_color		floor;
 	t_color		ceiling;
 	t_data		img;
@@ -64,5 +64,7 @@ typedef		struct s_cube
 	int			win_y;
 	int			display_status;
 }				t_cube;
+
+void	init_parsing(t_cube *cube);
 
 #endif
