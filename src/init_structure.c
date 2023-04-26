@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_structure.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmajani <mmajani@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 19:13:43 by mmajani           #+#    #+#             */
-/*   Updated: 2023/04/26 18:13:13 by mmajani          ###   ########lyon.fr   */
+/*   Updated: 2023/04/26 18:25:42 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,10 @@ void	init_parsing(t_cube *cube)
 	cube->so = NULL;
 	cube->we = NULL;
 	cube->ea = NULL;
-	cube->floor.is_set = 0;
-	cube->floor.r = 0;
-	cube->floor.g = 0;
-	cube->floor.b = 0;
-	cube->ceiling.is_set = 0;
-	cube->ceiling.r = 0;
-	cube->ceiling.g = 0;
-	cube->ceiling.b = 0;
+	cube->floor.r = -1;
+	cube->floor.g = -1;
+	cube->floor.b = -1;
+	cube->ceiling.r = -1;
+	cube->ceiling.g = -1;
+	cube->ceiling.b = -1;
 }
