@@ -3,23 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   cube.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmajani <mmajani@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 15:29:07 by mmajani           #+#    #+#             */
-/*   Updated: 2023/04/25 19:32:54 by mmajani          ###   ########lyon.fr   */
+/*   Updated: 2023/04/26 11:44:38 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUBE_H
 # define CUBE_H
 
-# include "../mlx/mlx.h"
-# include <fcntl.h>
-# include <unistd.h>
 # include "../Libft/inc/libft.h"
+# include "../mlx/mlx.h"
+# include <unistd.h>
+# include <fcntl.h>
 # include <math.h>
+# include <stdbool.h>
 
-# define WIN_X 3840 
+# define WIN_X 3840
 # define WIN_Y 2160
 
 typedef struct s_point
@@ -49,6 +50,7 @@ typedef struct s_color
 
 typedef struct s_cube
 {
+	char		**map;
 	void		*mlx;
 	void		*mlx_win;
 	char		*no;
@@ -66,5 +68,8 @@ typedef struct s_cube
 }				t_cube;
 
 void	init_parsing(t_cube *cube);
+
+// parsing
+int		parsing(char *filename, t_cube *cube);
 
 #endif

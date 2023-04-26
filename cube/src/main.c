@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmajani <mmajani@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 14:21:46 by mmajani           #+#    #+#             */
-/*   Updated: 2023/04/25 19:38:56 by mmajani          ###   ########lyon.fr   */
+/*   Updated: 2023/04/26 13:46:47 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cube.h"
 
-inline void	init_mlx(t_cube *cube)
+void	init_mlx(t_cube *cube)
 {
 	cube->win_x = 3840;
 	cube->win_y = 2160;
@@ -29,9 +29,10 @@ inline void	init_mlx(t_cube *cube)
 int	main(int ac, char **av)
 {
 	t_cube	cube;
+
 	(void)ac;
-	(void)av;
 	init_parsing(&cube);
-	init_mlx(&cube);
+	// init_mlx(&cube);
+	parsing(av[1], &cube);
 	return (0);
 }

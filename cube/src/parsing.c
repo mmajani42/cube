@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmajani <mmajani@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 18:28:22 by mmajani           #+#    #+#             */
-/*   Updated: 2023/04/25 19:14:22 by mmajani          ###   ########lyon.fr   */
+/*   Updated: 2023/04/26 14:37:41 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,18 @@
 #define TEXTURE 1
 #define COLOR 2
 #define MAP 3
+
+void	free_tab(char **tab)
+{
+	int	i;
+
+	i = 0;
+	while (tab[i])
+	{
+		free(tab[i]);
+		i++;
+	}
+}
 
 int	parsing_selector(char *s)
 {
@@ -27,7 +39,87 @@ int	parsing_selector(char *s)
 	return (0);
 }
 
-int	parse_line(char *str, t_cube *cube)
-{
+// int	parse_line(char *str, t_cube *cube)
+// {
 	
+// }
+
+bool	is_wall(char *line)
+{
+	int	i;
+
+	if (!line)
+		return (false);
+	i = 0;
+	while (line[i] == ' ' || line[i] == '1')
+		i++;
+	if (line[i] == '\n' && i >= 2)
+		return (true);
+	return (false);
+}
+
+int	count_map_lines(char *filename)
+{
+	char	*buffer;
+	int		map_fd;
+	bool	is_map;
+	int		res;
+
+	res = 0;
+	is_map = 0;
+	map_fd = open(filename, O_RDONLY);
+	if (map_fd == -1)
+		ft_putstr_fd("unvalid map\n", STDERR_FILENO);
+	buffer = get_next_line(map_fd);
+	while (buffer)
+	{
+		if (is_wall(buffer))
+			is_map = 1;
+		if (is_map)
+			res++;
+		free(buffer);
+		buffer = get_next_line(map_fd);
+	}
+	close(map_fd);
+	return (res);
+}
+
+char	**get_map(char *filename, int map_height)
+{
+	char	**res;
+	char	*buffer;
+	int		map_fd;
+	bool	is_map;
+	int		i;
+
+	map_fd = open(filename, O_RDONLY);
+	if (map_fd == -1)
+		ft_putstr_fd("unvalid map\n", STDERR_FILENO);
+	res = ft_calloc(map_height + 1, sizeof(char *));
+	buffer = get_next_line(map_fd);
+	is_map = false;
+	i = 0;
+	while (buffer)
+	{
+		if (is_wall(buffer))
+			is_map = true;
+		if (is_map)
+		{
+			res[i] = ft_strdup(buffer);
+			i++;
+		}
+		free(buffer);
+		buffer = get_next_line(map_fd);
+	}
+	return (res);
+}
+
+int	parsing(char *filename, t_cube *cube)
+{
+	int		map_height;
+
+	map_height = count_map_lines(filename);
+	cube->map = get_map(filename, map_height);
+	// free_tab(cube->map);
+	return (1);
 }
