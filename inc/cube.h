@@ -6,7 +6,7 @@
 /*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 15:29:07 by mmajani           #+#    #+#             */
-/*   Updated: 2023/04/26 11:44:38 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/04/26 15:37:57 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ typedef struct s_data
 
 typedef struct s_color
 {
-	int		is_set;
 	int		r;
 	int		g;
 	int		b;
@@ -51,12 +50,12 @@ typedef struct s_color
 typedef struct s_cube
 {
 	char		**map;
-	void		*mlx;
-	void		*mlx_win;
 	char		*no;
 	char		*so;
 	char		*we;
 	char		*ea;
+	void		*mlx;
+	void		*mlx_win;
 	t_color		floor;
 	t_color		ceiling;
 	t_data		img;

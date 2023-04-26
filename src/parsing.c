@@ -6,7 +6,7 @@
 /*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 18:28:22 by mmajani           #+#    #+#             */
-/*   Updated: 2023/04/26 14:37:41 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/04/26 15:42:30 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,11 @@ int	parsing_selector(char *s)
 // {
 	
 // }
+
+int	parse_elements(char *filename)
+{
+	
+}
 
 bool	is_wall(char *line)
 {
