@@ -43,6 +43,7 @@ SRC=		ft_isalnum.c			\
 			ft_putnbr_fd.c			\
 			ft_split.c				\
 			ft_itoa.c				\
+			ft_is_string_blank.c	\
 			get_next_line.c			\
 			get_next_line_utils.c
 

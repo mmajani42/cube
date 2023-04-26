@@ -6,7 +6,7 @@
 /*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 15:29:07 by mmajani           #+#    #+#             */
-/*   Updated: 2023/04/26 15:37:57 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/04/26 18:03:45 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ typedef struct s_cube
 	t_color		floor;
 	t_color		ceiling;
 	t_data		img;
+	int			max_line_size;
 	int			map_size_x;
 	int			map_size_y;
 	int			win_x;
@@ -70,5 +71,6 @@ void	init_parsing(t_cube *cube);
 
 // parsing
 int		parsing(char *filename, t_cube *cube);
+int		parse_elements(char **file, t_cube *cube);
 
 #endif

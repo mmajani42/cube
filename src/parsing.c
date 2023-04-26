@@ -6,7 +6,7 @@
 /*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 18:28:22 by mmajani           #+#    #+#             */
-/*   Updated: 2023/04/26 15:42:30 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/04/26 18:08:23 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,6 @@ int	parsing_selector(char *s)
 // {
 	
 // }
-
-int	parse_elements(char *filename)
-{
-	
-}
 
 bool	is_wall(char *line)
 {
@@ -119,12 +114,73 @@ char	**get_map(char *filename, int map_height)
 	return (res);
 }
 
+int	count_lines(char *filename)
+{
+	char	*buffer;
+	int		res;
+	int		fd;
+
+	fd = open(filename, O_RDONLY);
+	res = 0;
+	buffer = get_next_line(fd);
+	while (buffer)
+	{
+		res++;
+		free(buffer);
+		buffer = get_next_line(fd);
+	}
+	close(fd);
+	return (res);
+}
+
+char	**file_to_tab(char *filename)
+{
+	char	**res;
+	char	*buffer;
+	int		fd;
+	int		i;
+
+	i = 0;
+	res = ft_calloc(count_lines(filename) + 1, sizeof(char *));
+	fd = open(filename, O_RDONLY);
+	buffer = get_next_line(fd);
+	while (buffer)
+	{
+		res[i] = ft_strdup(buffer);
+		i++;
+		free(buffer);
+		buffer = get_next_line(fd);
+	}
+	return (res);
+}
+
+size_t	get_max_line_size(char **map)
+{
+	size_t	res;
+	int		i;
+
+	i = 0;
+	res = 0;
+	while (map[i])
+	{
+		if (ft_strlen(map[i]) > res)
+			res = ft_strlen(map[i]);
+		i++;
+	}
+	return (res);
+}
+
 int	parsing(char *filename, t_cube *cube)
 {
+	char	**file;
 	int		map_height;
 
+	file = file_to_tab(filename);
+	parse_elements(file, cube);
 	map_height = count_map_lines(filename);
 	cube->map = get_map(filename, map_height);
+	cube->max_line_size = get_max_line_size(cube->map);
+	printf("max_line_size = %d\n", cube->max_line_size);
 	// free_tab(cube->map);
 	return (1);
 }
