@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: mmajani <mmajani@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 14:21:46 by mmajani           #+#    #+#             */
-/*   Updated: 2023/04/26 13:46:47 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/04/26 18:07:35 by mmajani          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,11 @@ int	main(int ac, char **av)
 
 	(void)ac;
 	init_parsing(&cube);
-	// init_mlx(&cube);
-	parsing(av[1], &cube);
+	init_mlx(&cube);
+	while (1)
+	{
+		draw_segment(&cube, (t_point){0,0}, (t_point){WIN_X, WIN_Y}, 100);
+	}
+//	parsing(av[1], &cube);
 	return (0);
 }
