@@ -3,10 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   cube.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: mmajani <mmajani@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 15:29:07 by mmajani           #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2023/04/26 18:03:45 by vimercie         ###   ########lyon.fr   */
+=======
+/*   Updated: 2023/04/26 18:12:41 by mmajani          ###   ########lyon.fr   */
+>>>>>>> 43a2659f77d097f0600ea164884fc3bf29821faf
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +46,7 @@ typedef struct s_data
 
 typedef struct s_color
 {
+	int		is_set;
 	int		r;
 	int		g;
 	int		b;
@@ -50,12 +55,12 @@ typedef struct s_color
 typedef struct s_cube
 {
 	char		**map;
+	void		*mlx;
+	void		*mlx_win;
 	char		*no;
 	char		*so;
 	char		*we;
 	char		*ea;
-	void		*mlx;
-	void		*mlx_win;
 	t_color		floor;
 	t_color		ceiling;
 	t_data		img;
