@@ -24,13 +24,13 @@ CFLAGS=		-Wall -Wextra
 
 all:		${OBJDIR} ${NAME}
 
-${NAME}:	${OBJ} ${INC}
-			make -C Libft
-			${CC} ${OBJ} ${LIB} -Lmlx -lmlx -L/usr/lib -Imlx -lXext -lX11 -lm -lz -o ${NAME}
-
 lib:
 			make -C Libft
 			make -C mlx
+
+${NAME}:	${OBJ} ${INC} lib
+			${CC} ${OBJ} ${LIB} -Lmlx -lmlx -L/usr/lib -Imlx -lXext -lX11 -lm -lz -o ${NAME}
+
 
 ${OBJDIR}:
 			mkdir -p obj
@@ -41,6 +41,7 @@ ${OBJDIR}/%.o:	%.c ${INC} Makefile
 
 clean:
 			make clean -C Libft
+			make clean -C mlx
 			rm -rf ${OBJDIR}
 
 fclean:		clean
