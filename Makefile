@@ -9,7 +9,8 @@ INCDIR=		inc
 SRC=		main.c						\
 			parsing.c					\
 			init_structure.c			\
-			init_elem.c
+			init_elem.c					\
+			draw.c						
 
 OBJ=		${addprefix ${OBJDIR}/,		\
 			${SRC:.c=.o}}

@@ -6,7 +6,7 @@
 /*   By: mmajani <mmajani@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 14:21:46 by mmajani           #+#    #+#             */
-/*   Updated: 2023/04/26 18:07:35 by mmajani          ###   ########lyon.fr   */
+/*   Updated: 2023/04/28 19:03:14 by mmajani          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,71 @@ void	init_mlx(t_cube *cube)
 	cube->display_status = 1;
 }
 
+int	key_events(int keycode, t_cube *cube)
+{
+	printf("keycode =%d\n", keycode);
+	if (keycode == ESC)
+	{
+		mlx_destroy_window(cube->mlx, cube->mlx_win);
+		exit(1);
+	}
+	// if (keycode == LEFT || keycode == RIGHT || keycode == UP || keycode == DOWN)
+	// 	translate_view(cube, keycode);
+	// if (keycode == Q || keycode == E)
+	// 	scale_points(cube, keycode);
+	// if (keycode == 87 || keycode == 91)
+	// 	rotate_x_axis(cube, keycode);
+	// if (keycode == 86 || keycode == 88)
+	// 	rotate_y_axis(cube, keycode);
+	// if (keycode == 89 || keycode == 92)
+	// 	rotate_z_axis(cube, keycode);
+	display_handling(cube);
+	return (0);
+}
+
+void	draw_map(t_cube *cube)
+{
+	int	y;
+	int	x;
+	int	off_y;
+
+	y = 0;
+	x = 0;
+	off_y = 1;
+	while (cube->map[y])
+	{
+		while (cube->map[y][x])
+		{
+			if (cube->map[y][x] == '1')
+			{
+				draw_square(cube, x * cube->ts, y * cube->ts);
+			}
+			x++;
+		}
+		y++;
+		x = 0;
+	}
+}
+
+void	display_handling(t_cube *cube)
+{
+	clear_image(cube);
+	draw_map(cube);
+	mlx_put_image_to_window(cube->mlx, cube->mlx_win, cube->img.img, 0, 0);
+}
+
+void	print_tab(char **tab)
+{	
+	int	x;
+
+	x = 0;
+	while (tab[x])
+	{
+		printf("%s", tab[x]);
+		x++;
+	}
+}
+
 int	main(int ac, char **av)
 {
 	t_cube	cube;
@@ -33,10 +98,10 @@ int	main(int ac, char **av)
 	(void)ac;
 	init_parsing(&cube);
 	init_mlx(&cube);
-	while (1)
-	{
-		draw_segment(&cube, (t_point){0,0}, (t_point){WIN_X, WIN_Y}, 100);
-	}
-//	parsing(av[1], &cube);
+	parsing(av[1], &cube);
+	//print_tab(cube.map);
+	display_handling(&cube);
+	mlx_key_hook(cube.mlx_win, key_events, &cube);
+	mlx_loop(cube.mlx);
 	return (0);
 }
