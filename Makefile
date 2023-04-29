@@ -18,7 +18,9 @@ SRC=		testing.c					\
 			init_structure.c			\
 			error.c						\
 			cleaning.c					\
-			draw.c
+			draw.c						\
+			display.c					\
+			player.c
 
 OBJ=		${addprefix ${OBJDIR}/,		\
 			${SRC:.c=.o}}

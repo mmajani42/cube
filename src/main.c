@@ -6,7 +6,7 @@
 /*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 14:21:46 by mmajani           #+#    #+#             */
-/*   Updated: 2023/04/29 15:04:12 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/04/29 16:50:13 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,48 +48,8 @@ int	key_events(int keycode, t_cube *cube)
 	return (0);
 }
 
-void	set_tile_size(t_cube *cube)
-{
-	int	lines;
-	int	longest;
-	int	max;
 
-	lines = cube->map_height;
-	longest = cube->max_line_size;
-	dprintf(1, "lines=%d\n", lines);
-	dprintf(1, "longest=%d\n", longest);
-}
 
-void	draw_map(t_cube *cube)
-{
-	int	y;
-	int	x;
-	int	off_y;
-
-	y = 0;
-	x = 0;
-	off_y = 1;
-	while (cube->map[y])
-	{
-		while (cube->map[y][x])
-		{
-			if (cube->map[y][x] == '1')
-			{
-				draw_square(cube, x * cube->ts, y * cube->ts);
-			}
-			x++;
-		}
-		y++;
-		x = 0;
-	}
-}
-
-void	display_handling(t_cube *cube)
-{
-	clear_image(cube);
-	draw_map(cube);
-	mlx_put_image_to_window(cube->mlx, cube->mlx_win, cube->img.img, 0, 0);
-}
 
 void	print_tab(char **tab)
 {	
@@ -109,13 +69,13 @@ int	main(int ac, char **av)
 
 	if (ac != 2)
 		return (0);
-	// init_mlx(&cube);
+	init_mlx(&cube);
 	init_parsing(&cube);
 	parsing(av[1], &cube);
 	// set_tile_size(&cube);
 	//print_tab(cube.map);
-	// display_handling(&cube);
-	// mlx_key_hook(cube.mlx_win, key_events, &cube);
-	// mlx_loop(cube.mlx);
+	display_handling(&cube);
+	mlx_key_hook(cube.mlx_win, key_events, &cube);
+	mlx_loop(cube.mlx);
 	return (0);
 }
