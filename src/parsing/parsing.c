@@ -6,7 +6,7 @@
 /*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 18:28:22 by mmajani           #+#    #+#             */
-/*   Updated: 2023/04/29 16:56:10 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/04/29 17:49:14 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,6 @@
 #define TEXTURE 1
 #define COLOR 2
 #define MAP 3
-
-void	free_tab(char **tab)
-{
-	int	i;
-
-	i = 0;
-	while (tab[i])
-	{
-		free(tab[i]);
-		i++;
-	}
-}
 
 int	parsing_selector(char *s)
 {
@@ -41,12 +29,9 @@ int	parsing_selector(char *s)
 
 int	parsing(char *filename, t_cube *cube)
 {
-	char	**file_tab;
-
-	file_tab = file_to_tab(filename);
-	parse_elements(file_tab, cube);
-	parse_description(file_tab, cube);
+	cube->file = file_to_tab(filename);
+	parse_elements(cube->file, cube);
+	parse_description(cube->file, cube);
 	cube_tester(cube);
-	free_cube(cube);
 	return (1);
 }

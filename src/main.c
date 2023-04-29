@@ -6,7 +6,7 @@
 /*   By: mmajani <mmajani@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 14:21:46 by mmajani           #+#    #+#             */
-/*   Updated: 2023/04/29 18:06:24 by mmajani          ###   ########lyon.fr   */
+/*   Updated: 2023/04/29 18:12:18 by mmajani          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ int	main(int ac, char **av)
 
 	if (ac != 2)
 		return (0);
-	init_mlx(&cube);
+	// init_mlx(&cube);
 	init_parsing(&cube);
 	parsing(av[1], &cube);
 	print_tab(cube.map);

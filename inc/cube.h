@@ -6,7 +6,7 @@
 /*   By: mmajani <mmajani@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 15:29:07 by mmajani           #+#    #+#             */
-/*   Updated: 2023/04/29 18:05:42 by mmajani          ###   ########lyon.fr   */
+/*   Updated: 2023/04/29 18:11:43 by mmajani          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ typedef struct s_cube
 	int			display_status;
 	int			max_line_size;
 	int			map_height;
+	char		**file;
 	char		**map;
 	char		*no;
 	char		*so;
