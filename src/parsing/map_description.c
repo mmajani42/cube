@@ -6,7 +6,7 @@
 /*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 16:08:01 by vimercie          #+#    #+#             */
-/*   Updated: 2023/04/29 18:43:24 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/04/29 18:47:14 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,21 +39,6 @@ t_point	get_player_pos(char **map)
 			x++;
 		}
 		y++;
-	}
-	return (res);
-}
-
-char	**map_cpy(char **file, int height)
-{
-	char	**res;
-	int		i;
-
-	i = 0;
-	res = ft_calloc(height + 1, sizeof(char *));
-	while (file[i])
-	{
-		res[i] = file[i];
-		i++;
 	}
 	return (res);
 }
