@@ -6,7 +6,7 @@
 /*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 16:08:01 by vimercie          #+#    #+#             */
-/*   Updated: 2023/04/29 16:43:02 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/04/29 16:56:16 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	parse_description(char **file, t_cube *cube)
 			return (print_error("Invalid map description"));
 		cube->map_height++;
 	}
-	cube->max_line_size = get_max_line_size(cube->map);
 	cube->map = file;
+	cube->max_line_size = get_max_line_size(cube->map);
 	return (1);
 }
