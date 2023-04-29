@@ -6,7 +6,7 @@
 /*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 16:08:01 by vimercie          #+#    #+#             */
-/*   Updated: 2023/04/29 17:08:47 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/04/29 17:10:50 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ t_point	get_player_pos(char **map)
 	res.y = -1;
 	while (map[y])
 	{
+		x = 0;
 		while (map[y][x])
 		{
 			if (map[y][x] == 'N'
