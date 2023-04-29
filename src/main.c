@@ -6,11 +6,7 @@
 /*   By: mmajani <mmajani@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 14:21:46 by mmajani           #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2023/04/29 17:41:28 by vimercie         ###   ########lyon.fr   */
-=======
-/*   Updated: 2023/04/29 17:01:53 by mmajani          ###   ########lyon.fr   */
->>>>>>> 9b75ad37f826654a18e8ffa6ec0f61d2b8e2ecd0
+/*   Updated: 2023/04/29 19:12:23 by mmajani          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,17 +34,8 @@ int	key_events(int keycode, t_cube *cube)
 		mlx_destroy_window(cube->mlx, cube->mlx_win);
 		exit(1);
 	}
-	// if (keycode == LEFT || keycode == RIGHT || keycode == UP || keycode == DOWN)
-	// 	translate_view(cube, keycode);
-	// if (keycode == Q || keycode == E)
-	// 	scale_points(cube, keycode);
-	// if (keycode == 87 || keycode == 91)
-	// 	rotate_x_axis(cube, keycode);
-	// if (keycode == 86 || keycode == 88)
-	// 	rotate_y_axis(cube, keycode);
-	// if (keycode == 89 || keycode == 92)
-	// 	rotate_z_axis(cube, keycode);
-	display_handling(cube);
+	if (keycode == W || keycode == A || keycode == S || keycode == D)
+		change_player_vector(cube, keycode);
 	return (0);
 }
 
@@ -59,7 +46,7 @@ void	print_tab(char **tab)
 	x = 0;
 	while (tab[x])
 	{
-		printf("%s", tab[x]);
+		dprintf(1, "%s", tab[x]);
 		x++;
 	}
 }
@@ -70,15 +57,14 @@ int	main(int ac, char **av)
 
 	if (ac != 2)
 		return (0);
-	// init_mlx(&cube);
+	init_mlx(&cube);
 	init_parsing(&cube);
 	parsing(av[1], &cube);
-	cube_tester(&cube);
-	// set_tile_size(&cube);
-	//print_tab(cube.map);
-	// display_handling(&cube);
-	// mlx_key_hook(cube.mlx_win, key_events, &cube);
-	// mlx_loop(cube.mlx);
-	free_cube(&cube);
+	set_tile_size(&cube);
+	set_player(&cube);
+	//mlx_key_hook(cube.mlx_win, key_events, &cube);
+	mlx_hook(cube.mlx_win, 2, 1L << 0, &key_events, &cube);
+	mlx_loop_hook(cube.mlx, display_handling, &cube);
+	mlx_loop(cube.mlx);
 	return (0);
 }

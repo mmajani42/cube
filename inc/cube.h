@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: mmajani <mmajani@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 15:29:07 by mmajani           #+#    #+#             */
-/*   Updated: 2023/04/29 18:08:04 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/04/29 18:32:27 by mmajani          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,8 +134,10 @@ void	draw_player(t_cube *cube);
 void	clear_image(t_cube *cube);
 void	display_axis(t_cube *cube);
 void	display_handling(t_cube *cube);
+void	print_tab(char **tab);
 
 //	events
 int		key_events(int keycode, t_cube *cube);
+void	change_player_vector(t_cube *cube, int key);
 
 #endif
