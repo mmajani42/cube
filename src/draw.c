@@ -6,7 +6,7 @@
 /*   By: mmajani <mmajani@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 16:35:20 by mmajani           #+#    #+#             */
-/*   Updated: 2023/04/28 19:44:17 by mmajani          ###   ########lyon.fr   */
+/*   Updated: 2023/04/29 14:50:14 by mmajani          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ void	clear_image(t_cube *cube)
 
 	x = 1;
 	y = 1;
-	printf("in clear image\n");
 	while (y <= WIN_Y)
 	{
 		while (x < WIN_X)
@@ -44,7 +43,7 @@ void	clear_image(t_cube *cube)
 
 // void	safe_pixel_put(t_point *point, t_cube *cube, int color)
 // {
-// 	if (is_drawable(point->x + cube->offset_x, point->y + fdf->offset_y))
+// 	if (is_drawable(point->x + cube->offset_x, point->y + cube->offset_y))
 // 	{
 // 		my_mlx_pixel_put(&fdf->img, point->x + fdf->offset_x,
 // 			point->y + fdf->offset_y, color);

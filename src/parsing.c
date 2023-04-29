@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: mmajani <mmajani@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 18:28:22 by mmajani           #+#    #+#             */
-/*   Updated: 2023/04/26 18:08:23 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/04/29 14:55:26 by mmajani          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -177,7 +177,7 @@ int	parsing(char *filename, t_cube *cube)
 
 	file = file_to_tab(filename);
 	parse_elements(file, cube);
-	map_height = count_map_lines(filename);
+	cube->map_height = count_map_lines(filename);
 	cube->map = get_map(filename, map_height);
 	cube->max_line_size = get_max_line_size(cube->map);
 	printf("max_line_size = %d\n", cube->max_line_size);

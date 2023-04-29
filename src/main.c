@@ -6,7 +6,7 @@
 /*   By: mmajani <mmajani@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 14:21:46 by mmajani           #+#    #+#             */
-/*   Updated: 2023/04/28 19:03:14 by mmajani          ###   ########lyon.fr   */
+/*   Updated: 2023/04/29 14:54:54 by mmajani          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,18 @@ int	key_events(int keycode, t_cube *cube)
 	// 	rotate_z_axis(cube, keycode);
 	display_handling(cube);
 	return (0);
+}
+
+void	set_tile_size(t_cube *cube)
+{
+	int	lines;
+	int	longest;
+	int	max;
+
+	lines = cube->map_height;
+	longest = cube->max_line_size;
+	dprintf(1, "lines=%d\n", lines);
+	dprintf(1, "longest=%d\n", longest);
 }
 
 void	draw_map(t_cube *cube)
@@ -99,6 +111,7 @@ int	main(int ac, char **av)
 	init_parsing(&cube);
 	init_mlx(&cube);
 	parsing(av[1], &cube);
+	set_tile_size(&cube);
 	//print_tab(cube.map);
 	display_handling(&cube);
 	mlx_key_hook(cube.mlx_win, key_events, &cube);

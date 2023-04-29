@@ -6,7 +6,7 @@
 /*   By: mmajani <mmajani@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 19:13:43 by mmajani           #+#    #+#             */
-/*   Updated: 2023/04/28 15:03:07 by mmajani          ###   ########lyon.fr   */
+/*   Updated: 2023/04/29 14:53:27 by mmajani          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,4 +25,5 @@ void	init_parsing(t_cube *cube)
 	cube->ceiling.g = -1;
 	cube->ceiling.b = -1;
 	cube->ts = 100;
+	cube->map_height = 0;
 }

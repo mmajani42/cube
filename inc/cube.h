@@ -6,7 +6,7 @@
 /*   By: mmajani <mmajani@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 15:29:07 by mmajani           #+#    #+#             */
-/*   Updated: 2023/04/28 15:34:03 by mmajani          ###   ########lyon.fr   */
+/*   Updated: 2023/04/29 14:52:21 by mmajani          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,12 +78,12 @@ typedef struct s_cube
 	t_color		ceiling;
 	t_data		img;
 	int			max_line_size;
-	int			map_size_x;
-	int			map_size_y;
+	int			map_height;
 	int			win_x;
 	int			win_y;
 	int			display_status;
 	double		ts;
+	double		offset;
 }				t_cube;
 
 void	init_parsing(t_cube *cube);
