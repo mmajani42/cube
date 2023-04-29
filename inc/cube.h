@@ -6,7 +6,7 @@
 /*   By: mmajani <mmajani@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 15:29:07 by mmajani           #+#    #+#             */
-/*   Updated: 2023/04/29 17:01:12 by mmajani          ###   ########lyon.fr   */
+/*   Updated: 2023/04/29 17:07:20 by mmajani          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,7 @@ size_t	get_max_line_size(char **map);
 // init
 void	init_parsing(t_cube *cube);
 void	set_tile_size(t_cube *cube);
+void	set_player(t_cube *cube);
 
 // checking
 bool	is_rgb(char **tab);
@@ -125,6 +126,7 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 void	draw_segment(t_cube *cube, t_point a, t_point b, int color);
 void	draw_square(t_cube *cube, double x, double y);
 void	draw_map(t_cube *cube);
+void	draw_player(t_cube *cube);
 
 //	display
 void	clear_image(t_cube *cube);
