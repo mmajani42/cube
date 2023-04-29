@@ -6,7 +6,7 @@
 /*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 16:08:01 by vimercie          #+#    #+#             */
-/*   Updated: 2023/04/29 18:06:26 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/04/29 18:43:24 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,9 +60,12 @@ char	**map_cpy(char **file, int height)
 
 int	parse_description(char **file, t_cube *cube)
 {
-	while (!is_valid_map_line(file[0]) && file[0])
-		file++;
-	if (!file[0])
+	int	i;
+
+	i = 0;
+	while (!is_valid_map_line(file[i]) && file[i])
+		i++;
+	if (!file[i])
 		return (print_error("No map description"));
 	while (file[cube->map_height])
 	{
@@ -70,7 +73,7 @@ int	parse_description(char **file, t_cube *cube)
 			return (print_error("Invalid map description"));
 		cube->map_height++;
 	}
-	cube->map = file;
+	cube->map = file + i;
 	cube->max_line_size = get_max_line_size(cube->map);
 	return (1);
 }
