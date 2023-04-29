@@ -6,7 +6,7 @@
 /*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 14:24:22 by vimercie          #+#    #+#             */
-/*   Updated: 2023/04/29 14:38:26 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/04/29 16:36:00 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,4 +24,11 @@ void	cube_tester(t_cube *cube)
 		cube->ceiling.r, cube->ceiling.g, cube->ceiling.b);
 	printf("\n");
 	printf("max_line_size = %d\n", cube->max_line_size);
+	printf("\n");
+	printf("map = \n");
+	while (cube->map[0])
+	{
+		printf("%s", cube->map[0]);
+		cube->map++;
+	}
 }
