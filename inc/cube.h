@@ -6,7 +6,7 @@
 /*   By: mmajani <mmajani@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 15:29:07 by mmajani           #+#    #+#             */
-/*   Updated: 2023/04/29 14:52:21 by mmajani          ###   ########lyon.fr   */
+/*   Updated: 2023/04/29 14:57:58 by mmajani          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,13 +86,26 @@ typedef struct s_cube
 	double		offset;
 }				t_cube;
 
-void	init_parsing(t_cube *cube);
+void	cube_tester(t_cube *cube);
 
-// 			parsing
+// 	parsing
 int		parsing(char *filename, t_cube *cube);
 int		parse_elements(char **file, t_cube *cube);
 
-//			drawing
+char	*get_next_word(char *str);
+
+// init
+void	init_parsing(t_cube *cube);
+
+// checking
+bool	is_rgb(char **tab);
+bool	is_valid_map_line(char *line);
+
+// cleaning
+void	free_tab(char **tab);
+void	free_cube(t_cube *cube);
+
+//	drawing
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 void	clear_image(t_cube *cube);
 void	draw_segment(t_cube *cube, t_point a, t_point b, int color);
@@ -101,7 +114,7 @@ void	display_axis(t_cube *cube);
 void	display_handling(t_cube *cube);
 void	display_axis(t_cube *cube);
 
-//			events
+//	events
 int		key_events(int keycode, t_cube *cube);
 
 #endif

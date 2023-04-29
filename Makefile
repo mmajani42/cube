@@ -1,15 +1,21 @@
-NAME=		cube
+NAME=		cub3d
 
 VPATH=		src/						\
+			src/parsing					\
+			src/utils
 
 OBJDIR=		obj
 
 INCDIR=		inc
 
-SRC=		main.c						\
+SRC=		testing.c					\
+			main.c						\
 			parsing.c					\
+			parsing_utils.c				\
+			checking.c					\
+			elements.c					\
 			init_structure.c			\
-			init_elem.c					\
+			cleaning.c					\
 			draw.c						
 
 OBJ=		${addprefix ${OBJDIR}/,		\
