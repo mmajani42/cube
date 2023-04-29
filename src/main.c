@@ -6,7 +6,7 @@
 /*   By: mmajani <mmajani@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 14:21:46 by mmajani           #+#    #+#             */
-/*   Updated: 2023/04/29 18:12:18 by mmajani          ###   ########lyon.fr   */
+/*   Updated: 2023/04/29 19:12:23 by mmajani          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,17 +34,8 @@ int	key_events(int keycode, t_cube *cube)
 		mlx_destroy_window(cube->mlx, cube->mlx_win);
 		exit(1);
 	}
-	// if (keycode == LEFT || keycode == RIGHT || keycode == UP || keycode == DOWN)
-	// 	translate_view(cube, keycode);
-	// if (keycode == Q || keycode == E)
-	// 	scale_points(cube, keycode);
-	// if (keycode == 87 || keycode == 91)
-	// 	rotate_x_axis(cube, keycode);
-	// if (keycode == 86 || keycode == 88)
-	// 	rotate_y_axis(cube, keycode);
-	// if (keycode == 89 || keycode == 92)
-	// 	rotate_z_axis(cube, keycode);
-	display_handling(cube);
+	if (keycode == W || keycode == A || keycode == S || keycode == D)
+		change_player_vector(cube, keycode);
 	return (0);
 }
 
@@ -53,7 +44,6 @@ void	print_tab(char **tab)
 	int	x;
 
 	x = 0;
-	dprintf(1, "================TAB=\n");
 	while (tab[x])
 	{
 		dprintf(1, "%s", tab[x]);
@@ -67,13 +57,14 @@ int	main(int ac, char **av)
 
 	if (ac != 2)
 		return (0);
-	// init_mlx(&cube);
+	init_mlx(&cube);
 	init_parsing(&cube);
 	parsing(av[1], &cube);
-	print_tab(cube.map);
 	set_tile_size(&cube);
-	display_handling(&cube);
-	mlx_key_hook(cube.mlx_win, key_events, &cube);
+	set_player(&cube);
+	//mlx_key_hook(cube.mlx_win, key_events, &cube);
+	mlx_hook(cube.mlx_win, 2, 1L << 0, &key_events, &cube);
+	mlx_loop_hook(cube.mlx, display_handling, &cube);
 	mlx_loop(cube.mlx);
 	return (0);
 }

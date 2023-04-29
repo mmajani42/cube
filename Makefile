@@ -20,7 +20,8 @@ SRC=		testing.c					\
 			cleaning.c					\
 			draw.c						\
 			display.c					\
-			player.c
+			player.c					\
+			move.c
 
 OBJ=		${addprefix ${OBJDIR}/,		\
 			${SRC:.c=.o}}

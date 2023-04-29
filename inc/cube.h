@@ -6,7 +6,7 @@
 /*   By: mmajani <mmajani@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 15:29:07 by mmajani           #+#    #+#             */
-/*   Updated: 2023/04/29 18:11:43 by mmajani          ###   ########lyon.fr   */
+/*   Updated: 2023/04/29 18:32:27 by mmajani          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,5 +138,6 @@ void	print_tab(char **tab);
 
 //	events
 int		key_events(int keycode, t_cube *cube);
+void	change_player_vector(t_cube *cube, int key);
 
 #endif
