@@ -6,7 +6,7 @@
 /*   By: mmajani <mmajani@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 14:21:46 by mmajani           #+#    #+#             */
-/*   Updated: 2023/04/29 17:01:53 by mmajani          ###   ########lyon.fr   */
+/*   Updated: 2023/04/29 18:06:24 by mmajani          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,10 @@ void	print_tab(char **tab)
 	int	x;
 
 	x = 0;
+	dprintf(1, "================TAB=\n");
 	while (tab[x])
 	{
-		printf("%s", tab[x]);
+		dprintf(1, "%s", tab[x]);
 		x++;
 	}
 }
@@ -69,8 +70,8 @@ int	main(int ac, char **av)
 	init_mlx(&cube);
 	init_parsing(&cube);
 	parsing(av[1], &cube);
-	// set_tile_size(&cube);
-	//print_tab(cube.map);
+	print_tab(cube.map);
+	set_tile_size(&cube);
 	display_handling(&cube);
 	mlx_key_hook(cube.mlx_win, key_events, &cube);
 	mlx_loop(cube.mlx);
