@@ -16,7 +16,8 @@ SRC=		testing.c					\
 			elements.c					\
 			init_structure.c			\
 			cleaning.c					\
-			draw.c						
+			draw.c						\
+			display.c
 
 OBJ=		${addprefix ${OBJDIR}/,		\
 			${SRC:.c=.o}}

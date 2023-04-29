@@ -6,11 +6,11 @@
 /*   By: mmajani <mmajani@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 18:28:22 by mmajani           #+#    #+#             */
-/*   Updated: 2023/04/29 14:58:30 by mmajani          ###   ########lyon.fr   */
+/*   Updated: 2023/04/29 15:22:43 by mmajani          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/cube.h"
+#include "../../inc/cube.h"
 
 #define TEXTURE 1
 #define COLOR 2
@@ -173,14 +173,12 @@ size_t	get_max_line_size(char **map)
 int	parsing(char *filename, t_cube *cube)
 {
 	char	**file;
-	int		map_height;
 
 	file = file_to_tab(filename);
 	parse_elements(file, cube);
-	map_height = count_map_lines(filename);
-	cube->map = get_map(filename, map_height);
+	cube->map_height = count_map_lines(filename);
+	cube->map = get_map(filename, cube->map_height);
 	cube->max_line_size = get_max_line_size(cube->map);
-	printf("max_line_size = %d\n", cube->max_line_size);
 	// free_tab(cube->map);
 	return (1);
 }
