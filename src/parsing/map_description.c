@@ -6,7 +6,7 @@
 /*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 16:08:01 by vimercie          #+#    #+#             */
-/*   Updated: 2023/04/29 18:47:14 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/04/29 19:21:27 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ int	parse_description(char **file, t_cube *cube)
 		i++;
 	if (!file[i])
 		return (print_error("No map description"));
+	cube->map_height = i;
 	while (file[cube->map_height])
 	{
 		if (!is_valid_map_line(file[cube->map_height]))
