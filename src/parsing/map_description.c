@@ -6,11 +6,40 @@
 /*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 16:08:01 by vimercie          #+#    #+#             */
-/*   Updated: 2023/04/29 16:56:16 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/04/29 17:08:47 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cube.h"
+
+t_point	get_player_pos(char **map)
+{
+	t_point	res;
+	int		x;
+	int		y;
+
+	y = 0;
+	res.x = -1;
+	res.y = -1;
+	while (map[y])
+	{
+		while (map[y][x])
+		{
+			if (map[y][x] == 'N'
+				|| map[y][x] == 'S'
+				|| map[y][x] == 'E'
+				|| map[y][x] == 'W')
+			{
+				res.x = x;
+				res.y = y;
+				return (res);
+			}
+			x++;
+		}
+		y++;
+	}
+	return (res);
+}
 
 int	parse_description(char **file, t_cube *cube)
 {

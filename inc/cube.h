@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmajani <mmajani@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 15:29:07 by mmajani           #+#    #+#             */
-/*   Updated: 2023/04/29 17:01:12 by mmajani          ###   ########lyon.fr   */
+/*   Updated: 2023/04/29 17:09:09 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,7 @@ int		parse_description(char **file, t_cube *cube);
 char	**file_to_tab(char *filename);
 char	*get_next_word(char *str);
 size_t	get_max_line_size(char **map);
+t_point	get_player_pos(char **map);
 
 // init
 void	init_parsing(t_cube *cube);
@@ -130,7 +131,6 @@ void	draw_map(t_cube *cube);
 void	clear_image(t_cube *cube);
 void	display_axis(t_cube *cube);
 void	display_handling(t_cube *cube);
-
 
 //	events
 int		key_events(int keycode, t_cube *cube);
