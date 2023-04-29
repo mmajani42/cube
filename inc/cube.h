@@ -6,7 +6,7 @@
 /*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 15:29:07 by mmajani           #+#    #+#             */
-/*   Updated: 2023/04/29 17:09:09 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/04/29 17:41:32 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ typedef struct s_cube
 	int			display_status;
 	int			max_line_size;
 	int			map_height;
+	char		**file;
 	char		**map;
 	char		*no;
 	char		*so;

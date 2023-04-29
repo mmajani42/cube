@@ -6,7 +6,7 @@
 /*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 14:24:22 by vimercie          #+#    #+#             */
-/*   Updated: 2023/04/29 16:36:00 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/04/29 17:50:00 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 
 void	cube_tester(t_cube *cube)
 {
+	int	i;
+
+	i = 0;
 	printf("no = |%s|\n", cube->no);
 	printf("so = |%s|\n", cube->so);
 	printf("ea = |%s|\n", cube->ea);
@@ -26,9 +29,9 @@ void	cube_tester(t_cube *cube)
 	printf("max_line_size = %d\n", cube->max_line_size);
 	printf("\n");
 	printf("map = \n");
-	while (cube->map[0])
+	while (cube->map[i])
 	{
-		printf("%s", cube->map[0]);
-		cube->map++;
+		printf("%s", cube->map[i]);
+		i++;
 	}
 }
