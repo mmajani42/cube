@@ -6,7 +6,7 @@
 /*   By: mmajani <mmajani@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 14:21:46 by mmajani           #+#    #+#             */
-/*   Updated: 2023/04/29 15:34:58 by mmajani          ###   ########lyon.fr   */
+/*   Updated: 2023/04/29 16:16:11 by mmajani          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,6 @@ int	main(int ac, char **av)
 	init_parsing(&cube);
 	parsing(av[1], &cube);
 	set_tile_size(&cube);
-	set_offset(&cube);
 	//print_tab(cube.map);
 	display_handling(&cube);
 	mlx_key_hook(cube.mlx_win, key_events, &cube);

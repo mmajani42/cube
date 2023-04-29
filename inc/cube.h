@@ -6,7 +6,7 @@
 /*   By: mmajani <mmajani@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 15:29:07 by mmajani           #+#    #+#             */
-/*   Updated: 2023/04/29 15:33:36 by mmajani          ###   ########lyon.fr   */
+/*   Updated: 2023/04/29 16:40:48 by mmajani          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,8 @@
 
 typedef struct s_point
 {
-	float	x;
-	float	y;
+	double	x;
+	double	y;
 }			t_point;
 
 typedef struct s_data
@@ -64,6 +64,12 @@ typedef struct s_color
 	int		g;
 	int		b;
 }			t_color;
+
+typedef struct s_player
+{
+	t_point pos;
+	t_point vec;
+}			t_player;
 
 typedef struct s_cube
 {
@@ -85,6 +91,7 @@ typedef struct s_cube
 	double		ts;
 	double		off_x;
 	double		off_y;
+	t_player	p;
 }				t_cube;
 
 void	cube_tester(t_cube *cube);
