@@ -1,10 +1,10 @@
 NO ./assets/brick_wall_64x64.xpm
 SO ./assets/brick_wall_64x64.xpm
-WE ./assets/brick_wall_64x64.xpm
 EA ./assets/brick_wall_64x64.xpm
+WE ./assets/brick_wall_64x64.xpm
 
 F 220,100,0
-C 225,30,0
+C 225,30,255
 
 1111    11111
 1001111110001

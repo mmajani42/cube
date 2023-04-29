@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   elements.c                                         :+:      :+:    :+:   */
+/*   map_elements.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 16:55:48 by vimercie          #+#    #+#             */
-/*   Updated: 2023/04/29 14:51:57 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/04/29 16:23:05 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,13 +59,13 @@ int	parse_elements(char **file, t_cube *cube)
 			set_textures += set_texture_path(&cube->ea, file[0] + 2);
 		if (ft_strncmp(file[0], "WE", 2) == 0 && !cube->we)
 			set_textures += set_texture_path(&cube->we, file[0] + 2);
-		if (ft_strncmp(file[0], "F", 1) == 0)
+		if (ft_strncmp(file[0], "F", 1) == 0 && cube->floor.r == -1)
 			set_textures += set_color(&cube->floor, file[0] + 1);
-		if (ft_strncmp(file[0], "C", 1) == 0)
+		if (ft_strncmp(file[0], "C", 1) == 0 && cube->ceiling.r == -1)
 			set_textures += set_color(&cube->ceiling, file[0] + 1);
 		file++;
 	}
 	if (set_textures < 6)
-		return (0);
+		return (print_error("Invalid map elements"));
 	return (1);
 }

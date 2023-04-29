@@ -13,8 +13,10 @@ SRC=		testing.c					\
 			parsing.c					\
 			parsing_utils.c				\
 			checking.c					\
-			elements.c					\
+			map_elements.c				\
+			map_description.c			\
 			init_structure.c			\
+			error.c						\
 			cleaning.c					\
 			draw.c						\
 			display.c					\

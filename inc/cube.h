@@ -6,7 +6,7 @@
 /*   By: mmajani <mmajani@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 15:29:07 by mmajani           #+#    #+#             */
-/*   Updated: 2023/04/29 16:59:48 by mmajani          ###   ########lyon.fr   */
+/*   Updated: 2023/04/29 17:01:12 by mmajani          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,30 +67,30 @@ typedef struct s_color
 
 typedef struct s_player
 {
-	t_point pos;
-	t_point vec;
+	t_point	pos;
+	t_point	vec;
 }			t_player;
 
 typedef struct s_cube
 {
-	char		**map;
+	t_data		img;
 	void		*mlx;
 	void		*mlx_win;
+	int			win_x;
+	int			win_y;
+	double		ts;
+	double		off_x;
+	double		off_y;
+	int			display_status;
+	int			max_line_size;
+	int			map_height;
+	char		**map;
 	char		*no;
 	char		*so;
 	char		*we;
 	char		*ea;
 	t_color		floor;
 	t_color		ceiling;
-	t_data		img;
-	int			max_line_size;
-	int			map_height;
-	int			win_x;
-	int			win_y;
-	int			display_status;
-	double		ts;
-	double		off_x;
-	double		off_y;
 	t_player	p;
 }				t_cube;
 
@@ -99,8 +99,11 @@ void	cube_tester(t_cube *cube);
 // 	parsing
 int		parsing(char *filename, t_cube *cube);
 int		parse_elements(char **file, t_cube *cube);
+int		parse_description(char **file, t_cube *cube);
 
+char	**file_to_tab(char *filename);
 char	*get_next_word(char *str);
+size_t	get_max_line_size(char **map);
 
 // init
 void	init_parsing(t_cube *cube);
@@ -109,6 +112,9 @@ void	set_tile_size(t_cube *cube);
 // checking
 bool	is_rgb(char **tab);
 bool	is_valid_map_line(char *line);
+
+// errors
+int		print_error(char *error);
 
 // cleaning
 void	free_tab(char **tab);

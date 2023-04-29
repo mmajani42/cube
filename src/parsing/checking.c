@@ -6,7 +6,7 @@
 /*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 14:03:43 by vimercie          #+#    #+#             */
-/*   Updated: 2023/04/29 14:29:12 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/04/29 16:40:11 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,24 @@ bool	is_rgb(char **tab)
 	return (true);
 }
 
+bool	is_wall(char *line)
+{
+	int	i;
+
+	if (!line)
+		return (false);
+	i = 0;
+	while (line[i] == ' ' || line[i] == '1')
+		i++;
+	if (line[i] == '\n' && i >= 2)
+		return (true);
+	return (false);
+}
+
 bool	is_valid_map_line(char *line)
 {
+	if (ft_is_string_blank(line))
+		return (false);
 	while (line[0] != '\n' && line[0])
 	{
 		if (line[0] != '0'
