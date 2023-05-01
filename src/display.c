@@ -6,7 +6,7 @@
 /*   By: mmajani <mmajani@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 15:20:58 by mmajani           #+#    #+#             */
-/*   Updated: 2023/04/29 18:14:51 by mmajani          ###   ########lyon.fr   */
+/*   Updated: 2023/05/01 13:38:24 by mmajani          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void	display_handling(t_cube *cube)
 	clear_image(cube);
 	draw_map(cube);
 	draw_player(cube);
+	draw_raycast(cube);
 	mlx_put_image_to_window(cube->mlx, cube->mlx_win, cube->img.img, 0, 0);
 }
 
@@ -25,8 +26,8 @@ void	clear_image(t_cube *cube)
 	int	x;
 	int	y;
 
-	x = 1;
-	y = 1;
+	x = 0;
+	y = 0;
 	while (y <= WIN_Y)
 	{
 		while (x < WIN_X)

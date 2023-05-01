@@ -6,7 +6,7 @@
 /*   By: mmajani <mmajani@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 14:21:46 by mmajani           #+#    #+#             */
-/*   Updated: 2023/04/29 19:12:23 by mmajani          ###   ########lyon.fr   */
+/*   Updated: 2023/05/01 12:33:08 by mmajani          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	init_mlx(t_cube *cube)
 {
-	cube->win_x = 3840;
-	cube->win_y = 2160;
+	cube->win_x = WIN_X;
+	cube->win_y = WIN_Y;
 	cube->mlx = mlx_init();
 	cube->mlx_win = mlx_new_window(cube->mlx, cube->win_x,
 			cube->win_y, "Hello world!");
@@ -28,7 +28,6 @@ void	init_mlx(t_cube *cube)
 
 int	key_events(int keycode, t_cube *cube)
 {
-	printf("keycode =%d\n", keycode);
 	if (keycode == ESC)
 	{
 		mlx_destroy_window(cube->mlx, cube->mlx_win);
@@ -62,9 +61,8 @@ int	main(int ac, char **av)
 	parsing(av[1], &cube);
 	set_tile_size(&cube);
 	set_player(&cube);
-	//mlx_key_hook(cube.mlx_win, key_events, &cube);
 	mlx_hook(cube.mlx_win, 2, 1L << 0, &key_events, &cube);
-	mlx_loop_hook(cube.mlx, display_handling, &cube);
+	mlx_loop_hook(cube.mlx, &display_handling, &cube);
 	mlx_loop(cube.mlx);
 	return (0);
 }

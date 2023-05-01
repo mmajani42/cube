@@ -6,7 +6,7 @@
 /*   By: mmajani <mmajani@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 16:18:16 by mmajani           #+#    #+#             */
-/*   Updated: 2023/04/29 18:45:00 by mmajani          ###   ########lyon.fr   */
+/*   Updated: 2023/05/01 19:01:06 by mmajani          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,18 @@ void	set_player(t_cube *cube)
 	t_point	p_pos;
 
 	p_pos = get_player_pos(cube->map);
-	dprintf(1, "PLAYER POS X=%.2f\nPLAYER POS Y=%.2f", p_pos.x, p_pos.y);
 	cube->p.pos.x = ((p_pos.x - 1) * cube->ts) + cube->ts;
 	cube->p.pos.y = ((p_pos.y - 1) * cube->ts) + cube->ts;
+	cube->p.vec.x = 1;
+	cube->p.vec.y = 0;
 }
 
 void	draw_orientation(t_cube *cube)
 {
 	t_point	end;
 
-	end.x = cube->p.pos.x + (cube->p.vec.x * 100);
-	end.y = cube->p.pos.y + (cube->p.vec.y * 100);
+	end.x = cube->p.pos.x + (cube->p.vec.x * 50);
+	end.y = cube->p.pos.y + (cube->p.vec.y * 50);
 	draw_segment(cube, cube->p.pos, end, 65280);
 }
 
@@ -47,4 +48,5 @@ void	draw_player(t_cube *cube)
 	draw_segment(cube, (t_point){x + (cube->ts / 8), y - (cube->ts / 8)},
 		(t_point){x + (cube->ts / 8), y + (cube->ts / 8)}, 16711680);
 	draw_orientation(cube);
+	draw_raycast(cube);
 }

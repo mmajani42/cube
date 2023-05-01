@@ -6,7 +6,7 @@
 /*   By: mmajani <mmajani@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 15:29:07 by mmajani           #+#    #+#             */
-/*   Updated: 2023/04/29 18:32:27 by mmajani          ###   ########lyon.fr   */
+/*   Updated: 2023/05/01 18:59:49 by mmajani          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,9 @@
 # include <math.h>
 # include <stdbool.h>
 
-# define WIN_X 3840
-# define WIN_Y 2160
+# define WIN_X 1920
+# define WIN_Y 1080
+# define PI		3.1415926535
 
 # define W 			119
 # define A 			97
@@ -67,9 +68,24 @@ typedef struct s_color
 
 typedef struct s_player
 {
+	double	angle;
 	t_point	pos;
 	t_point	vec;
 }			t_player;
+
+typedef struct s_cast
+{
+	double	a;
+	double	x;
+	double	y;
+	double	xo;
+	double	yo;
+	int		r;
+	int		mx;
+	int		my;
+	int		mp;
+	int		dof;
+}			t_cast;
 
 typedef struct s_cube
 {
@@ -129,6 +145,10 @@ void	draw_segment(t_cube *cube, t_point a, t_point b, int color);
 void	draw_square(t_cube *cube, double x, double y);
 void	draw_map(t_cube *cube);
 void	draw_player(t_cube *cube);
+void	draw_dot(t_cube *cube, double x, double y);
+
+//	raycast
+void	draw_raycast(t_cube *cube);
 
 //	display
 void	clear_image(t_cube *cube);
