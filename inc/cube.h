@@ -6,7 +6,7 @@
 /*   By: mmajani <mmajani@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 15:29:07 by mmajani           #+#    #+#             */
-/*   Updated: 2023/05/01 18:59:49 by mmajani          ###   ########lyon.fr   */
+/*   Updated: 2023/05/02 20:26:40 by mmajani          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,15 @@
 # include <math.h>
 # include <stdbool.h>
 
-# define WIN_X 1920
-# define WIN_Y 1080
-# define PI		3.1415926535
-
+# define WIN_X		1920
+# define WIN_Y		1080
+# define PI			3.1415926535
+# define Z			122
+# define Q			113
 # define W 			119
 # define A 			97
 # define S 			115
+# define X 			120
 # define D 			100
 # define O 			111
 # define P 			112
@@ -78,8 +80,9 @@ typedef struct s_cast
 	double	a;
 	double	x;
 	double	y;
-	double	xo;
 	double	yo;
+	double	xo;
+	double	size;
 	int		r;
 	int		mx;
 	int		my;
@@ -148,7 +151,14 @@ void	draw_player(t_cube *cube);
 void	draw_dot(t_cube *cube, double x, double y);
 
 //	raycast
-void	draw_raycast(t_cube *cube);
+t_cast	horizontal_raycast(t_cube *cube);
+t_cast	vertical_raycast(t_cube *cube);
+void	draw_closest_ray(t_cube *cube);
+
+// ray_utils
+int		hit(t_cube *cube, int mx, int my);
+int		p_map_pos(t_cube *cube, char c);
+int		is_in_map(t_cube *cube, int x, int y);
 
 //	display
 void	clear_image(t_cube *cube);
