@@ -6,7 +6,7 @@
 /*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 16:08:01 by vimercie          #+#    #+#             */
-/*   Updated: 2023/04/29 19:21:27 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/05/02 20:47:01 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,27 @@ t_point	get_player_pos(char **map)
 	return (res);
 }
 
+bool	is_map_bordered(char **map)
+{
+	int	x;
+	int	y;
+
+	y = 0;
+	while (map[y])
+	{
+		x = 0;
+		while (map[y][x])
+		{
+			if ((ft_isspace(map[y][x]) || x == 0)
+				&& !wall_sonar(x, y, map))
+				return (false);
+			x++;
+		}
+		y++;
+	}
+	return (true);
+}
+
 int	parse_description(char **file, t_cube *cube)
 {
 	int	i;
@@ -61,5 +82,6 @@ int	parse_description(char **file, t_cube *cube)
 	}
 	cube->map = file + i;
 	cube->max_line_size = get_max_line_size(cube->map);
+	printf("border_integrity = %d\n", is_map_bordered(cube->map));
 	return (1);
 }

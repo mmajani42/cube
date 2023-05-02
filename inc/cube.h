@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmajani <mmajani@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 15:29:07 by mmajani           #+#    #+#             */
-/*   Updated: 2023/05/01 18:59:49 by mmajani          ###   ########lyon.fr   */
+/*   Updated: 2023/05/02 20:27:32 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,6 +122,7 @@ char	**file_to_tab(char *filename);
 char	*get_next_word(char *str);
 size_t	get_max_line_size(char **map);
 t_point	get_player_pos(char **map);
+bool	wall_sonar(int x, int y, char **map);
 
 // init
 void	init_parsing(t_cube *cube);

@@ -15,6 +15,7 @@ SRC=		testing.c					\
 			checking.c					\
 			map_elements.c				\
 			map_description.c			\
+			border_integrity.c			\
 			init_structure.c			\
 			error.c						\
 			cleaning.c					\
