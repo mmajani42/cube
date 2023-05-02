@@ -6,7 +6,7 @@
 /*   By: mmajani <mmajani@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 16:18:16 by mmajani           #+#    #+#             */
-/*   Updated: 2023/05/02 10:31:07 by mmajani          ###   ########lyon.fr   */
+/*   Updated: 2023/05/02 20:28:47 by mmajani          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,5 @@ void	draw_player(t_cube *cube)
 		(t_point){x - (cube->ts / 8), y + (cube->ts / 8)}, 16711680);
 	draw_segment(cube, (t_point){x + (cube->ts / 8), y - (cube->ts / 8)},
 		(t_point){x + (cube->ts / 8), y + (cube->ts / 8)}, 16711680);
-	draw_orientation(cube);
-	draw_raycast(cube);
+//	draw_orientation(cube);
 }

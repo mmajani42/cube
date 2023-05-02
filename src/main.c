@@ -6,7 +6,7 @@
 /*   By: mmajani <mmajani@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 14:21:46 by mmajani           #+#    #+#             */
-/*   Updated: 2023/05/01 12:33:08 by mmajani          ###   ########lyon.fr   */
+/*   Updated: 2023/05/02 20:38:23 by mmajani          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,19 +21,21 @@ void	init_mlx(t_cube *cube)
 			cube->win_y, "Hello world!");
 	cube->img.img = mlx_new_image(cube->mlx, cube->win_x, cube->win_y);
 	cube->img.addr = mlx_get_data_addr(cube->img.img,
-			&cube->img.bits_per_pixel, &cube->img.line_length, &cube->img.endian);
+			&cube->img.bits_per_pixel, &cube->img.line_length,
+			&cube->img.endian);
 	cube->img.bits_per_pixel /= 8;
 	cube->display_status = 1;
 }
 
 int	key_events(int keycode, t_cube *cube)
 {
-	if (keycode == ESC)
+	if (keycode == ESC || keycode == X)
 	{
 		mlx_destroy_window(cube->mlx, cube->mlx_win);
 		exit(1);
 	}
-	if (keycode == W || keycode == A || keycode == S || keycode == D)
+	if (keycode == W || keycode == A || keycode == S || keycode == D
+		|| keycode == Z)
 		change_player_vector(cube, keycode);
 	return (0);
 }
