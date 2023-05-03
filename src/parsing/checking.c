@@ -6,7 +6,7 @@
 /*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 14:03:43 by vimercie          #+#    #+#             */
-/*   Updated: 2023/04/29 16:40:11 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/05/04 00:30:27 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,33 +40,49 @@ bool	is_rgb(char **tab)
 
 bool	is_wall(char *line)
 {
-	int	i;
+	bool	wall_on_line;
+	int		i;
 
 	if (!line)
 		return (false);
 	i = 0;
-	while (line[i] == ' ' || line[i] == '1')
+	wall_on_line = false;
+	while ((line[i] == ' ' || line[i] == '1') && line[i])
+	{
+		if (line[i] == '1')
+			wall_on_line = true;
 		i++;
-	if (line[i] == '\n' && i >= 2)
+	}
+	if ((line[i] == '\n' || line[i]) && wall_on_line == true)
 		return (true);
 	return (false);
 }
 
 bool	is_valid_map_line(char *line)
 {
+	int	i;
+
+	i = 0;
 	if (ft_is_string_blank(line))
 		return (false);
-	while (line[0] != '\n' && line[0])
+	while (line[i] != '\n' && line[i])
 	{
-		if (line[0] != '0'
-			&& line[0] != '1'
-			&& line[0] != 'N'
-			&& line[0] != 'S'
-			&& line[0] != 'E'
-			&& line[0] != 'W'
-			&& line[0] != ' ')
+		if ((line[i] != '0'
+				&& line[i] != '1'
+				&& line[i] != ' '
+				&& line[i] != 'N'
+				&& line[i] != 'S'
+				&& line[i] != 'E'
+				&& line[i] != 'W')
+			|| ((line[i] == 'N'
+					|| line[i] == 'S'
+					|| line[i] == 'E'
+					|| line[i] == 'W')
+				&& ((line[i + 1] != '0'
+						&& line[i + 1] != '1')
+					|| !line[i + i])))
 			return (false);
-		line++;
+		i++;
 	}
 	return (true);
 }

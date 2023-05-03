@@ -6,7 +6,7 @@
 /*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 16:08:01 by vimercie          #+#    #+#             */
-/*   Updated: 2023/05/02 20:47:01 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/05/04 00:34:22 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,19 @@ bool	is_map_bordered(char **map)
 	return (true);
 }
 
+int	get_map_dimensions(t_cube *cube)
+{
+	cube->map_height = 0;
+	while (cube->map[cube->map_height])
+	{
+		if (!is_valid_map_line(cube->map[cube->map_height++]))
+			return (0);
+		cube->map_height++;
+	}
+	cube->max_line_size = get_max_line_size(cube->map);
+	return (1);
+}
+
 int	parse_description(char **file, t_cube *cube)
 {
 	int	i;
@@ -73,15 +86,10 @@ int	parse_description(char **file, t_cube *cube)
 		i++;
 	if (!file[i])
 		return (print_error("No map description"));
-	cube->map_height = i;
-	while (file[cube->map_height])
-	{
-		if (!is_valid_map_line(file[cube->map_height]))
-			return (print_error("Invalid map description"));
-		cube->map_height++;
-	}
 	cube->map = file + i;
-	cube->max_line_size = get_max_line_size(cube->map);
-	printf("border_integrity = %d\n", is_map_bordered(cube->map));
+	if (!get_map_dimensions(cube))
+		return (print_error("Invalid map description"));
+	if (!is_map_bordered(cube->map))
+		return (print_error("Map is not surrounded by walls"));
 	return (1);
 }

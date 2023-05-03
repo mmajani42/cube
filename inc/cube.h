@@ -6,7 +6,7 @@
 /*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 15:29:07 by mmajani           #+#    #+#             */
-/*   Updated: 2023/05/02 20:56:19 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/05/04 00:47:29 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,6 +126,7 @@ char	*get_next_word(char *str);
 size_t	get_max_line_size(char **map);
 t_point	get_player_pos(char **map);
 bool	wall_sonar(int x, int y, char **map);
+bool	check_file_extension(char *filename, char *format);
 
 // init
 void	init_parsing(t_cube *cube);
