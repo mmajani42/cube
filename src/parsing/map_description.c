@@ -6,7 +6,7 @@
 /*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 16:08:01 by vimercie          #+#    #+#             */
-/*   Updated: 2023/05/04 00:34:22 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/05/04 01:01:20 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,8 @@ bool	is_map_bordered(char **map)
 		}
 		y++;
 	}
+	if (!is_wall(map[0]) || !is_wall(map[y - 1]))
+		return (false);
 	return (true);
 }
 

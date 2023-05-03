@@ -6,7 +6,7 @@
 /*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 15:29:07 by mmajani           #+#    #+#             */
-/*   Updated: 2023/05/04 00:47:29 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/05/04 01:01:42 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,13 +129,14 @@ bool	wall_sonar(int x, int y, char **map);
 bool	check_file_extension(char *filename, char *format);
 
 // init
-void	init_parsing(t_cube *cube);
+void	init_cube(t_cube *cube);
 void	set_tile_size(t_cube *cube);
 void	set_player(t_cube *cube);
 
 // checking
 bool	is_rgb(char **tab);
 bool	is_valid_map_line(char *line);
+bool	is_wall(char *line);
 
 // errors
 int		print_error(char *error);

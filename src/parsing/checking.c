@@ -6,7 +6,7 @@
 /*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 14:03:43 by vimercie          #+#    #+#             */
-/*   Updated: 2023/05/04 00:30:27 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/05/04 00:57:40 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ bool	is_wall(char *line)
 			wall_on_line = true;
 		i++;
 	}
-	if ((line[i] == '\n' || line[i]) && wall_on_line == true)
+	if ((line[i] == '\n' || !line[i]) && wall_on_line == true)
 		return (true);
 	return (false);
 }
