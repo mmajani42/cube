@@ -10,13 +10,13 @@ INCDIR=		inc
 
 SRC=		testing.c					\
 			main.c						\
+			init_structure.c			\
 			parsing.c					\
 			parsing_utils.c				\
-			checking.c					\
 			map_elements.c				\
 			map_description.c			\
-			border_integrity.c			\
-			init_structure.c			\
+			sonar.c						\
+			checking.c					\
 			error.c						\
 			cleaning.c					\
 			draw.c						\

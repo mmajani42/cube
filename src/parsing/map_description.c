@@ -6,11 +6,28 @@
 /*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 16:08:01 by vimercie          #+#    #+#             */
-/*   Updated: 2023/05/04 01:01:20 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/05/04 05:14:11 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cube.h"
+
+t_point	get_player_vec(char direction)
+{
+	t_point	res;
+
+	res.x = 0;
+	res.y = 0;
+	if (direction == 'N')
+		res.y = -1;
+	if (direction == 'S')
+		res.y = 1;
+	if (direction == 'E')
+		res.x = 1;
+	if (direction == 'W')
+		res.x = -1;
+	return (res);
+}
 
 t_point	get_player_pos(char **map)
 {
@@ -26,44 +43,31 @@ t_point	get_player_pos(char **map)
 		x = 0;
 		while (map[y][x])
 		{
-			if (map[y][x] == 'N'
-				|| map[y][x] == 'S'
-				|| map[y][x] == 'E'
-				|| map[y][x] == 'W')
+			if (ft_strchr("NSEW", map[y][x]) != NULL)
 			{
 				res.x = x;
 				res.y = y;
-				// res.vec = get_player_vec();
 				return (res);
 			}
 			x++;
 		}
 		y++;
 	}
+	if (!map[y])
+		print_error("No player found in map description");
 	return (res);
 }
 
-bool	is_map_bordered(char **map)
+void	get_player_coordinates(t_player *p, char **map)
 {
-	int	x;
-	int	y;
-
-	y = 0;
-	while (map[y])
+	p->pos = get_player_pos(map);
+	if (p->pos.x > -1 && p->pos.y > -1)
+		p->vec = get_player_vec(map[(int)p->pos.y][(int)p->pos.x]);
+	else
 	{
-		x = 0;
-		while (map[y][x])
-		{
-			if ((ft_isspace(map[y][x]) || x == 0)
-				&& !wall_sonar(x, y, map))
-				return (false);
-			x++;
-		}
-		y++;
+		p->vec.x = 0;
+		p->vec.y = 0;
 	}
-	if (!is_wall(map[0]) || !is_wall(map[y - 1]))
-		return (false);
-	return (true);
 }
 
 int	get_map_dimensions(t_cube *cube)

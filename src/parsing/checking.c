@@ -6,7 +6,7 @@
 /*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 14:03:43 by vimercie          #+#    #+#             */
-/*   Updated: 2023/05/04 00:57:40 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/05/04 05:26:34 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,5 +84,29 @@ bool	is_valid_map_line(char *line)
 			return (false);
 		i++;
 	}
+	return (true);
+}
+
+bool	is_map_bordered(char **map)
+{
+	int	x;
+	int	y;
+
+	y = 0;
+	while (map[y])
+	{
+		x = 0;
+		// gotta check south walls (not being scanned by sonar)
+		while (map[y][x])
+		{
+			if ((ft_isspace(map[y][x]) || x == 0)
+				&& !wall_sonar(x, y, map))
+				return (false);
+			x++;
+		}
+		y++;
+	}
+	if (!is_wall(map[0]) || !is_wall(map[y - 1]))
+		return (false);
 	return (true);
 }

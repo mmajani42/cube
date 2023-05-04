@@ -6,7 +6,7 @@
 /*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 15:29:07 by mmajani           #+#    #+#             */
-/*   Updated: 2023/05/04 01:01:42 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/05/04 05:11:58 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,10 +123,17 @@ int		parse_description(char **file, t_cube *cube);
 
 char	**file_to_tab(char *filename);
 char	*get_next_word(char *str);
+
 size_t	get_max_line_size(char **map);
+
+void	get_player_coordinates(t_player *p, char **map);
 t_point	get_player_pos(char **map);
-bool	wall_sonar(int x, int y, char **map);
+t_point	get_player_vec(char direction);
+
 bool	check_file_extension(char *filename, char *format);
+
+bool	is_map_bordered(char **map);
+bool	wall_sonar(int x, int y, char **map);
 
 // init
 void	init_cube(t_cube *cube);
