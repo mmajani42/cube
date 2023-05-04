@@ -6,7 +6,7 @@
 /*   By: mmajani <mmajani@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 16:18:16 by mmajani           #+#    #+#             */
-/*   Updated: 2023/05/02 20:28:47 by mmajani          ###   ########lyon.fr   */
+/*   Updated: 2023/05/04 01:44:00 by mmajani          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	draw_orientation(t_cube *cube)
 
 	end.x = cube->p.pos.x + (cube->p.vec.x * 50);
 	end.y = cube->p.pos.y + (cube->p.vec.y * 50);
-	draw_segment(cube, cube->p.pos, end, 65280);
+	draw_segment(cube, cube->p.pos, end, 0xFFFFF);
 }
 
 void	draw_player(t_cube *cube)
@@ -47,5 +47,5 @@ void	draw_player(t_cube *cube)
 		(t_point){x - (cube->ts / 8), y + (cube->ts / 8)}, 16711680);
 	draw_segment(cube, (t_point){x + (cube->ts / 8), y - (cube->ts / 8)},
 		(t_point){x + (cube->ts / 8), y + (cube->ts / 8)}, 16711680);
-//	draw_orientation(cube);
+	draw_orientation(cube);
 }

@@ -6,7 +6,7 @@
 /*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 15:29:07 by mmajani           #+#    #+#             */
-/*   Updated: 2023/05/04 05:11:58 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/05/04 05:27:47 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@
 # define RIGHT		65363
 # define DOWN		65364
 # define UP			65362
+# define FOV		80
 
 typedef struct s_point
 {
@@ -109,6 +110,8 @@ typedef struct s_cube
 	char		*so;
 	char		*we;
 	char		*ea;
+	t_cast		v_ray[FOV];
+	t_cast		h_ray[FOV];
 	t_color		floor;
 	t_color		ceiling;
 	t_player	p;
@@ -161,8 +164,8 @@ void	draw_player(t_cube *cube);
 void	draw_dot(t_cube *cube, double x, double y);
 
 //	raycast
-t_cast	horizontal_raycast(t_cube *cube);
-t_cast	vertical_raycast(t_cube *cube);
+void	horizontal_raycast(t_cube *cube);
+void	vertical_raycast(t_cube *cube);
 void	draw_closest_ray(t_cube *cube);
 
 // ray_utils
