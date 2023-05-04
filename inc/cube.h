@@ -6,7 +6,7 @@
 /*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 15:29:07 by mmajani           #+#    #+#             */
-/*   Updated: 2023/05/04 18:31:27 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/05/04 20:10:14 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@
 # define DOWN		65364
 # define UP			65362
 # define FOV		70
+
 typedef struct s_point
 {
 	double	x;
