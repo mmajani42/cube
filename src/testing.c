@@ -6,7 +6,7 @@
 /*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 14:24:22 by vimercie          #+#    #+#             */
-/*   Updated: 2023/04/29 17:50:00 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/05/04 18:25:45 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	cube_tester(t_cube *cube)
 	printf("map = \n");
 	while (cube->map[i])
 	{
-		printf("%s", cube->map[i]);
+		printf("|%s|\n", cube->map[i]);
 		i++;
 	}
 }

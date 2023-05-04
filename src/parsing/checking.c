@@ -6,11 +6,23 @@
 /*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 14:03:43 by vimercie          #+#    #+#             */
-/*   Updated: 2023/05/04 06:13:13 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/05/04 18:22:18 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cube.h"
+
+bool	check_file_extension(char *filename, char *format)
+{
+	char	*extension;
+
+	extension = ft_strnstr(filename, format, ft_strlen(filename));
+	if (!extension)
+		return (false);
+	if (!extension[ft_strlen(format)])
+		return (true);
+	return (false);
+}
 
 bool	is_rgb(char **tab)
 {

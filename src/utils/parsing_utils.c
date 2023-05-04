@@ -6,22 +6,25 @@
 /*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 13:49:14 by vimercie          #+#    #+#             */
-/*   Updated: 2023/05/04 05:15:10 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/05/04 18:24:06 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cube.h"
 
-bool	check_file_extension(char *filename, char *format)
+char	*dup_and_fill(char *src, char c, int size, bool ow_last_char)
 {
-	char	*extension;
+	char	*res;
+	size_t	len;
 
-	extension = ft_strnstr(filename, format, ft_strlen(filename));
-	if (!extension)
-		return (false);
-	if (!extension[ft_strlen(format)])
-		return (true);
-	return (false);
+	res = ft_calloc(size + 1, sizeof(char));
+	if (ow_last_char == true)
+		len = ft_strlen(src) - 1;
+	else
+		len = ft_strlen(src);
+	ft_strlcpy(res, src, len + 1);
+	memset(res + len, c, size - len);
+	return (res);
 }
 
 char	*get_next_word(char *str)
@@ -38,22 +41,6 @@ char	*get_next_word(char *str)
 	if (len == 0)
 		return (NULL);
 	return (ft_strndup(str, len));
-}
-
-size_t	get_max_line_size(char **map)
-{
-	size_t	res;
-	int		i;
-
-	i = 0;
-	res = 0;
-	while (map[i])
-	{
-		if (ft_strlen(map[i]) > res)
-			res = ft_strlen(map[i]);
-		i++;
-	}
-	return (res);
 }
 
 int	count_file_lines(char *filename)

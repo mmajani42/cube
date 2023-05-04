@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmajani <mmajani@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 15:29:07 by mmajani           #+#    #+#             */
-/*   Updated: 2023/05/04 14:06:15 by mmajani          ###   ########lyon.fr   */
+/*   Updated: 2023/05/04 18:31:27 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,13 +120,14 @@ void	cube_tester(t_cube *cube);
 
 // 	parsing
 int		parsing(char *filename, t_cube *cube);
-int		parse_elements(char **file, t_cube *cube);
-int		parse_description(char **file, t_cube *cube);
+int		parse_elements(t_cube *cube);
+int		parse_description(t_cube *cube);
 
 char	**file_to_tab(char *filename);
 char	*get_next_word(char *str);
+char	*dup_and_fill(char *src, char c, int size, bool ow_last_char);
 
-size_t	get_max_line_size(char **map);
+int		get_map_dimensions(char **file, t_cube *cube);
 
 void	get_player_coordinates(t_player *p, char **map);
 t_point	get_player_pos(char **map);
@@ -139,6 +140,7 @@ bool	wall_sonar(int x, int y, char **map);
 
 // init
 void	init_cube(t_cube *cube);
+int		init_map(t_cube *cube);
 void	set_tile_size(t_cube *cube);
 void	set_player(t_cube *cube);
 

@@ -6,7 +6,7 @@
 /*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 14:21:46 by mmajani           #+#    #+#             */
-/*   Updated: 2023/05/04 01:04:00 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/05/04 18:48:52 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,8 @@ int	main(int ac, char **av)
 
 	if (ac != 2)
 		return (0);
-	parsing(av[1], &cube);
+	if (!parsing(av[1], &cube))
+		return (0);
 	init_mlx(&cube);
 	set_tile_size(&cube);
 	set_player(&cube);

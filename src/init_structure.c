@@ -6,7 +6,7 @@
 /*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 19:13:43 by mmajani           #+#    #+#             */
-/*   Updated: 2023/05/04 00:56:30 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/05/04 18:26:37 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 void	init_cube(t_cube *cube)
 {
+	cube->map = NULL;
+	cube->file = NULL;
 	cube->no = NULL;
 	cube->so = NULL;
 	cube->we = NULL;
@@ -26,6 +28,7 @@ void	init_cube(t_cube *cube)
 	cube->ceiling.b = -1;
 	cube->ts = 0;
 	cube->map_height = 0;
+	cube->max_line_size = 0;
 	cube->off_x = 0;
 	cube->off_y = 0;
 }
