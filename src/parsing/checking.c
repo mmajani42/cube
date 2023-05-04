@@ -6,7 +6,7 @@
 /*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 14:03:43 by vimercie          #+#    #+#             */
-/*   Updated: 2023/05/04 06:08:48 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/05/04 06:13:13 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ bool	is_map_bordered(char **map)
 	{
 		x = 0;
 		// scanner les murs orientés 'N' et 'S' qui font face à du vide;
-		// -> formater la map pour que chaque ligne fasse max_line_size de longueur, puis remplir de '0' avec memset(map[ligne] + get_line_len(map[ligne]), ' ', ft_strlen(map[ligne]) - get_map_len(map_ligne)).
+		// -> formater la map pour que chaque ligne fasse max_line_size de longueur, copier avec ft_strlcpy() puis remplir l'espace vide de '0' avec memset().
 		while (map[y][x])
 		{
 			if ((ft_isspace(map[y][x]) || x == 0)
