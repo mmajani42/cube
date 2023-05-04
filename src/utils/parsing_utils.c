@@ -3,14 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmajani <mmajani@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 13:49:14 by vimercie          #+#    #+#             */
-/*   Updated: 2023/05/01 08:21:54 by mmajani          ###   ########lyon.fr   */
+/*   Updated: 2023/05/04 00:47:41 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cube.h"
+
+bool	check_file_extension(char *filename, char *format)
+{
+	char	*extension;
+
+	extension = ft_strnstr(filename, format, ft_strlen(filename));
+	if (!extension)
+		return (false);
+	if (!extension[ft_strlen(format)])
+		return (true);
+	return (false);
+}
 
 char	*get_next_word(char *str)
 {
@@ -51,6 +63,8 @@ int	count_file_lines(char *filename)
 	int		fd;
 
 	fd = open(filename, O_RDONLY);
+	if (fd == -1)
+		return (print_error("Invalid program argument"));
 	res = 0;
 	buffer = get_next_line(fd);
 	while (buffer)
@@ -72,7 +86,14 @@ char	**file_to_tab(char *filename)
 
 	i = 0;
 	res = ft_calloc(count_file_lines(filename) + 1, sizeof(char *));
+	if (!res)
+		return (NULL);
 	fd = open(filename, O_RDONLY);
+	if (fd == -1)
+	{
+		print_error("Invalid program argument");
+		return (NULL);
+	}
 	buffer = get_next_line(fd);
 	while (buffer)
 	{

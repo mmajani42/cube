@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmajani <mmajani@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 14:21:46 by mmajani           #+#    #+#             */
-/*   Updated: 2023/05/02 20:38:23 by mmajani          ###   ########lyon.fr   */
+/*   Updated: 2023/05/04 01:04:00 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,9 +58,8 @@ int	main(int ac, char **av)
 
 	if (ac != 2)
 		return (0);
-	init_mlx(&cube);
-	init_parsing(&cube);
 	parsing(av[1], &cube);
+	init_mlx(&cube);
 	set_tile_size(&cube);
 	set_player(&cube);
 	mlx_hook(cube.mlx_win, 2, 1L << 0, &key_events, &cube);

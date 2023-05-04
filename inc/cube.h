@@ -6,7 +6,7 @@
 /*   By: mmajani <mmajani@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 15:29:07 by mmajani           #+#    #+#             */
-/*   Updated: 2023/05/04 02:00:17 by mmajani          ###   ########lyon.fr   */
+/*   Updated: 2023/05/04 02:34:39 by mmajani          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,15 +128,18 @@ char	**file_to_tab(char *filename);
 char	*get_next_word(char *str);
 size_t	get_max_line_size(char **map);
 t_point	get_player_pos(char **map);
+bool	wall_sonar(int x, int y, char **map);
+bool	check_file_extension(char *filename, char *format);
 
 // init
-void	init_parsing(t_cube *cube);
+void	init_cube(t_cube *cube);
 void	set_tile_size(t_cube *cube);
 void	set_player(t_cube *cube);
 
 // checking
 bool	is_rgb(char **tab);
 bool	is_valid_map_line(char *line);
+bool	is_wall(char *line);
 
 // errors
 int		print_error(char *error);

@@ -6,24 +6,11 @@
 /*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 16:55:48 by vimercie          #+#    #+#             */
-/*   Updated: 2023/04/29 16:23:05 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/05/04 00:47:35 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cube.h"
-
-int	set_texture_path(char **dest, char *line)
-{
-	*dest = get_next_word(line);
-	if (access(*dest, R_OK) == -1)
-	{
-		perror("access");
-		free(*dest);
-		*dest = NULL;
-		return (0);
-	}
-	return (1);
-}
 
 int	set_color(t_color *dest, char *line)
 {
@@ -34,8 +21,13 @@ int	set_color(t_color *dest, char *line)
 	if (!color_str)
 		return (0);
 	rgb = ft_split(color_str, ',');
-	if (!is_rgb(rgb))
+	if (!rgb)
 		return (0);
+	if (!is_rgb(rgb))
+	{
+		free_tab(rgb);
+		return (0);
+	}
 	dest->r = ft_atoi(rgb[0]);
 	dest->g = ft_atoi(rgb[1]);
 	dest->b = ft_atoi(rgb[2]);
@@ -44,26 +36,47 @@ int	set_color(t_color *dest, char *line)
 	return (1);
 }
 
+int	set_texture_path(char **dest, char *line)
+{
+	*dest = get_next_word(line);
+	if (!check_file_extension(*dest, ".xpm"))
+	{
+		free(*dest);
+		*dest = NULL;
+		return (print_error("Invalid asset format"));
+	}
+	if (access(*dest, R_OK) == -1)
+	{
+		perror(*dest);
+		free(*dest);
+		*dest = NULL;
+		return (0);
+	}
+	return (1);
+}
+
 int	parse_elements(char **file, t_cube *cube)
 {
 	int	set_textures;
+	int	i;
 
+	i = 0;
 	set_textures = 0;
-	while (file[0] && set_textures < 6)
+	while (set_textures < 6 && !is_valid_map_line(file[i]) && file[i])
 	{
-		if (ft_strncmp(file[0], "NO", 2) == 0 && !cube->no)
-			set_textures += set_texture_path(&cube->no, file[0] + 2);
-		if (ft_strncmp(file[0], "SO", 2) == 0 && !cube->so)
-			set_textures += set_texture_path(&cube->so, file[0] + 2);
-		if (ft_strncmp(file[0], "EA", 2) == 0 && !cube->ea)
-			set_textures += set_texture_path(&cube->ea, file[0] + 2);
-		if (ft_strncmp(file[0], "WE", 2) == 0 && !cube->we)
-			set_textures += set_texture_path(&cube->we, file[0] + 2);
-		if (ft_strncmp(file[0], "F", 1) == 0 && cube->floor.r == -1)
-			set_textures += set_color(&cube->floor, file[0] + 1);
-		if (ft_strncmp(file[0], "C", 1) == 0 && cube->ceiling.r == -1)
-			set_textures += set_color(&cube->ceiling, file[0] + 1);
-		file++;
+		if (ft_strncmp(file[i], "NO", 2) == 0 && !cube->no)
+			set_textures += set_texture_path(&cube->no, file[i] + 2);
+		if (ft_strncmp(file[i], "SO", 2) == 0 && !cube->so)
+			set_textures += set_texture_path(&cube->so, file[i] + 2);
+		if (ft_strncmp(file[i], "EA", 2) == 0 && !cube->ea)
+			set_textures += set_texture_path(&cube->ea, file[i] + 2);
+		if (ft_strncmp(file[i], "WE", 2) == 0 && !cube->we)
+			set_textures += set_texture_path(&cube->we, file[i] + 2);
+		if (ft_strncmp(file[i], "F", 1) == 0 && cube->floor.r == -1)
+			set_textures += set_color(&cube->floor, file[i] + 1);
+		if (ft_strncmp(file[i], "C", 1) == 0 && cube->ceiling.r == -1)
+			set_textures += set_color(&cube->ceiling, file[i] + 1);
+		i++;
 	}
 	if (set_textures < 6)
 		return (print_error("Invalid map elements"));
