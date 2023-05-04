@@ -6,7 +6,7 @@
 /*   By: mmajani <mmajani@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 16:18:16 by mmajani           #+#    #+#             */
-/*   Updated: 2023/05/04 01:44:00 by mmajani          ###   ########lyon.fr   */
+/*   Updated: 2023/05/04 09:29:06 by mmajani          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ void	draw_orientation(t_cube *cube)
 {
 	t_point	end;
 
-	end.x = cube->p.pos.x + (cube->p.vec.x * 50);
-	end.y = cube->p.pos.y + (cube->p.vec.y * 50);
+	end.x = cube->p.pos.x + (cos(cube->p.angle) * 50);
+	end.y = cube->p.pos.y + (sin(cube->p.angle) * 50);
 	draw_segment(cube, cube->p.pos, end, 0xFFFFF);
 }
 
