@@ -6,7 +6,7 @@
 /*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 14:21:46 by mmajani           #+#    #+#             */
-/*   Updated: 2023/05/04 20:05:54 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/05/05 06:15:37 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,12 +57,9 @@ int	main(int ac, char **av)
 	t_cube	cube;
 
 	if (ac != 2)
-		return (0);
+		return (print_error("This program takes only 1 argument"));
 	if (!parsing(av[1], &cube))
-	{
-		free_cube(&cube);
 		return (0);
-	}
 	init_mlx(&cube);
 	set_tile_size(&cube);
 	set_player(&cube);

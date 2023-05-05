@@ -6,7 +6,7 @@
 /*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 18:28:22 by mmajani           #+#    #+#             */
-/*   Updated: 2023/05/04 18:58:49 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/05/05 06:09:59 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,12 +73,13 @@ void	get_player_coordinates(t_player *p, char **map)
 int	parsing(char *filename, t_cube *cube)
 {
 	init_cube(cube);
-	if (!check_file_extension(filename, ".cub"))
-		return (print_error("Invalid argument format (*.cub required)"));
 	cube->file = file_to_tab(filename);
 	if (!cube->file)
 		return (0);
 	if (!parse_elements(cube) || !parse_description(cube))
+	{
+		free_cube(cube);
 		return (0);
+	}
 	return (1);
 }

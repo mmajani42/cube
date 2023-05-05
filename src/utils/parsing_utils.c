@@ -6,7 +6,7 @@
 /*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 13:49:14 by vimercie          #+#    #+#             */
-/*   Updated: 2023/05/04 18:24:06 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/05/05 06:10:46 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,9 @@ int	count_file_lines(char *filename)
 	int		res;
 	int		fd;
 
-	fd = open(filename, O_RDONLY);
+	fd = get_fd(filename);
 	if (fd == -1)
-		return (print_error("Invalid program argument"));
+		return (0);
 	res = 0;
 	buffer = get_next_line(fd);
 	while (buffer)
@@ -64,6 +64,30 @@ int	count_file_lines(char *filename)
 	return (res);
 }
 
+int	get_fd(char *filename)
+{
+	int	fd;
+
+	if (!check_file_extension(filename, ".cub"))
+	{
+		print_error("Invalid argument format (*.cub required)");
+		return (-1);
+	}
+	if (access(filename, R_OK) == -1)
+	{
+		print_error(NULL);
+		perror(filename);
+		return (-1);
+	}
+	fd = open(filename, O_RDONLY);
+	if (fd == -1)
+	{
+		print_error(NULL);
+		perror(filename);
+	}
+	return (fd);
+}
+
 char	**file_to_tab(char *filename)
 {
 	char	**res;
@@ -72,15 +96,12 @@ char	**file_to_tab(char *filename)
 	int		i;
 
 	i = 0;
+	fd = get_fd(filename);
+	if (fd == -1)
+		return (NULL);
 	res = ft_calloc(count_file_lines(filename) + 1, sizeof(char *));
 	if (!res)
 		return (NULL);
-	fd = open(filename, O_RDONLY);
-	if (fd == -1)
-	{
-		print_error("Invalid program argument");
-		return (NULL);
-	}
 	buffer = get_next_line(fd);
 	while (buffer)
 	{
