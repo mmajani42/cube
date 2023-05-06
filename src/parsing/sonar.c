@@ -6,7 +6,7 @@
 /*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 05:04:18 by vimercie          #+#    #+#             */
-/*   Updated: 2023/05/04 05:04:36 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/05/06 23:06:09 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,12 +71,8 @@ bool	check_west_wave(int x, int y, char **map)
 
 bool	wall_sonar(int x, int y, char **map)
 {
-	if (!ft_isspace(map[y][x]))
-	{
-		if (map[y][x] == '1')
-			return (true);
+	if (map[y][x] != ' ')
 		return (false);
-	}
 	if (!check_north_wave(x, y, map)
 		|| !check_south_wave(x, y, map)
 		|| !check_east_wave(x, y, map)

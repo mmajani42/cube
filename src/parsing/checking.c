@@ -6,7 +6,7 @@
 /*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 14:03:43 by vimercie          #+#    #+#             */
-/*   Updated: 2023/05/06 22:30:15 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/05/06 23:01:44 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,15 +49,15 @@ bool	is_wall(char *line)
 		return (false);
 	i = 0;
 	wall_on_line = false;
-	while ((line[i] == ' ' || line[i] == '1') && line[i])
+	while (line[i])
 	{
+		if (line[i] != ' ' && line[i] != '1')
+			return (false);
 		if (line[i] == '1')
 			wall_on_line = true;
 		i++;
 	}
-	if ((line[i] == '\n' || !line[i]))
-		return (wall_on_line);
-	return (false);
+	return (wall_on_line);
 }
 
 bool	is_valid_map_line(char *line)
@@ -97,8 +97,7 @@ bool	is_map_bordered(char **map)
 		x = 0;
 		while (map[y][x])
 		{
-			if ((ft_isspace(map[y][x]) || x == 0)
-				&& !wall_sonar(x, y, map))
+			if (map[y][x] == ' ' && !wall_sonar(x, y, map))
 				return (false);
 			x++;
 		}
