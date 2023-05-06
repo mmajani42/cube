@@ -6,7 +6,7 @@
 /*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 13:49:14 by vimercie          #+#    #+#             */
-/*   Updated: 2023/05/06 20:42:08 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/05/06 23:14:08 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,22 +22,6 @@ char	*dup_and_fill(char *src, char c, int size, bool ow_last_char)
 	ft_strlcpy(res, src, len + 1);
 	memset(res + len, c, size - len);
 	return (res);
-}
-
-char	*get_next_word(char *str)
-{
-	size_t	len;
-
-	if (!str)
-		return (NULL);
-	len = 0;
-	while (ft_isspace(str[0]) && str[0] != '\n' && str[0])
-		str++;
-	while (!ft_isspace(str[len]) && str[len])
-		len++;
-	if (len == 0)
-		return (NULL);
-	return (ft_strndup(str, len));
 }
 
 int	get_fd(char *filename)

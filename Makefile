@@ -13,11 +13,11 @@ SRC=		testing.c					\
 			init_structure.c			\
 			parsing.c					\
 			parsing_utils.c				\
+			parsing_utils2.c			\
 			map_elements.c				\
 			map_description.c			\
 			sonar.c						\
 			checking.c					\
-			checking2.c					\
 			error.c						\
 			cleaning.c					\
 			draw.c						\
