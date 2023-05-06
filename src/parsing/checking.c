@@ -6,7 +6,7 @@
 /*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 14:03:43 by vimercie          #+#    #+#             */
-/*   Updated: 2023/05/06 21:25:27 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/05/06 22:25:39 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,20 +69,13 @@ bool	is_valid_map_line(char *line)
 		return (false);
 	while (line[i] != '\n' && line[i])
 	{
-		if ((line[i] != '0'
-				&& line[i] != '1'
-				&& line[i] != ' '
-				&& line[i] != 'N'
-				&& line[i] != 'S'
-				&& line[i] != 'E'
-				&& line[i] != 'W')
-			|| ((line[i] == 'N'
-					|| line[i] == 'S'
-					|| line[i] == 'E'
-					|| line[i] == 'W')
-				&& ((line[i + 1] != '0'
-						&& line[i + 1] != '1')
-					|| !line[i + i])))
+		if (line[i] != '0'
+			&& line[i] != '1'
+			&& line[i] != ' '
+			&& line[i] != 'N'
+			&& line[i] != 'S'
+			&& line[i] != 'E'
+			&& line[i] != 'W')
 			return (false);
 		i++;
 	}
