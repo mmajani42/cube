@@ -6,7 +6,7 @@
 /*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 14:21:46 by mmajani           #+#    #+#             */
-/*   Updated: 2023/05/06 20:44:52 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/05/06 21:43:49 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,5 +67,6 @@ int	main(int ac, char **av)
 	mlx_loop_hook(cube.mlx, &display_handling, &cube);
 	mlx_loop(cube.mlx);
 	cube_tester(&cube);
+	free_cube(&cube);
 	return (0);
 }
