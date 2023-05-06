@@ -6,7 +6,7 @@
 /*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 16:08:01 by vimercie          #+#    #+#             */
-/*   Updated: 2023/05/06 20:02:37 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/05/06 20:51:49 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ int	get_map_dimensions(char **file, t_cube *cube)
 		}
 		cube->map_height++;
 	}
+	if (cube->map_height < 3)
+		return (0);
 	return (1);
 }
 
