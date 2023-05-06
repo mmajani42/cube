@@ -6,7 +6,7 @@
 /*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 14:03:43 by vimercie          #+#    #+#             */
-/*   Updated: 2023/05/06 20:01:59 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/05/06 21:25:27 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ bool	is_rgb(char **tab)
 	int	j;
 
 	i = 0;
+	if (!tab)
+		return (false);
 	while (tab[i])
 	{
 		j = 0;
