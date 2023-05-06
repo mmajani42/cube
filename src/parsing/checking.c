@@ -6,7 +6,7 @@
 /*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 14:03:43 by vimercie          #+#    #+#             */
-/*   Updated: 2023/05/06 22:25:39 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/05/06 22:30:15 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,8 +92,7 @@ bool	is_map_bordered(char **map)
 	while (map[y])
 	{
 		len = ft_strlen(map[y]);
-		if ((map[y][0] != '1' && map[y][0] != ' ')
-			|| (map[y][len - 1] != '1' && map[y][len - 1] != ' '))
+		if (!ft_strchr(" 1", map[y][0]) || !ft_strchr(" 1", map[y][len - 1]))
 			return (false);
 		x = 0;
 		while (map[y][x])
