@@ -6,7 +6,7 @@
 /*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 16:55:48 by vimercie          #+#    #+#             */
-/*   Updated: 2023/05/06 21:34:30 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/05/06 21:36:17 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ int	set_color(t_color *dest, char *line)
 	{
 		free(color_str);
 		free_tab(rgb);
-		free(rgb);
 		return (0);
 	}
 	dest->r = ft_atoi(rgb[0]);
@@ -33,7 +32,6 @@ int	set_color(t_color *dest, char *line)
 	dest->b = ft_atoi(rgb[2]);
 	free(color_str);
 	free_tab(rgb);
-	free(rgb);
 	return (1);
 }
 

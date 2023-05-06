@@ -6,7 +6,7 @@
 /*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 14:40:16 by vimercie          #+#    #+#             */
-/*   Updated: 2023/05/06 20:43:37 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/05/06 21:36:25 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	free_tab(char **tab)
 		free(tab[i]);
 		i++;
 	}
+	free(tab);
 }
 
 void	free_cube(t_cube *cube)
