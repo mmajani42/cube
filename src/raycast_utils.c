@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycast_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmajani <mmajani@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 20:04:30 by mmajani           #+#    #+#             */
-/*   Updated: 2023/05/02 20:04:48 by mmajani          ###   ########lyon.fr   */
+/*   Updated: 2023/05/05 18:28:41 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int	hit(t_cube *cube, int mx, int my)
 int	p_map_pos(t_cube *cube, char c)
 {
 	t_point	pos;
+
 	if (c == 'x')
 	{
 		pos.x = (int)((cube->p.pos.x + (cube->ts / 2)) / cube->ts);
@@ -35,7 +36,7 @@ int	p_map_pos(t_cube *cube, char c)
 	return (0);
 }
 
-int		is_in_map(t_cube *cube, int x, int y)
+int	is_in_map(t_cube *cube, int x, int y)
 {
 	if ((x >= 0 && x < cube->max_line_size) && y >= 0 && y < cube->map_height)
 		return (1);

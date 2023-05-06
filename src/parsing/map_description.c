@@ -6,7 +6,7 @@
 /*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 16:08:01 by vimercie          #+#    #+#             */
-/*   Updated: 2023/05/04 18:47:13 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/05/06 20:02:37 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,26 @@ int	get_map_dimensions(char **file, t_cube *cube)
 	return (1);
 }
 
+int	map_cpy(char **file, t_cube *cube)
+{
+	int	len;
+	int	i;
+
+	i = 0;
+	cube->map = ft_calloc(cube->map_height + 1, sizeof(char *));
+	while (file[i])
+	{
+		len = ft_strlen(file[i]);
+		cube->map[i] = dup_and_fill(file[i], ' ', cube->max_line_size,
+				file[i][len - 1] == '\n');
+		i++;
+	}
+	return (1);
+}
+
 int	init_map(t_cube *cube)
 {
 	int	i;
-	int	j;
 
 	i = 0;
 	while (!is_valid_map_line(cube->file[i]))
@@ -41,15 +57,8 @@ int	init_map(t_cube *cube)
 		return (print_error("No map description"));
 	if (!get_map_dimensions(cube->file + i, cube))
 		return (print_error("Bad map description"));
-	j = 0;
-	cube->map = ft_calloc(cube->map_height + 1, sizeof(char *));
-	while (cube->file[i])
-	{
-		cube->map[j] = dup_and_fill(cube->file[i], ' ', cube->max_line_size,
-				cube->file[i][ft_strlen(cube->file[i]) - 1] == '\n');
-		i++;
-		j++;
-	}
+	if (!map_cpy(cube->file + i, cube))
+		return (0);
 	return (1);
 }
 
@@ -59,5 +68,7 @@ int	parse_description(t_cube *cube)
 		return (0);
 	if (!is_map_bordered(cube->map))
 		return (print_error("Map is not surrounded by walls"));
+	if (!is_unique_player(cube->map))
+		return (print_error("One player required"));
 	return (1);
 }

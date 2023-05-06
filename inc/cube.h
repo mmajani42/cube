@@ -6,7 +6,7 @@
 /*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 15:29:07 by mmajani           #+#    #+#             */
-/*   Updated: 2023/05/04 20:10:14 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/05/06 20:00:59 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,6 +124,7 @@ int		parsing(char *filename, t_cube *cube);
 int		parse_elements(t_cube *cube);
 int		parse_description(t_cube *cube);
 
+int		get_fd(char *filename);
 char	**file_to_tab(char *filename);
 char	*get_next_word(char *str);
 char	*dup_and_fill(char *src, char c, int size, bool ow_last_char);
@@ -134,10 +135,9 @@ void	get_player_coordinates(t_player *p, char **map);
 t_point	get_player_pos(char **map);
 t_point	get_player_vec(char direction);
 
-bool	check_file_extension(char *filename, char *format);
-
-bool	is_map_bordered(char **map);
 bool	wall_sonar(int x, int y, char **map);
+
+bool	check_file_extension(char *filename, char *format);
 
 // init
 void	init_cube(t_cube *cube);
@@ -147,8 +147,10 @@ void	set_player(t_cube *cube);
 
 // checking
 bool	is_rgb(char **tab);
-bool	is_valid_map_line(char *line);
 bool	is_wall(char *line);
+bool	is_valid_map_line(char *line);
+bool	is_map_bordered(char **map);
+bool	is_unique_player(char **map);
 
 // errors
 int		print_error(char *error);

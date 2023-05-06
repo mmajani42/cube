@@ -6,7 +6,7 @@
 /*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 13:49:14 by vimercie          #+#    #+#             */
-/*   Updated: 2023/05/05 06:10:46 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/05/06 20:42:08 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,7 @@ char	*dup_and_fill(char *src, char c, int size, bool ow_last_char)
 	size_t	len;
 
 	res = ft_calloc(size + 1, sizeof(char));
-	if (ow_last_char == true)
-		len = ft_strlen(src) - 1;
-	else
-		len = ft_strlen(src);
+	len = ft_strlen(src) - ow_last_char;
 	ft_strlcpy(res, src, len + 1);
 	memset(res + len, c, size - len);
 	return (res);
@@ -41,27 +38,6 @@ char	*get_next_word(char *str)
 	if (len == 0)
 		return (NULL);
 	return (ft_strndup(str, len));
-}
-
-int	count_file_lines(char *filename)
-{
-	char	*buffer;
-	int		res;
-	int		fd;
-
-	fd = get_fd(filename);
-	if (fd == -1)
-		return (0);
-	res = 0;
-	buffer = get_next_line(fd);
-	while (buffer)
-	{
-		res++;
-		free(buffer);
-		buffer = get_next_line(fd);
-	}
-	close(fd);
-	return (res);
 }
 
 int	get_fd(char *filename)
@@ -88,27 +64,47 @@ int	get_fd(char *filename)
 	return (fd);
 }
 
+int	count_file_lines(char *filename)
+{
+	char	*buffer;
+	int		fd;
+	int		res;
+
+	res = 0;
+	fd = get_fd(filename);
+	buffer = get_next_line(fd);
+	while (buffer)
+	{
+		res++;
+		free(buffer);
+		buffer = get_next_line(fd);
+	}
+	if (fd > 0)
+		close(fd);
+	return (res);
+}
+
 char	**file_to_tab(char *filename)
 {
 	char	**res;
 	char	*buffer;
 	int		fd;
+	int		file_height;
 	int		i;
 
 	i = 0;
+	file_height = count_file_lines(filename);
+	if (file_height == 0)
+		return (NULL);
 	fd = get_fd(filename);
-	if (fd == -1)
-		return (NULL);
-	res = ft_calloc(count_file_lines(filename) + 1, sizeof(char *));
-	if (!res)
-		return (NULL);
 	buffer = get_next_line(fd);
+	res = ft_calloc(file_height + 1, sizeof(char *));
 	while (buffer)
 	{
 		res[i] = ft_strdup(buffer);
-		i++;
 		free(buffer);
 		buffer = get_next_line(fd);
+		i++;
 	}
 	close(fd);
 	return (res);

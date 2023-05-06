@@ -17,6 +17,7 @@ SRC=		testing.c					\
 			map_description.c			\
 			sonar.c						\
 			checking.c					\
+			checking2.c					\
 			error.c						\
 			cleaning.c					\
 			draw.c						\
