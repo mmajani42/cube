@@ -6,19 +6,25 @@
 /*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 13:49:14 by vimercie          #+#    #+#             */
-/*   Updated: 2023/05/06 23:14:08 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/05/08 05:51:40 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cube.h"
 
-char	*dup_and_fill(char *src, char c, int size, bool ow_last_char)
+char	*dup_and_fill(char *src, char c, size_t size, bool ow_last_char)
 {
 	char	*res;
 	size_t	len;
 
-	res = ft_calloc(size + 1, sizeof(char));
+	if (!src || !size)
+		return (NULL);
 	len = ft_strlen(src) - ow_last_char;
+	if (len <= 0)
+		return (NULL);
+	if (len <= size)
+		return (ft_strndup(src, len));
+	res = ft_calloc(size + 1, sizeof(char));
 	ft_strlcpy(res, src, len + 1);
 	memset(res + len, c, size - len);
 	return (res);

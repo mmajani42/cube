@@ -6,7 +6,7 @@
 /*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 16:08:01 by vimercie          #+#    #+#             */
-/*   Updated: 2023/05/06 20:51:49 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/05/08 05:42:04 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ int	map_cpy(char **file, t_cube *cube)
 
 	i = 0;
 	cube->map = ft_calloc(cube->map_height + 1, sizeof(char *));
+	if (!cube->map)
+		return (print_error("Malloc failed"));
 	while (file[i])
 	{
 		len = ft_strlen(file[i]);

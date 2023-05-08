@@ -6,7 +6,7 @@
 /*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 15:29:07 by mmajani           #+#    #+#             */
-/*   Updated: 2023/05/06 20:00:59 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/05/08 05:51:57 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,7 +127,7 @@ int		parse_description(t_cube *cube);
 int		get_fd(char *filename);
 char	**file_to_tab(char *filename);
 char	*get_next_word(char *str);
-char	*dup_and_fill(char *src, char c, int size, bool ow_last_char);
+char	*dup_and_fill(char *src, char c, size_t size, bool ow_last_char);
 
 int		get_map_dimensions(char **file, t_cube *cube);
 
