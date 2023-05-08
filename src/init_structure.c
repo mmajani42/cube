@@ -6,7 +6,7 @@
 /*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 19:13:43 by mmajani           #+#    #+#             */
-/*   Updated: 2023/05/04 18:26:37 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/05/08 06:21:44 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	set_tile_size(t_cube *cube)
 	double	ratio_x;
 
 	lines = cube->map_height;
-	longest = cube->max_line_size - 1;
+	longest = cube->max_line_size;
 	ratio_x = WIN_X / longest;
 	ratio_y = WIN_Y / lines;
 	if (ratio_x > ratio_y)

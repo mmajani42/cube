@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmajani <mmajani@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 16:18:16 by mmajani           #+#    #+#             */
-/*   Updated: 2023/05/04 09:29:06 by mmajani          ###   ########lyon.fr   */
+/*   Updated: 2023/05/08 06:19:02 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 void	set_player(t_cube *cube)
 {
-	t_point	p_pos;
+	t_player	p;
 
-	p_pos = get_player_pos(cube->map);
-	cube->p.pos.x = ((p_pos.x - 1) * cube->ts) + cube->ts;
-	cube->p.pos.y = ((p_pos.y - 1) * cube->ts) + cube->ts;
-	cube->p.vec.x = 1;
-	cube->p.vec.y = 0;
+	get_player_coordinates(&p, cube->map);
+	cube->p.pos.x = ((p.pos.x - 1) * cube->ts) + cube->ts;
+	cube->p.pos.y = ((p.pos.y - 1) * cube->ts) + cube->ts;
+	cube->p.vec.x = p.vec.x;
+	cube->p.vec.y = p.vec.y;
 }
 
 void	draw_orientation(t_cube *cube)

@@ -6,7 +6,7 @@
 /*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 14:21:46 by mmajani           #+#    #+#             */
-/*   Updated: 2023/05/06 21:43:49 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/05/08 06:20:47 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,9 +60,9 @@ int	main(int ac, char **av)
 		return (print_error("This program takes only 1 argument"));
 	if (!parsing(av[1], &cube))
 		return (0);
-	init_mlx(&cube);
 	set_tile_size(&cube);
 	set_player(&cube);
+	init_mlx(&cube);
 	mlx_hook(cube.mlx_win, 2, 1L << 0, &key_events, &cube);
 	mlx_loop_hook(cube.mlx, &display_handling, &cube);
 	mlx_loop(cube.mlx);
