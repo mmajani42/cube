@@ -6,13 +6,13 @@
 /*   By: mmajani <mmajani@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 09:46:36 by mmajani           #+#    #+#             */
-/*   Updated: 2023/05/04 14:05:08 by mmajani          ###   ########lyon.fr   */
+/*   Updated: 2023/05/10 07:48:10 by mmajani          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cube.h"
 
-#define DR	0.0174533
+#define DR	0.0174533 * 2
 
 void	horizontal_raycast(t_cube *cube)
 {
@@ -32,9 +32,9 @@ void	horizontal_raycast(t_cube *cube)
 	while (i < FOV)
 	{
 		offset = 0;
-		a_tan = -1 / tan(r.a);
 		if (sin(r.a) < 0) // Looking UP
 		{
+			a_tan = -1 / tan(r.a);
 			r.y = p_map_pos(cube, 'y') * cube->ts - (cube->ts / 2);
 			r.x = (p.pos.y - r.y) * a_tan + p.pos.x;
 			r.yo = -cube->ts;
@@ -42,6 +42,7 @@ void	horizontal_raycast(t_cube *cube)
 		}
 		else if (sin(r.a)) // Looking DOWN
 		{
+			a_tan = -1 / tan(r.a);
 			r.y = (p_map_pos(cube, 'y') * cube->ts) + (cube->ts / 2);
 			r.x = (p.pos.y - r.y) * a_tan + p.pos.x;
 			r.yo = cube->ts;
@@ -53,7 +54,7 @@ void	horizontal_raycast(t_cube *cube)
 			r.y = p.pos.y;
 			offset = cube->map_height;
 		}
-		while (offset < cube->map_height)
+		while (offset < cube->map_height - 1)
 		{
 			r.mx = (int)(r.x + cube->ts / 2) / cube->ts;
 			r.my = (int)(r.y) / cube->ts;
@@ -62,7 +63,7 @@ void	horizontal_raycast(t_cube *cube)
 			{
 				offset = cube->map_height;
 			}
-			else if (r.a < PI && is_in_map(cube, r.mx, r.my) == 1
+			else if (r.a < PI && is_in_map(cube, r.mx, r.my + 1) == 1
 				&& cube->map[r.my + 1][r.mx] == '1')
 			{
 				offset = cube->map_height;
@@ -81,7 +82,7 @@ void	horizontal_raycast(t_cube *cube)
 		if (r.a < 0)
 			r.a += 2 * PI;
 		if (r.a >= 2 * PI)
-		r.a -= 2 * PI;
+			r.a -= 2 * PI;
 		i++;
 	}
 }
@@ -96,6 +97,7 @@ void	vertical_raycast(t_cube *cube)
 
 	i = 0;
 	p = cube->p;
+	a_tan = 0;
 	r.a = p.angle - ((FOV / 2) * (DR));
 	if (r.a < 0)
 		r.a += 2 * PI;
@@ -132,7 +134,7 @@ void	vertical_raycast(t_cube *cube)
 			if (cos(r.a) >= 0 && is_in_map(cube, r.mx, r.my) == 1
 				&& cube->map[r.my][r.mx] == '1')
 				offset = cube->max_line_size;
-			else if (cos(r.a) < 0 && is_in_map(cube, r.mx, r.my) == 1
+			else if (cos(r.a) < 0 && is_in_map(cube, r.mx - 1, r.my) == 1
 				&& cube->map[r.my][r.mx - 1] == '1')
 				offset = cube->max_line_size;
 			else
@@ -163,7 +165,6 @@ void	draw_closest_ray(t_cube *cube)
 	vertical_raycast(cube);
 	while (i < FOV)
 	{
-		dprintf(1, "P ANGLE = %.2f\n", cube->p.angle);
 		if (cube->v_ray[i].size <= cube->h_ray[i].size)
 			draw_segment(cube, cube->p.pos,
 				(t_point){cube->v_ray[i].x, cube->v_ray[i].y}, 65280); // Draw V RAY GREEN
