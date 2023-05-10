@@ -6,7 +6,7 @@
 /*   By: mmajani <mmajani@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 08:51:54 by mmajani           #+#    #+#             */
-/*   Updated: 2023/05/10 14:21:48 by mmajani          ###   ########lyon.fr   */
+/*   Updated: 2023/05/10 21:28:21 by mmajani          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 void	horizontal_ray_maths(t_cube *cube, t_cast *r, t_player *p)
 {
 	r->dof = 0;
-	r->a_tan = -1 / tan(r->a);
 	if (r->a == 0 || r->a == 2 * PI)
 	{
 		r->x = p->pos.x;
@@ -24,6 +23,7 @@ void	horizontal_ray_maths(t_cube *cube, t_cast *r, t_player *p)
 	}
 	else if (sin(r->a) < 0) // Looking UP
 	{
+		r->a_tan = -1 / tan(r->a);
 		r->y = p_map_pos(cube, 'y') * cube->ts - (cube->ts / 2);
 		r->x = (p->pos.y - r->y) * r->a_tan + p->pos.x;
 		r->yo = -cube->ts;
@@ -31,6 +31,7 @@ void	horizontal_ray_maths(t_cube *cube, t_cast *r, t_player *p)
 	}
 	else //(sin(r->a)) // Looking DOWN
 	{
+		r->a_tan = -1 / tan(r->a);
 		r->y = (p_map_pos(cube, 'y') * cube->ts) + (cube->ts / 2);
 		r->x = (p->pos.y - r->y) * r->a_tan + p->pos.x;
 		r->yo = cube->ts;
@@ -41,7 +42,6 @@ void	horizontal_ray_maths(t_cube *cube, t_cast *r, t_player *p)
 void	vertical_ray_maths(t_cube *cube, t_cast *r, t_player *p)
 {
 	r->dof = 0;
-	r->a_tan = -tan(r->a);
 	if (r->a == 0 || r->a == PI)
 	{
 		r->y = p->pos.y;
@@ -50,6 +50,7 @@ void	vertical_ray_maths(t_cube *cube, t_cast *r, t_player *p)
 	}
 	else if (r->a < PI / 2 || r->a > 3 * PI / 2) // looking right
 	{
+		r->a_tan = -tan(r->a);
 		r->x = p_map_pos(cube, 'x') * cube->ts + (cube->ts / 2);
 		r->y = (p->pos.x - r->x) * r->a_tan + p->pos.y;
 		r->xo = -cube->ts;
@@ -57,6 +58,7 @@ void	vertical_ray_maths(t_cube *cube, t_cast *r, t_player *p)
 	}
 	else //(r->a > PI / 2 && r->a < 3 * PI / 2) // looking left
 	{
+		r->a_tan = -tan(r->a);
 		r->x = (p_map_pos(cube, 'x') * cube->ts) - (cube->ts / 2);
 		r->y = (p->pos.x - r->x) * r->a_tan + p->pos.y;
 		r->xo = cube->ts;
