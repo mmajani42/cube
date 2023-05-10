@@ -6,7 +6,7 @@
 /*   By: mmajani <mmajani@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 15:29:07 by mmajani           #+#    #+#             */
-/*   Updated: 2023/05/10 09:48:22 by mmajani          ###   ########lyon.fr   */
+/*   Updated: 2023/05/10 18:36:49 by mmajani          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 # include <math.h>
 # include <stdbool.h>
 
-# define WIN_X		1920
-# define WIN_Y		1080
+# define WIN_X		2000
+# define WIN_Y		2000
 # define Z			122
 # define Q			113
 # define W 			119
@@ -45,8 +45,10 @@
 # define UP			65362
 // Raycast
 # define PI			3.1415926535
-# define FOV		70
-# define DR			0.0174533
+# define FOV	    800
+# define DR			0.0174533 / 10
+# define HR			1000
+# define WH			100
 
 typedef struct s_point
 {
@@ -115,6 +117,7 @@ typedef struct s_cube
 	char		*ea;
 	t_cast		v_ray[FOV];
 	t_cast		h_ray[FOV];
+	t_cast		ray[FOV];
 	t_color		floor;
 	t_color		ceiling;
 	t_player	p;
@@ -164,11 +167,13 @@ void	free_cube(t_cube *cube);
 
 //	drawing
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
+void	my_offset_pixel_put(t_cube *cube, int x, int y, int color);
 void	draw_segment(t_cube *cube, t_point a, t_point b, int color);
 void	draw_square(t_cube *cube, double x, double y);
 void	draw_map(t_cube *cube);
 void	draw_player(t_cube *cube);
 void	draw_dot(t_cube *cube, double x, double y);
+void	draw_perspective(t_cube *cube);
 
 //	raycast
 void	horizontal_ray_maths(t_cube *cube, t_cast *r, t_player *p);
@@ -188,9 +193,9 @@ double	reset_angle(double angle);
 void	draw_closest_ray(t_cube *cube);
 
 //	display
+int		display_handling(t_cube *cube);
 void	clear_image(t_cube *cube);
 void	display_axis(t_cube *cube);
-void	display_handling(t_cube *cube);
 void	print_tab(char **tab);
 
 //	events
