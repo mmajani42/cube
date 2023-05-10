@@ -6,7 +6,7 @@
 /*   By: mmajani <mmajani@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 15:20:58 by mmajani           #+#    #+#             */
-/*   Updated: 2023/05/10 18:37:15 by mmajani          ###   ########lyon.fr   */
+/*   Updated: 2023/05/11 00:39:16 by mmajani          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,27 +34,12 @@ void	clear_image(t_cube *cube)
 int	display_handling(t_cube *cube)
 {
 	clear_image(cube);
-	draw_map(cube);
-	draw_player(cube);
 	draw_closest_ray(cube);
 	draw_perspective(cube);
+	draw_map(cube);
+	draw_player(cube);
 	mlx_put_image_to_window(cube->mlx, cube->mlx_win, cube->img.img, 0, 0);
 	return (1);
-}
-
-void	display_axis(t_cube *cube)
-{
-	t_point	x;
-	t_point	y;
-
-	x.x = 0;
-	x.y = WIN_Y / 2;
-	y.x = WIN_X / 2;
-	y.y = 0;
-	while (x.x++ < WIN_X)
-		my_mlx_pixel_put(&cube->img, x.x, x.y, 1000);
-	while (y.y++ < WIN_Y)
-		my_mlx_pixel_put(&cube->img, y.x, y.y, 1000);
 }
 
 void	draw_perspective(t_cube *cube)
@@ -63,7 +48,7 @@ void	draw_perspective(t_cube *cube)
 	double	h;
 
 	i = 0;
-	while (i < FOV)
+	while (i < WIN_X)
 	{
 		h = (100 * (WH / (cube->ray[i].size)));
 		draw_segment(cube, (t_point){i, HR - (h / 2)},

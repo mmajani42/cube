@@ -6,7 +6,7 @@
 /*   By: mmajani <mmajani@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 16:35:20 by mmajani           #+#    #+#             */
-/*   Updated: 2023/05/02 20:31:10 by mmajani          ###   ########lyon.fr   */
+/*   Updated: 2023/05/11 00:36:38 by mmajani          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,13 +50,13 @@ void	draw_segment(t_cube *cube, t_point a, t_point b, int color)
 void	draw_square(t_cube *cube, double x, double y)
 {
 	draw_segment(cube, (t_point){x - (cube->ts / 2), y - (cube->ts / 2)},
-		(t_point){x + (cube->ts / 2), y - (cube->ts / 2)}, 1000);
+		(t_point){x + (cube->ts / 2), y - (cube->ts / 2)}, 16777215);
 	draw_segment(cube, (t_point){x - (cube->ts / 2), y + (cube->ts / 2)},
-		(t_point){x + (cube->ts / 2), y + (cube->ts / 2)}, 1000);
+		(t_point){x + (cube->ts / 2), y + (cube->ts / 2)}, 16777215);
 	draw_segment(cube, (t_point){x - (cube->ts / 2), y - (cube->ts / 2)},
-		(t_point){x - (cube->ts / 2), y + (cube->ts / 2)}, 1000);
+		(t_point){x - (cube->ts / 2), y + (cube->ts / 2)}, 16777215);
 	draw_segment(cube, (t_point){x + (cube->ts / 2), y - (cube->ts / 2)},
-		(t_point){x + (cube->ts / 2), y + (cube->ts / 2)}, 1000);
+		(t_point){x + (cube->ts / 2), y + (cube->ts / 2)}, 16777215);
 }
 
 void	draw_dot(t_cube *cube, double x, double y)
@@ -84,7 +84,7 @@ void	draw_map(t_cube *cube)
 		{
 			if (cube->map[y][x] == '1')
 			{
-				draw_square(cube, x * cube->ts, y * cube->ts);
+				draw_square(cube, (x * cube->ts) / 64, (y * cube->ts) / 64);
 			}
 			x++;
 		}

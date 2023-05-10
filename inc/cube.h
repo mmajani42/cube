@@ -6,7 +6,7 @@
 /*   By: mmajani <mmajani@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 15:29:07 by mmajani           #+#    #+#             */
-/*   Updated: 2023/05/10 18:36:49 by mmajani          ###   ########lyon.fr   */
+/*   Updated: 2023/05/11 00:41:56 by mmajani          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 # include <math.h>
 # include <stdbool.h>
 
-# define WIN_X		2000
-# define WIN_Y		2000
+# define WIN_X		1920
+# define WIN_Y		1080
 # define Z			122
 # define Q			113
 # define W 			119
@@ -37,18 +37,14 @@
 # define ESC		65307
 # define TAB		48
 # define SPACE		49
-# define PLUS		65451
-# define MINUS		65454
-# define LEFT		65361
-# define RIGHT		65363
-# define DOWN		65364
-# define UP			65362
 // Raycast
 # define PI			3.1415926535
-# define FOV	    800
-# define DR			0.0174533 / 10
-# define HR			1000
-# define WH			100
+# define FOV	    90
+# define R_ONE_DEG	0.0174533
+# define R_ANGLE	0.000636
+# define HR			500
+# define WH			1080
+# define RES		1920
 
 typedef struct s_point
 {
@@ -115,9 +111,10 @@ typedef struct s_cube
 	char		*so;
 	char		*we;
 	char		*ea;
-	t_cast		v_ray[FOV];
-	t_cast		h_ray[FOV];
-	t_cast		ray[FOV];
+	double		fov_radian;
+	t_cast		v_ray[RES];
+	t_cast		h_ray[RES];
+	t_cast		ray[RES];
 	t_color		floor;
 	t_color		ceiling;
 	t_player	p;
@@ -195,7 +192,6 @@ void	draw_closest_ray(t_cube *cube);
 //	display
 int		display_handling(t_cube *cube);
 void	clear_image(t_cube *cube);
-void	display_axis(t_cube *cube);
 void	print_tab(char **tab);
 
 //	events
