@@ -3,20 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   raycast_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: mmajani <mmajani@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 20:04:30 by mmajani           #+#    #+#             */
-/*   Updated: 2023/05/05 18:28:41 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/05/10 09:56:33 by mmajani          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cube.h"
 
-int	hit(t_cube *cube, int mx, int my)
+double	reset_angle(double angle)
 {
-	if (cube->map[my][mx] == '1')
-		return (1);
-	return (0);
+	if (angle < 0)
+		angle += 2 * PI;
+	if (angle >= 2 * PI)
+		angle -= 2 * PI;
+	return (angle);
 }
 
 int	p_map_pos(t_cube *cube, char c)

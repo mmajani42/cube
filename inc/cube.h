@@ -6,7 +6,7 @@
 /*   By: mmajani <mmajani@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 15:29:07 by mmajani           #+#    #+#             */
-/*   Updated: 2023/05/10 08:38:53 by mmajani          ###   ########lyon.fr   */
+/*   Updated: 2023/05/10 09:48:22 by mmajani          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@
 
 # define WIN_X		1920
 # define WIN_Y		1080
-# define PI			3.1415926535
 # define Z			122
 # define Q			113
 # define W 			119
@@ -44,7 +43,10 @@
 # define RIGHT		65363
 # define DOWN		65364
 # define UP			65362
+// Raycast
+# define PI			3.1415926535
 # define FOV		70
+# define DR			0.0174533
 
 typedef struct s_point
 {
@@ -89,6 +91,7 @@ typedef struct s_cast
 	int		my;
 	int		mp;
 	int		dof;
+	double	a_tan;
 }			t_cast;
 
 typedef struct s_cube
@@ -168,14 +171,21 @@ void	draw_player(t_cube *cube);
 void	draw_dot(t_cube *cube, double x, double y);
 
 //	raycast
+void	horizontal_ray_maths(t_cube *cube, t_cast *r, t_player *p);
+void	horizontal_step(t_cube *cube, t_cast *r);
 void	horizontal_raycast(t_cube *cube);
+
+void	vertical_ray_maths(t_cube *cube, t_cast *r, t_player *p);
+void	vertical_step(t_cube *cube, t_cast *r);
 void	vertical_raycast(t_cube *cube);
-void	draw_closest_ray(t_cube *cube);
 
 // ray_utils
+void	hit_detection(t_cube *cube, t_cast *r);
 int		hit(t_cube *cube, int mx, int my);
 int		p_map_pos(t_cube *cube, char c);
 int		is_in_map(t_cube *cube, int x, int y);
+double	reset_angle(double angle);
+void	draw_closest_ray(t_cube *cube);
 
 //	display
 void	clear_image(t_cube *cube);

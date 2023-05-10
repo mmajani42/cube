@@ -25,7 +25,8 @@ SRC=		testing.c					\
 			player.c					\
 			move.c						\
 			raycast.c					\
-			raycast_utils.c
+			raycast_utils.c				\
+			ray_cast_maths.c
 
 OBJ=		${addprefix ${OBJDIR}/,		\
 			${SRC:.c=.o}}

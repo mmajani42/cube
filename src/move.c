@@ -6,7 +6,7 @@
 /*   By: mmajani <mmajani@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 18:24:31 by mmajani           #+#    #+#             */
-/*   Updated: 2023/05/04 14:01:03 by mmajani          ###   ########lyon.fr   */
+/*   Updated: 2023/05/10 09:47:00 by mmajani          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,6 @@ t_point	rotate_player(t_cube *cube, int key)
 
 void	change_player_vector(t_cube *cube, int key)
 {
-	double	vx;
-	double	vy;
-
-
 	if (key == W || key == Z)
 	{
 		cube->p.pos.x += (cos(cube->p.angle)) * SPEED;
