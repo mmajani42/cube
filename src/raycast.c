@@ -6,7 +6,7 @@
 /*   By: mmajani <mmajani@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 09:46:36 by mmajani           #+#    #+#             */
-/*   Updated: 2023/05/11 00:44:45 by mmajani          ###   ########lyon.fr   */
+/*   Updated: 2023/05/11 07:41:47 by mmajani          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ void	horizontal_raycast(t_cube *cube)
 		horizontal_step(cube, &r);
 		r.size = sqrt(((r.x - p.pos.x) * (r.x - p.pos.x))
 				+ (r.y - p.pos.y) * (r.y - p.pos.y));
-		if (cos(r.a) != 0)
-			r.size *= cos(r.a);
+		// if (cos(r.a) != 0)
+		// 	r.size *= cos(r.a);
 		cube->h_ray[i] = r;
 		r.a += cube->fov_radian / RES;
 		r.a = reset_angle(r.a);
@@ -53,8 +53,8 @@ void	vertical_raycast(t_cube *cube)
 		vertical_step(cube, &r);
 		r.size = sqrt(((r.x - p.pos.x) * (r.x - p.pos.x))
 				+ (r.y - p.pos.y) * (r.y - p.pos.y));
-		if (cos(r.a) != 0)
-			r.size *= cos(r.a);
+		// if (cos(r.a) != 0)
+		// 	r.size *= cos(r.a);
 		cube->v_ray[i] = r;
 		r.a += cube->fov_radian / RES;
 		r.a = reset_angle(r.a);
@@ -75,8 +75,9 @@ void	draw_closest_ray(t_cube *cube)
 			cube->ray[i] = cube->v_ray[i];
 		else
 			cube->ray[i] = cube->h_ray[i];
-		draw_segment(cube, cube->p.pos,
-			(t_point){cube->ray[i].x, cube->ray[i].y}, 65280);
+		//cube->ray[i].size *= cos(cube->ray[i].a);
+		// draw_segment(cube, cube->p.pos,
+			// (t_point){cube->ray[i].x, cube->ray[i].y}, 65280);
 		i++;
 	}
 }

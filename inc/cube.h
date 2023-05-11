@@ -6,7 +6,7 @@
 /*   By: mmajani <mmajani@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 15:29:07 by mmajani           #+#    #+#             */
-/*   Updated: 2023/05/11 00:41:56 by mmajani          ###   ########lyon.fr   */
+/*   Updated: 2023/05/11 07:44:14 by mmajani          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,16 @@
 # define ESC		65307
 # define TAB		48
 # define SPACE		49
+// Colors
+# define WHITE		0xFFFFFF
+# define GREY		0x808080
+
 // Raycast
 # define PI			3.1415926535
-# define FOV	    90
+# define FOV	    70
 # define R_ONE_DEG	0.0174533
 # define R_ANGLE	0.000636
-# define HR			500
+# define HR			1080 / 2
 # define WH			1080
 # define RES		1920
 

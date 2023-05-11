@@ -6,7 +6,7 @@
 /*   By: mmajani <mmajani@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 16:35:20 by mmajani           #+#    #+#             */
-/*   Updated: 2023/05/11 00:36:38 by mmajani          ###   ########lyon.fr   */
+/*   Updated: 2023/05/11 07:43:13 by mmajani          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ void	draw_map(t_cube *cube)
 		{
 			if (cube->map[y][x] == '1')
 			{
-				draw_square(cube, (x * cube->ts) / 64, (y * cube->ts) / 64);
+				draw_square(cube, (x * cube->ts), (y * cube->ts));
 			}
 			x++;
 		}
