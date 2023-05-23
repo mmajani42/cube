@@ -6,7 +6,7 @@
 /*   By: mmajani <mmajani@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 19:13:43 by mmajani           #+#    #+#             */
-/*   Updated: 2023/05/11 00:39:51 by mmajani          ###   ########lyon.fr   */
+/*   Updated: 2023/05/23 11:34:17 by mmajani          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,5 +50,6 @@ void	set_tile_size(t_cube *cube)
 	if (ratio_x <= ratio_y)
 		cube->ts = ratio_y;
 	// cube->off_x = (WIN_X - (longest * cube->ts)) / 2;
-	// cube->off_y = (WIN_Y - (lines * cube->ts)) / 2;
+	// cube->off_y = (WIN_Y - (lines * cube->ts)) / 2 + cube->ts / 2;
+	cube->ts = 50;
 }

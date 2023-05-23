@@ -6,7 +6,7 @@
 /*   By: mmajani <mmajani@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 09:46:36 by mmajani           #+#    #+#             */
-/*   Updated: 2023/05/11 07:41:47 by mmajani          ###   ########lyon.fr   */
+/*   Updated: 2023/05/23 09:07:14 by mmajani          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,12 +72,16 @@ void	draw_closest_ray(t_cube *cube)
 	while (i < RES)
 	{
 		if (cube->v_ray[i].size <= cube->h_ray[i].size)
+		{
 			cube->ray[i] = cube->v_ray[i];
+			cube->ray[i].type = 'v';
+		}
 		else
+		{
 			cube->ray[i] = cube->h_ray[i];
-		//cube->ray[i].size *= cos(cube->ray[i].a);
-		// draw_segment(cube, cube->p.pos,
-			// (t_point){cube->ray[i].x, cube->ray[i].y}, 65280);
+			cube->ray[i].type = 'h';
+		}
+		cube->ray[i].size *= cos(cube->ray[i].a - cube->p.angle);
 		i++;
 	}
 }

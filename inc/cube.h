@@ -6,7 +6,7 @@
 /*   By: mmajani <mmajani@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 15:29:07 by mmajani           #+#    #+#             */
-/*   Updated: 2023/05/11 07:44:14 by mmajani          ###   ########lyon.fr   */
+/*   Updated: 2023/05/23 11:34:36 by mmajani          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@
 
 // Raycast
 # define PI			3.1415926535
-# define FOV	    70
+# define FOV	    60
 # define R_ONE_DEG	0.0174533
 # define R_ANGLE	0.000636
 # define HR			1080 / 2
@@ -93,6 +93,7 @@ typedef struct s_cast
 	int		my;
 	int		mp;
 	int		dof;
+	char	type;
 	double	a_tan;
 }			t_cast;
 

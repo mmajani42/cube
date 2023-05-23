@@ -6,7 +6,7 @@
 /*   By: mmajani <mmajani@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 16:35:20 by mmajani           #+#    #+#             */
-/*   Updated: 2023/05/11 07:43:13 by mmajani          ###   ########lyon.fr   */
+/*   Updated: 2023/05/23 07:33:27 by mmajani          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	draw_segment(t_cube *cube, t_point a, t_point b, int color)
 	{
 		check.x = t * ab.x + a.x;
 		check.y = t * ab.y + a.y;
-		my_offset_pixel_put(cube, check.x, check.y, color);
+		my_offset_pixel_put(cube, round(check.x), round(check.y), color);
 		t += offset;
 	}
 }
