@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmajani <mmajani@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 15:29:07 by mmajani           #+#    #+#             */
-/*   Updated: 2023/05/23 11:34:36 by mmajani          ###   ########lyon.fr   */
+/*   Updated: 2023/05/23 18:07:41 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -196,6 +196,8 @@ void	draw_closest_ray(t_cube *cube);
 
 //	display
 int		display_handling(t_cube *cube);
+int		texture_display(int x, int height, t_cube *cube);
+void	draw_texture_column(int x, int height, t_data *texture, t_cube *cube);
 void	clear_image(t_cube *cube);
 void	print_tab(char **tab);
 

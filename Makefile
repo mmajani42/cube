@@ -26,7 +26,8 @@ SRC=		testing.c					\
 			move.c						\
 			raycast.c					\
 			raycast_utils.c				\
-			ray_cast_maths.c
+			ray_cast_maths.c			\
+			texture_display.c
 
 OBJ=		${addprefix ${OBJDIR}/,		\
 			${SRC:.c=.o}}
