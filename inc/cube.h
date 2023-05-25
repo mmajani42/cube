@@ -6,7 +6,7 @@
 /*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 15:29:07 by mmajani           #+#    #+#             */
-/*   Updated: 2023/05/25 16:42:21 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/05/25 22:31:49 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -206,7 +206,7 @@ void	draw_closest_ray(t_cube *cube);
 //	display
 int		display_handling(t_cube *cube);
 int		texture_display(int x, int height, t_cube *cube);
-void	draw_texture_column(int x, int height, t_data texture, t_cube *cube);
+void	draw_texture(int x, int height, t_data texture, t_cube *cube);
 void	clear_image(t_cube *cube);
 void	print_tab(char **tab);
 

@@ -6,7 +6,7 @@
 /*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 19:13:43 by mmajani           #+#    #+#             */
-/*   Updated: 2023/05/25 16:46:17 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/05/25 23:10:39 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,5 +63,5 @@ void	set_tile_size(t_cube *cube)
 		cube->ts = ratio_y;
 	// cube->off_x = (WIN_X - (longest * cube->ts)) / 2;
 	// cube->off_y = (WIN_Y - (lines * cube->ts)) / 2 + cube->ts / 2;
-	cube->ts = 50;
+	cube->ts = 64;
 }
