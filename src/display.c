@@ -6,7 +6,7 @@
 /*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 15:20:58 by mmajani           #+#    #+#             */
-/*   Updated: 2023/05/23 18:08:45 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/05/24 19:40:14 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,6 @@ int	display_handling(t_cube *cube)
 	draw_map(cube);
 	draw_player(cube);
 	draw_perspective(cube);
-	// texture_display(cube);
 	mlx_put_image_to_window(cube->mlx, cube->mlx_win, cube->img.img, 0, 0);
 	return (1);
 }

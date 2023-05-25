@@ -6,7 +6,7 @@
 /*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 14:21:46 by mmajani           #+#    #+#             */
-/*   Updated: 2023/05/23 14:33:24 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/05/25 16:45:37 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,10 @@ int	main(int ac, char **av)
 	set_tile_size(&cube);
 	set_player(&cube);
 	init_mlx(&cube);
+	init_asset(cube.no, cube.mlx);
+	init_asset(cube.so, cube.mlx);
+	init_asset(cube.we, cube.mlx);
+	init_asset(cube.ea, cube.mlx);
 	mlx_hook(cube.mlx_win, 2, 1L << 0, &key_events, &cube);
 	mlx_loop_hook(cube.mlx, display_handling, &cube);
 	mlx_loop(cube.mlx);

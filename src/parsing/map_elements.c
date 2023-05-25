@@ -6,7 +6,7 @@
 /*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 16:55:48 by vimercie          #+#    #+#             */
-/*   Updated: 2023/05/06 21:36:17 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/05/24 21:04:40 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,14 +64,14 @@ int	parse_elements(t_cube *cube)
 	while (set_textures < 6 && !is_valid_map_line(cube->file[i])
 		&& cube->file[i])
 	{
-		if (ft_strncmp(cube->file[i], "NO", 2) == 0 && !cube->no)
-			set_textures += set_texture_path(&cube->no, cube->file[i] + 2);
-		if (ft_strncmp(cube->file[i], "SO", 2) == 0 && !cube->so)
-			set_textures += set_texture_path(&cube->so, cube->file[i] + 2);
-		if (ft_strncmp(cube->file[i], "EA", 2) == 0 && !cube->ea)
-			set_textures += set_texture_path(&cube->ea, cube->file[i] + 2);
-		if (ft_strncmp(cube->file[i], "WE", 2) == 0 && !cube->we)
-			set_textures += set_texture_path(&cube->we, cube->file[i] + 2);
+		if (ft_strncmp(cube->file[i], "NO", 2) == 0 && !cube->no->path)
+			set_textures += set_texture_path(&cube->no->path, cube->file[i] + 2);
+		if (ft_strncmp(cube->file[i], "SO", 2) == 0 && !cube->so->path)
+			set_textures += set_texture_path(&cube->so->path, cube->file[i] + 2);
+		if (ft_strncmp(cube->file[i], "EA", 2) == 0 && !cube->ea->path)
+			set_textures += set_texture_path(&cube->ea->path, cube->file[i] + 2);
+		if (ft_strncmp(cube->file[i], "WE", 2) == 0 && !cube->we->path)
+			set_textures += set_texture_path(&cube->we->path, cube->file[i] + 2);
 		if (ft_strncmp(cube->file[i], "F", 1) == 0 && cube->floor.r == -1)
 			set_textures += set_color(&cube->floor, cube->file[i] + 1);
 		if (ft_strncmp(cube->file[i], "C", 1) == 0 && cube->ceiling.r == -1)

@@ -6,7 +6,7 @@
 /*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 14:40:16 by vimercie          #+#    #+#             */
-/*   Updated: 2023/05/06 21:36:25 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/05/24 21:05:20 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,10 @@ void	free_tab(char **tab)
 
 void	free_cube(t_cube *cube)
 {
-	free(cube->no);
-	free(cube->so);
-	free(cube->ea);
-	free(cube->we);
+	free(cube->no->path);
+	free(cube->so->path);
+	free(cube->ea->path);
+	free(cube->we->path);
 	free_tab(cube->map);
 	free_tab(cube->file);
 }

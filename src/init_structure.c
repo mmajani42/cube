@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_structure.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmajani <mmajani@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 19:13:43 by mmajani           #+#    #+#             */
-/*   Updated: 2023/05/23 11:34:17 by mmajani          ###   ########lyon.fr   */
+/*   Updated: 2023/05/25 16:46:17 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@ void	init_cube(t_cube *cube)
 {
 	cube->map = NULL;
 	cube->file = NULL;
-	cube->no = NULL;
-	cube->so = NULL;
-	cube->we = NULL;
-	cube->ea = NULL;
+	cube->no->path = NULL;
+	cube->so->path = NULL;
+	cube->we->path = NULL;
+	cube->ea->path = NULL;
 	cube->floor.r = -1;
 	cube->floor.g = -1;
 	cube->floor.b = -1;
@@ -32,6 +32,18 @@ void	init_cube(t_cube *cube)
 	cube->off_x = 0;
 	cube->off_y = 0;
 	cube->fov_radian = FOV * PI / 180;
+}
+
+void	init_asset(t_asset *asset, void *mlx)
+{
+	asset->width = 0;
+	asset->height = 0;
+	asset->img.img = mlx_xpm_file_to_image(mlx, asset->path,
+			&asset->width, &asset->height);
+	asset->img.addr = mlx_get_data_addr(asset->img.img,
+			&asset->img.bits_per_pixel,
+			&asset->img.line_length,
+			&asset->img.endian);
 }
 
 void	set_tile_size(t_cube *cube)

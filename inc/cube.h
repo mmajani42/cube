@@ -6,7 +6,7 @@
 /*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 15:29:07 by mmajani           #+#    #+#             */
-/*   Updated: 2023/05/23 18:07:41 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/05/25 16:42:21 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,14 @@ typedef struct s_cast
 	double	a_tan;
 }			t_cast;
 
+typedef struct s_asset
+{
+	t_data	img;
+	char	*path;
+	int		width;
+	int		height;
+}				t_asset;
+
 typedef struct s_cube
 {
 	t_data		img;
@@ -112,10 +120,10 @@ typedef struct s_cube
 	int			map_height;
 	char		**file;
 	char		**map;
-	char		*no;
-	char		*so;
-	char		*we;
-	char		*ea;
+	t_asset		no[1];
+	t_asset		so[1];
+	t_asset		we[1];
+	t_asset		ea[1];
 	double		fov_radian;
 	t_cast		v_ray[RES];
 	t_cast		h_ray[RES];
@@ -150,6 +158,7 @@ bool	check_file_extension(char *filename, char *format);
 // init
 void	init_cube(t_cube *cube);
 int		init_map(t_cube *cube);
+void	init_asset(t_asset *asset, void *mlx);
 void	set_tile_size(t_cube *cube);
 void	set_player(t_cube *cube);
 
@@ -197,7 +206,7 @@ void	draw_closest_ray(t_cube *cube);
 //	display
 int		display_handling(t_cube *cube);
 int		texture_display(int x, int height, t_cube *cube);
-void	draw_texture_column(int x, int height, t_data *texture, t_cube *cube);
+void	draw_texture_column(int x, int height, t_data texture, t_cube *cube);
 void	clear_image(t_cube *cube);
 void	print_tab(char **tab);
 

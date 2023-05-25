@@ -6,7 +6,7 @@
 /*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 14:24:22 by vimercie          #+#    #+#             */
-/*   Updated: 2023/05/04 18:25:45 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/05/24 21:03:52 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@ void	cube_tester(t_cube *cube)
 	int	i;
 
 	i = 0;
-	printf("no = |%s|\n", cube->no);
-	printf("so = |%s|\n", cube->so);
-	printf("ea = |%s|\n", cube->ea);
-	printf("we = |%s|\n", cube->we);
+	printf("no = |%s|\n", cube->no->path);
+	printf("so = |%s|\n", cube->so->path);
+	printf("ea = |%s|\n", cube->ea->path);
+	printf("we = |%s|\n", cube->we->path);
 	printf("floor = %d,%d,%d\n",
 		cube->floor.r, cube->floor.g, cube->floor.b);
 	printf("ceiling = %d,%d,%d\n",

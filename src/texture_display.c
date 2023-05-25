@@ -6,7 +6,7 @@
 /*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 14:19:56 by vimercie          #+#    #+#             */
-/*   Updated: 2023/05/23 18:15:03 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/05/24 21:05:50 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int	get_color(t_data *img, t_cast ray, int y)
 	return (res);
 }
 
-void	draw_texture_column(int x, int height, t_data *texture, t_cube *cube)
+void	draw_texture_column(int x, int height, t_data texture, t_cube *cube)
 {
 	int		color;
 	int		y;
@@ -64,7 +64,7 @@ void	draw_texture_column(int x, int height, t_data *texture, t_cube *cube)
 	y = (WIN_Y / 2) - (height / 2);
 	while (i < height)
 	{
-		color = get_color(texture, cube->ray[x], i);
+		color = get_color(&texture, cube->ray[x], i);
 		my_mlx_pixel_put(&cube->img, x, y + i, color);
 		i++;
 	}
@@ -72,14 +72,6 @@ void	draw_texture_column(int x, int height, t_data *texture, t_cube *cube)
 
 int	texture_display(int x, int height, t_cube *cube)
 {
-	t_data	img;
-	int		w;
-	int		h;
-
-	img.img = mlx_xpm_file_to_image(cube->mlx,
-			"./assets/brick_wall_64x64.xpm", &w, &h);
-	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel,
-			&img.line_length, &img.endian);
-	draw_texture_column(x, height, &img, cube);
+	draw_texture_column(x, height, cube->no->img, cube);
 	return (0);
 }
