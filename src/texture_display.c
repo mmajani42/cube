@@ -6,7 +6,7 @@
 /*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 14:19:56 by vimercie          #+#    #+#             */
-/*   Updated: 2023/05/24 21:05:50 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/05/25 17:22:46 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	put_image_to_image(t_data *img, t_cube *cube, int x, int y)
 	}
 }
 
-int	get_color(t_data *img, t_cast ray, int y)
+int	get_color(t_data *img, t_cast ray, int i)
 {
 	int	res;
 	int	color_x;
@@ -45,7 +45,7 @@ int	get_color(t_data *img, t_cast ray, int y)
 		color_x = (int)ray.y % 64;
 	else if (ray.type == 'h')
 		color_x = (int)ray.x % 64;
-	color_y = y % 64;
+	color_y = i;
 	res = *((int *)(img->addr
 				+ (color_y * img->line_length + color_x
 					* (img->bits_per_pixel / 8))));
@@ -64,8 +64,8 @@ void	draw_texture_column(int x, int height, t_data texture, t_cube *cube)
 	y = (WIN_Y / 2) - (height / 2);
 	while (i < height)
 	{
-		color = get_color(&texture, cube->ray[x], i);
-		my_mlx_pixel_put(&cube->img, x, y + i, color);
+		color = get_color(&texture, cube->ray[x], (i * 64) / height);
+		my_mlx_pixel_put(&cube->img, x, i + y, color);
 		i++;
 	}
 }
