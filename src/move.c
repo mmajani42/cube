@@ -6,7 +6,7 @@
 /*   By: mmajani <mmajani@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 18:24:31 by mmajani           #+#    #+#             */
-/*   Updated: 2023/05/26 17:37:27 by mmajani          ###   ########lyon.fr   */
+/*   Updated: 2023/05/26 17:50:47 by mmajani          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@ void	move_player(t_cube *cube)
 		cube->p.pos.y -= (sin(cube->p.angle)) * SPEED * cube->ts;
 	}
 	if (cube->key_a == 1)
-		cube->p.angle -= R_ANGLE * 100;
+		cube->p.angle -= R_ANGLE * 70;
 	else if (cube->key_d == 1)
-		cube->p.angle += R_ANGLE * 100;
+		cube->p.angle += R_ANGLE * 70;
 	if (cube->p.angle >= 2 * PI)
 		cube->p.angle -= 2 * PI;
 	else if (cube->p.angle < 0)

@@ -6,7 +6,7 @@
 /*   By: mmajani <mmajani@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 16:18:16 by mmajani           #+#    #+#             */
-/*   Updated: 2023/05/26 17:42:33 by mmajani          ###   ########lyon.fr   */
+/*   Updated: 2023/05/26 17:50:04 by mmajani          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,12 @@ void	set_player(t_cube *cube)
 	cube->p.pos.x = ((p.pos.x - 1) * cube->ts) + cube->ts;
 	cube->p.pos.y = ((p.pos.y - 1) * cube->ts) + cube->ts;
 	cube->p.angle = p.angle;
+	cube->key_a = 0;
+	cube->key_s = 0;
+	cube->key_d = 0;
+	cube->key_w = 0;
+	cube->key_left = 0;
+	cube->key_right = 0;
 }
 
 void	draw_orientation(t_cube *cube)

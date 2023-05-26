@@ -6,7 +6,7 @@
 /*   By: mmajani <mmajani@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 14:21:46 by mmajani           #+#    #+#             */
-/*   Updated: 2023/05/26 17:44:35 by mmajani          ###   ########lyon.fr   */
+/*   Updated: 2023/05/26 17:48:41 by mmajani          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ int	main(int ac, char **av)
 		return (0);
 	set_player(&cube);
 	init_mlx(&cube);
-	mlx_hook(cube.mlx_win, 3, 1L << 0, &key_release_events, &cube);
-	mlx_hook(cube.mlx_win, 2, 1L << 1, &key_pressed_events, &cube);
+	mlx_hook(cube.mlx_win, 3, 1L << 1, &key_release_events, &cube);
+	mlx_hook(cube.mlx_win, 2, 1L << 0, &key_pressed_events, &cube);
 	mlx_loop_hook(cube.mlx, gameloop, &cube);
 	mlx_loop(cube.mlx);
 	cube_tester(&cube);
