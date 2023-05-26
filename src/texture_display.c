@@ -6,7 +6,7 @@
 /*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 14:19:56 by vimercie          #+#    #+#             */
-/*   Updated: 2023/05/25 22:50:49 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/05/26 03:54:00 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,20 +34,18 @@ void	put_image_to_image(t_data *img, t_cube *cube, int x, int y)
 	}
 }
 
-int	get_color(t_data *img, t_cast ray, int i)
+int	get_color(t_data *img, t_cast ray, int y)
 {
 	int	res;
-	int	color_x;
-	int	color_y;
+	int	x;
 
-	color_x = 0;
+	x = 0;
 	if (ray.type == 'v')
-		color_x = (int)ray.y % 64;
+		x = (int)ray.y % 64;
 	else if (ray.type == 'h')
-		color_x = (int)ray.x % 64;
-	color_y = i;
+		x = (int)ray.x % 64;
 	res = *((int *)(img->addr
-				+ (color_y * img->line_length + color_x
+				+ (y * img->line_length + x
 					* (img->bits_per_pixel / 8))));
 	return (res);
 }
@@ -79,9 +77,10 @@ int	texture_display(int x, int height, t_cube *cube)
 		else
 			draw_texture(x, height, cube->so->img, cube);
 	}
-	else
+	else if (cube->ray[x].type == 'v')
 	{
-		if (cube->ray[x].a >= PI / 2 && cube->ray[x].a < PI + (PI / 2))
+		if (cube->ray[x].a >= (PI / 2)
+			&& cube->ray[x].a < (PI + (PI / 2)))
 			draw_texture(x, height, cube->we->img, cube);
 		else
 			draw_texture(x, height, cube->ea->img, cube);
