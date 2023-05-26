@@ -6,7 +6,7 @@
 /*   By: mmajani <mmajani@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 15:20:58 by mmajani           #+#    #+#             */
-/*   Updated: 2023/05/26 17:25:40 by mmajani          ###   ########lyon.fr   */
+/*   Updated: 2023/05/26 19:47:53 by mmajani          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void	draw_perspective(t_cube *cube)
 {
 	int		i;
 	double	h;
+	double	hh;
 
 	i = 0;
 	while (i <= WIN_Y / 2)
@@ -52,24 +53,22 @@ void	draw_perspective(t_cube *cube)
 	i = 0;
 	while (i < WIN_X)
 	{
-		h = 100 * (WH / (cube->ray[i].size));
-		texture_display(i, (int)h, cube);
-		// draw_segment(cube, (t_point){i, HR - (h / 2)},
-		// 	(t_point){i, HR + (h / 2)}, 1000);
-		// if (i + 1 < WIN_X && cube->ray[i].type != cube->ray[i + 1].type)
-		// 	draw_segment(cube, (t_point){i, HR - (h / 2)},
-		// 		(t_point){i, HR + (h / 2)}, 0);
+		h = 108000 / cube->ray[i].size;
+		hh = h / 2;
+		//texture_display(i, (int)h, cube);
+		draw_segment(cube, (t_point){i, HR - (hh)},
+			(t_point){i, HR + (hh)}, 1000);
 		i++;
 	}
 }
 
 int	gameloop(t_cube *cube)
 {
-	move_player(cube);
 	clear_image(cube);
+	move_player(cube);
 	draw_closest_ray(cube);
-	draw_map(cube);
-	draw_player(cube);
+	//draw_map(cube);
+	//draw_player(cube);
 	draw_perspective(cube);
 	mlx_put_image_to_window(cube->mlx, cube->mlx_win, cube->img.img, 0, 0);
 	return (1);

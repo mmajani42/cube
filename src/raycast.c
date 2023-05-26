@@ -6,7 +6,7 @@
 /*   By: mmajani <mmajani@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 09:46:36 by mmajani           #+#    #+#             */
-/*   Updated: 2023/05/23 09:07:14 by mmajani          ###   ########lyon.fr   */
+/*   Updated: 2023/05/26 18:20:03 by mmajani          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,6 @@ void	horizontal_raycast(t_cube *cube)
 		horizontal_step(cube, &r);
 		r.size = sqrt(((r.x - p.pos.x) * (r.x - p.pos.x))
 				+ (r.y - p.pos.y) * (r.y - p.pos.y));
-		// if (cos(r.a) != 0)
-		// 	r.size *= cos(r.a);
 		cube->h_ray[i] = r;
 		r.a += cube->fov_radian / RES;
 		r.a = reset_angle(r.a);
