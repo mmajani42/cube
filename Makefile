@@ -10,7 +10,7 @@ INCDIR=		inc
 
 SRC=		testing.c					\
 			main.c						\
-			init_structure.c			\
+			init.c						\
 			parsing.c					\
 			parsing_utils.c				\
 			parsing_utils2.c			\

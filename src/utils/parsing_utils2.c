@@ -6,7 +6,7 @@
 /*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 19:54:31 by vimercie          #+#    #+#             */
-/*   Updated: 2023/05/08 05:43:37 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/05/26 17:33:19 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,21 +40,17 @@ char	*get_next_word(char *str)
 	return (ft_strndup(str, len));
 }
 
-t_point	get_player_vec(char direction)
+double	get_player_angle(char direction)
 {
-	t_point	res;
-
-	res.x = 0;
-	res.y = 0;
 	if (direction == 'N')
-		res.y = -1;
+		return ((double)PI / 2);
 	if (direction == 'S')
-		res.y = 1;
+		return ((double)((3 * PI) / 2));
 	if (direction == 'E')
-		res.x = 1;
+		return ((double)0);
 	if (direction == 'W')
-		res.x = -1;
-	return (res);
+		return ((double)PI);
+	return (-1);
 }
 
 t_point	get_player_pos(char **map)
@@ -89,11 +85,6 @@ t_point	get_player_pos(char **map)
 void	get_player_coordinates(t_player *p, char **map)
 {
 	p->pos = get_player_pos(map);
-	if (p->pos.x > -1 && p->pos.y > -1)
-		p->vec = get_player_vec(map[(int)p->pos.y][(int)p->pos.x]);
-	else
-	{
-		p->vec.x = 0;
-		p->vec.y = 0;
-	}
+	if (p->pos.x != -1 && p->pos.y != -1)
+		p->angle = get_player_angle(map[(int)p->pos.y][(int)p->pos.x]);
 }

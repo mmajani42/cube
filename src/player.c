@@ -6,7 +6,7 @@
 /*   By: mmajani <mmajani@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 16:18:16 by mmajani           #+#    #+#             */
-/*   Updated: 2023/05/26 17:38:34 by mmajani          ###   ########lyon.fr   */
+/*   Updated: 2023/05/26 17:42:33 by mmajani          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,7 @@ void	set_player(t_cube *cube)
 	get_player_coordinates(&p, cube->map);
 	cube->p.pos.x = ((p.pos.x - 1) * cube->ts) + cube->ts;
 	cube->p.pos.y = ((p.pos.y - 1) * cube->ts) + cube->ts;
-	cube->p.vec.x = p.vec.x;
-	cube->p.vec.y = p.vec.y;
+	cube->p.angle = p.angle;
 }
 
 void	draw_orientation(t_cube *cube)
