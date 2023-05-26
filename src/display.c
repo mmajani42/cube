@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   display.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmajani <mmajani@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 15:20:58 by mmajani           #+#    #+#             */
-/*   Updated: 2023/05/26 17:25:40 by mmajani          ###   ########lyon.fr   */
+/*   Updated: 2023/05/26 18:28:03 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	draw_perspective(t_cube *cube)
 	i = 0;
 	while (i < WIN_X)
 	{
-		h = 100 * (WH / (cube->ray[i].size));
+		h = 100 * (WH / cube->ray[i].size);
 		texture_display(i, (int)h, cube);
 		// draw_segment(cube, (t_point){i, HR - (h / 2)},
 		// 	(t_point){i, HR + (h / 2)}, 1000);
