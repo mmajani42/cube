@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmajani <mmajani@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 19:13:43 by mmajani           #+#    #+#             */
-/*   Updated: 2023/05/26 17:44:21 by mmajani          ###   ########lyon.fr   */
+/*   Updated: 2023/05/26 17:47:25 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,22 @@ void	init_assets(t_cube *cube)
 	set_texture(&cube->so, cube->mlx);
 	set_texture(&cube->we, cube->mlx);
 	set_texture(&cube->ea, cube->mlx);
+}
+
+void	init_mlx(t_cube *cube)
+{
+	cube->win_x = WIN_X;
+	cube->win_y = WIN_Y;
+	cube->mlx = mlx_init();
+	cube->mlx_win = mlx_new_window(cube->mlx, cube->win_x,
+			cube->win_y, "Cub3d");
+	cube->img.img = mlx_new_image(cube->mlx, cube->win_x, cube->win_y);
+	cube->img.addr = mlx_get_data_addr(cube->img.img,
+			&cube->img.bits_per_pixel, &cube->img.line_length,
+			&cube->img.endian);
+	cube->img.bits_per_pixel /= 8;
+	cube->display_status = 1;
+	init_assets(cube);
 }
 
 void	init_cube(t_cube *cube)
