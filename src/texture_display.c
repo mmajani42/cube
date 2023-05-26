@@ -6,7 +6,7 @@
 /*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 14:19:56 by vimercie          #+#    #+#             */
-/*   Updated: 2023/05/26 15:28:16 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/05/26 18:10:42 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,11 @@ void	draw_texture(int x, int height, t_data texture, t_cube *cube)
 	y = (WIN_Y / 2) - (height / 2);
 	while (i < height)
 	{
-		color = get_color(&texture, cube->ray[x], (i * 64) / height);
-		my_mlx_pixel_put(&cube->img, x, i + y, color);
+		if (i + y < 1080)
+		{
+			color = get_color(&texture, cube->ray[x], (i * 64) / height);
+			my_mlx_pixel_put(&cube->img, x, i + y, color);
+		}
 		i++;
 	}
 }
