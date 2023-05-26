@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_structure.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: mmajani <mmajani@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 19:13:43 by mmajani           #+#    #+#             */
-/*   Updated: 2023/05/26 15:32:01 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/05/26 17:22:18 by mmajani          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,4 +50,10 @@ void	init_cube(t_cube *cube)
 	cube->off_y = 0;
 	cube->fov_radian = FOV * PI / 180;
 	cube->ts = 64;
+	cube->key_w = 0;
+	cube->key_a = 0;
+	cube->key_s = 0;
+	cube->key_d = 0;
+	cube->key_left = 0;
+	cube->key_right = 0;
 }

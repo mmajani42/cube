@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: mmajani <mmajani@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 15:29:07 by mmajani           #+#    #+#             */
-/*   Updated: 2023/05/26 15:32:56 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/05/26 17:30:44 by mmajani          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,6 +131,12 @@ typedef struct s_cube
 	t_asset		ea;
 	t_color		floor;
 	t_color		ceiling;
+	bool		key_w;
+	bool		key_a;
+	bool		key_s;
+	bool		key_d;
+	bool		key_left;
+	bool		key_right;
 }				t_cube;
 
 void	cube_tester(t_cube *cube);
@@ -205,14 +211,15 @@ double	reset_angle(double angle);
 void	draw_closest_ray(t_cube *cube);
 
 //	display
-int		display_handling(t_cube *cube);
+int		gameloop(t_cube *cube);
 int		texture_display(int x, int height, t_cube *cube);
 void	draw_texture(int x, int height, t_data texture, t_cube *cube);
 void	clear_image(t_cube *cube);
 void	print_tab(char **tab);
 
 //	events
-int		key_events(int keycode, t_cube *cube);
-void	change_player_vector(t_cube *cube, int key);
+int		key_pressed_events(int keycode, t_cube *cube);
+int		key_release_events(int keycode, t_cube *cube);
+void	move_player(t_cube *cube);
 
 #endif

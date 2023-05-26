@@ -6,7 +6,7 @@
 /*   By: mmajani <mmajani@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 18:24:31 by mmajani           #+#    #+#             */
-/*   Updated: 2023/05/23 07:45:47 by mmajani          ###   ########lyon.fr   */
+/*   Updated: 2023/05/26 17:37:27 by mmajani          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,21 @@
 
 #define SPEED 0.1
 
-void	change_player_vector(t_cube *cube, int key)
+void	move_player(t_cube *cube)
 {
-	if (key == W || key == Z)
+	if (cube->key_w == 1)
 	{
 		cube->p.pos.x += (cos(cube->p.angle)) * SPEED * cube->ts;
 		cube->p.pos.y += (sin(cube->p.angle)) * SPEED * cube->ts;
 	}
-	if (key == S)
+	else if (cube->key_s == 1)
 	{
 		cube->p.pos.x -= (cos(cube->p.angle)) * SPEED * cube->ts;
 		cube->p.pos.y -= (sin(cube->p.angle)) * SPEED * cube->ts;
 	}
-	if (key == A || key == Q)
-	{
+	if (cube->key_a == 1)
 		cube->p.angle -= R_ANGLE * 100;
-	}
-	if (key == D)
+	else if (cube->key_d == 1)
 		cube->p.angle += R_ANGLE * 100;
 	if (cube->p.angle >= 2 * PI)
 		cube->p.angle -= 2 * PI;

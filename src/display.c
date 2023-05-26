@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   display.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: mmajani <mmajani@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 15:20:58 by mmajani           #+#    #+#             */
-/*   Updated: 2023/05/25 16:54:45 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/05/26 17:25:40 by mmajani          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,9 @@ void	draw_perspective(t_cube *cube)
 	}
 }
 
-int	display_handling(t_cube *cube)
+int	gameloop(t_cube *cube)
 {
+	move_player(cube);
 	clear_image(cube);
 	draw_closest_ray(cube);
 	draw_map(cube);

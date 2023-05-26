@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: mmajani <mmajani@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 14:21:46 by mmajani           #+#    #+#             */
-/*   Updated: 2023/05/26 15:23:52 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/05/26 17:34:28 by mmajani          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,18 +28,6 @@ void	init_mlx(t_cube *cube)
 	init_assets(cube);
 }
 
-int	key_events(int keycode, t_cube *cube)
-{
-	if (keycode == ESC || keycode == X)
-	{
-		mlx_destroy_window(cube->mlx, cube->mlx_win);
-		exit(1);
-	}
-	if (keycode == W || keycode == A || keycode == S || keycode == D
-		|| keycode == Z)
-		change_player_vector(cube, keycode);
-	return (0);
-}
 
 void	print_tab(char **tab)
 {	
@@ -63,8 +51,9 @@ int	main(int ac, char **av)
 		return (0);
 	set_player(&cube);
 	init_mlx(&cube);
-	mlx_hook(cube.mlx_win, 2, 1L << 0, &key_events, &cube);
-	mlx_loop_hook(cube.mlx, display_handling, &cube);
+	mlx_hook(cube.mlx_win, 3, 1L << 0, &key_release_events, &cube);
+	mlx_hook(cube.mlx_win, 2, 1L << 1, &key_pressed_events, &cube);
+	mlx_loop_hook(cube.mlx, gameloop, &cube);
 	mlx_loop(cube.mlx);
 	cube_tester(&cube);
 	free_cube(&cube);
