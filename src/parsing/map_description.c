@@ -6,7 +6,7 @@
 /*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 16:08:01 by vimercie          #+#    #+#             */
-/*   Updated: 2023/05/08 05:42:04 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/05/26 15:32:01 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@ int	get_map_dimensions(char **file, t_cube *cube)
 	{
 		if (!is_valid_map_line(file[cube->map_height]))
 			return (0);
-		if ((int)ft_strlen(file[cube->map_height]) > cube->max_line_size)
+		if ((int)ft_strlen(file[cube->map_height]) > cube->map_width)
 		{
-			cube->max_line_size = (int)ft_strlen(file[cube->map_height]);
-			if (file[cube->map_height][cube->max_line_size - 1] == '\n')
-				cube->max_line_size--;
+			cube->map_width = (int)ft_strlen(file[cube->map_height]);
+			if (file[cube->map_height][cube->map_width - 1] == '\n')
+				cube->map_width--;
 		}
 		cube->map_height++;
 	}
@@ -43,7 +43,7 @@ int	map_cpy(char **file, t_cube *cube)
 	while (file[i])
 	{
 		len = ft_strlen(file[i]);
-		cube->map[i] = dup_and_fill(file[i], ' ', cube->max_line_size,
+		cube->map[i] = dup_and_fill(file[i], ' ', cube->map_width,
 				file[i][len - 1] == '\n');
 		i++;
 	}

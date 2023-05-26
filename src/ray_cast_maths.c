@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_cast_maths.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmajani <mmajani@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 08:51:54 by mmajani           #+#    #+#             */
-/*   Updated: 2023/05/10 21:28:21 by mmajani          ###   ########lyon.fr   */
+/*   Updated: 2023/05/26 15:32:01 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	vertical_ray_maths(t_cube *cube, t_cast *r, t_player *p)
 	{
 		r->y = p->pos.y;
 		r->x = p->pos.x;
-		r->dof = cube->max_line_size;
+		r->dof = cube->map_width;
 	}
 	else if (r->a < PI / 2 || r->a > 3 * PI / 2) // looking right
 	{
@@ -68,16 +68,16 @@ void	vertical_ray_maths(t_cube *cube, t_cast *r, t_player *p)
 
 void	vertical_step(t_cube *cube, t_cast *r)
 {
-	while (r->dof < cube->max_line_size - 1)
+	while (r->dof < cube->map_width - 1)
 	{
 		r->my = (int)(r->y + cube->ts / 2) / cube->ts;
 		r->mx = (int)(r->x) / cube->ts + 1;
 		if (cos(r->a) >= 0 && is_in_map(cube, r->mx, r->my) == 1
 			&& cube->map[r->my][r->mx] == '1')
-			r->dof = cube->max_line_size;
+			r->dof = cube->map_width;
 		else if (cos(r->a) < 0 && is_in_map(cube, r->mx - 1, r->my) == 1
 			&& cube->map[r->my][r->mx - 1] == '1')
-			r->dof = cube->max_line_size;
+			r->dof = cube->map_width;
 		else
 		{
 			r->y -= r->yo;

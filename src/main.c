@@ -6,7 +6,7 @@
 /*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 14:21:46 by mmajani           #+#    #+#             */
-/*   Updated: 2023/05/25 16:45:37 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/05/26 15:23:52 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,14 @@ void	init_mlx(t_cube *cube)
 	cube->win_y = WIN_Y;
 	cube->mlx = mlx_init();
 	cube->mlx_win = mlx_new_window(cube->mlx, cube->win_x,
-			cube->win_y, "Hello world!");
+			cube->win_y, "Cub3d");
 	cube->img.img = mlx_new_image(cube->mlx, cube->win_x, cube->win_y);
 	cube->img.addr = mlx_get_data_addr(cube->img.img,
 			&cube->img.bits_per_pixel, &cube->img.line_length,
 			&cube->img.endian);
 	cube->img.bits_per_pixel /= 8;
 	cube->display_status = 1;
+	init_assets(cube);
 }
 
 int	key_events(int keycode, t_cube *cube)
@@ -60,13 +61,8 @@ int	main(int ac, char **av)
 		return (print_error("This program takes only 1 argument"));
 	if (!parsing(av[1], &cube))
 		return (0);
-	set_tile_size(&cube);
 	set_player(&cube);
 	init_mlx(&cube);
-	init_asset(cube.no, cube.mlx);
-	init_asset(cube.so, cube.mlx);
-	init_asset(cube.we, cube.mlx);
-	init_asset(cube.ea, cube.mlx);
 	mlx_hook(cube.mlx_win, 2, 1L << 0, &key_events, &cube);
 	mlx_loop_hook(cube.mlx, display_handling, &cube);
 	mlx_loop(cube.mlx);

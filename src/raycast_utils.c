@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycast_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmajani <mmajani@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 20:04:30 by mmajani           #+#    #+#             */
-/*   Updated: 2023/05/10 11:52:19 by mmajani          ###   ########lyon.fr   */
+/*   Updated: 2023/05/26 15:32:01 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	p_map_pos(t_cube *cube, char c)
 
 int	is_in_map(t_cube *cube, int x, int y)
 {
-	if ((x >= 0 && x < cube->max_line_size) && y >= 0 && y < cube->map_height)
+	if ((x >= 0 && x < cube->map_width) && y >= 0 && y < cube->map_height)
 		return (1);
 	return (0);
 }

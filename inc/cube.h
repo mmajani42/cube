@@ -6,7 +6,7 @@
 /*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 15:29:07 by mmajani           #+#    #+#             */
-/*   Updated: 2023/05/25 22:31:49 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/05/26 15:32:56 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,22 +115,22 @@ typedef struct s_cube
 	double		ts;
 	double		off_x;
 	double		off_y;
-	int			display_status;
-	int			max_line_size;
-	int			map_height;
-	char		**file;
-	char		**map;
-	t_asset		no[1];
-	t_asset		so[1];
-	t_asset		we[1];
-	t_asset		ea[1];
 	double		fov_radian;
 	t_cast		v_ray[RES];
 	t_cast		h_ray[RES];
 	t_cast		ray[RES];
+	int			display_status;
+	t_player	p;
+	char		**file;
+	char		**map;
+	int			map_width;
+	int			map_height;
+	t_asset		no;
+	t_asset		so;
+	t_asset		we;
+	t_asset		ea;
 	t_color		floor;
 	t_color		ceiling;
-	t_player	p;
 }				t_cube;
 
 void	cube_tester(t_cube *cube);
@@ -157,8 +157,9 @@ bool	check_file_extension(char *filename, char *format);
 
 // init
 void	init_cube(t_cube *cube);
+void	init_assets(t_cube *cube);
 int		init_map(t_cube *cube);
-void	init_asset(t_asset *asset, void *mlx);
+void	set_texture(t_asset *asset, void *mlx);
 void	set_tile_size(t_cube *cube);
 void	set_player(t_cube *cube);
 

@@ -6,7 +6,7 @@
 /*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 14:19:56 by vimercie          #+#    #+#             */
-/*   Updated: 2023/05/26 03:54:00 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/05/26 15:28:16 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,17 +73,17 @@ int	texture_display(int x, int height, t_cube *cube)
 	if (cube->ray[x].type == 'h')
 	{
 		if (cube->ray[x].a >= PI)
-			draw_texture(x, height, cube->no->img, cube);
+			draw_texture(x, height, cube->no.img, cube);
 		else
-			draw_texture(x, height, cube->so->img, cube);
+			draw_texture(x, height, cube->so.img, cube);
 	}
 	else if (cube->ray[x].type == 'v')
 	{
 		if (cube->ray[x].a >= (PI / 2)
 			&& cube->ray[x].a < (PI + (PI / 2)))
-			draw_texture(x, height, cube->we->img, cube);
+			draw_texture(x, height, cube->we.img, cube);
 		else
-			draw_texture(x, height, cube->ea->img, cube);
+			draw_texture(x, height, cube->ea.img, cube);
 	}
 	return (0);
 }
