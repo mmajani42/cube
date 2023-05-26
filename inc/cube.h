@@ -6,7 +6,7 @@
 /*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 15:29:07 by mmajani           #+#    #+#             */
-/*   Updated: 2023/05/26 15:32:56 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/05/26 17:17:07 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -156,6 +156,7 @@ bool	wall_sonar(int x, int y, char **map);
 bool	check_file_extension(char *filename, char *format);
 
 // init
+void	init_mlx(t_cube *cube);
 void	init_cube(t_cube *cube);
 void	init_assets(t_cube *cube);
 int		init_map(t_cube *cube);
