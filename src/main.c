@@ -6,12 +6,11 @@
 /*   By: mmajani <mmajani@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 14:21:46 by mmajani           #+#    #+#             */
-/*   Updated: 2023/05/26 17:43:35 by mmajani          ###   ########lyon.fr   */
+/*   Updated: 2023/05/26 17:44:35 by mmajani          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cube.h"
-
 
 void	print_tab(char **tab)
 {	
