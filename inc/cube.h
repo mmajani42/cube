@@ -6,7 +6,7 @@
 /*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 15:29:07 by mmajani           #+#    #+#             */
-/*   Updated: 2023/05/26 17:17:07 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/05/26 17:33:10 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,7 +149,7 @@ int		get_map_dimensions(char **file, t_cube *cube);
 
 void	get_player_coordinates(t_player *p, char **map);
 t_point	get_player_pos(char **map);
-t_point	get_player_vec(char direction);
+double	get_player_angle(char direction);
 
 bool	wall_sonar(int x, int y, char **map);
 
