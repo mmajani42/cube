@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmajani <mmajani@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 15:29:07 by mmajani           #+#    #+#             */
-/*   Updated: 2023/05/27 17:20:10 by mmajani          ###   ########lyon.fr   */
+/*   Updated: 2023/05/27 18:51:27 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -186,7 +186,7 @@ void	free_cube(t_cube *cube);
 
 //	drawing
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
-void	my_custom_pixel_put(t_data *img, int n_lines, int n_bytes, int color);
+void	my_custom_pixel_put(t_data *img, int pos, int color);
 void	my_offset_pixel_put(t_cube *cube, int x, int y, int color);
 void	draw_segment(t_cube *cube, t_point a, t_point b, int color);
 void	draw_vertical_segment(t_cube *cube, int x, int y_start, int y_end, int color);
@@ -195,7 +195,7 @@ void	draw_map(t_cube *cube);
 void	draw_player(t_cube *cube);
 void	draw_dot(t_cube *cube, double x, double y);
 void	draw_perspective(t_cube *cube);
-void	draw_texture(int x, int wall_height, t_asset ast, t_cube *cube);
+void	draw_texture(int x, double wall_height, t_asset ast, t_cube *cube);
 
 //	raycast
 void	horizontal_ray_maths(t_cube *cube, t_cast *r, t_player *p);
@@ -216,8 +216,7 @@ void	draw_closest_ray(t_cube *cube);
 
 //	display
 int		gameloop(t_cube *cube);
-int		texture_display(int x, int height, t_cube *cube);
-void	clear_image(t_cube *cube);
+int		texture_display(int x, double height, t_cube *cube);
 void	print_tab(char **tab);
 
 //	events

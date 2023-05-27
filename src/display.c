@@ -6,7 +6,7 @@
 /*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 15:20:58 by mmajani           #+#    #+#             */
-/*   Updated: 2023/05/27 17:26:14 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/05/27 19:14:14 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,8 @@ void	draw_perspective(t_cube *cube)
 	i = 0;
 	while (i < WIN_X)
 	{
-		h = 100000 / cube->ray[i].size;
-		texture_display(i, (int)h, cube);
+		h = (64 * WIN_X) / cube->ray[i].size;
+		texture_display(i, h, cube);
 		// if (h > 5000) Cube SANS TEXTURES OPTIMISE
 		// {
 		// 	draw_vertical_segment(cube, i, 0, 1080, 1000); 

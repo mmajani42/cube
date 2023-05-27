@@ -6,17 +6,17 @@
 /*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 16:35:20 by mmajani           #+#    #+#             */
-/*   Updated: 2023/05/27 14:01:24 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/05/27 18:12:56 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cube.h"
 
-void	my_custom_pixel_put(t_data *img, int n_lines, int n_bytes, int color)
+void	my_custom_pixel_put(t_data *img, int pos, int color)
 {
 	char	*dst;
 
-	dst = img->addr + n_lines + n_bytes;
+	dst = img->addr + pos;
 	*(unsigned int *)dst = color;
 }
 

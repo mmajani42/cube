@@ -6,7 +6,7 @@
 /*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 19:54:31 by vimercie          #+#    #+#             */
-/*   Updated: 2023/05/26 17:33:19 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/05/27 19:25:43 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,9 @@ char	*get_next_word(char *str)
 double	get_player_angle(char direction)
 {
 	if (direction == 'N')
-		return ((double)PI / 2);
-	if (direction == 'S')
 		return ((double)((3 * PI) / 2));
+	if (direction == 'S')
+		return ((double)PI / 2);
 	if (direction == 'E')
 		return ((double)0);
 	if (direction == 'W')

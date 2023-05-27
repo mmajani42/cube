@@ -1,7 +1,7 @@
 NO ./assets/brick_wall_64x64.xpm
 SO ./assets/brick_wall_64x64_darken.xpm
 EA ./assets/immondice.xpm
-WE ./assets/brick_wall_64x64_old.xpm
+WE ./assets/gradient.xpm
 
 F 220,100,0
 C 125,30,253
