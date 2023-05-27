@@ -6,7 +6,7 @@
 /*   By: mmajani <mmajani@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 09:46:36 by mmajani           #+#    #+#             */
-/*   Updated: 2023/05/27 06:55:38 by mmajani          ###   ########lyon.fr   */
+/*   Updated: 2023/05/27 15:19:28 by mmajani          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,9 @@ void	vertical_raycast(t_cube *cube)
 
 void	draw_closest_ray(t_cube *cube)
 {
-	int	i;
+	int		i;
+	t_point	pp1;
+	t_point	pp2;
 
 	i = 0;
 	horizontal_raycast(cube);
@@ -80,7 +82,17 @@ void	draw_closest_ray(t_cube *cube)
 			cube->ray[i].type = 'h';
 		}
 		cube->ray[i].size *= cos(cube->ray[i].a - cube->p.angle);
-		//draw_segment(cube, cube->p.pos, (t_point){cube->ray[i].x, cube->ray[i].y}, 1000);
+		draw_segment(cube, cube->p.pos, (t_point){cube->ray[0].x, cube->ray[0].y}, 4000);
+		draw_segment(cube, cube->p.pos, (t_point){cube->ray[RES - 1].x, cube->ray[RES - 1].y}, 4000);
+		if (i == 0)
+		{
+			pp1.x = cube->p.pos.x + cos(cube->p.angle - PI / 2) * cube->ts;
+			pp1.y = cube->p.pos.y + sin(cube->p.angle - PI / 2) * cube->ts;
+			pp2.x = cube->p.pos.x + cos(cube->p.angle + PI / 2) * cube->ts;
+			pp2.y = cube->p.pos.y + sin(cube->p.angle + PI / 2) * cube->ts;
+			draw_segment(cube, cube->p.pos, pp1, 4000);
+			draw_segment(cube, cube->p.pos, pp2, 4000);
+		}
 		i++;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: mmajani <mmajani@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 15:20:58 by mmajani           #+#    #+#             */
-/*   Updated: 2023/05/27 11:14:34 by mmajani          ###   ########lyon.fr   */
+/*   Updated: 2023/05/27 17:16:55 by mmajani          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	draw_perspective(t_cube *cube)
 	while (i < WIN_X)
 	{
 		h = 100000 / cube->ray[i].size;
-		// if (h > 5000) Cube SANS TEXTURES OPTIMISE
+		// if (h > 5000)
 		// {
 		// 	draw_vertical_segment(cube, i, 0, 1080, 1000); 
 		// 	i++;
@@ -75,10 +75,10 @@ void	draw_perspective(t_cube *cube)
 
 int	gameloop(t_cube *cube)
 {
-	clear_image(cube);
+	//clear_image(cube);
 	move_player(cube);
-	cube->p.pos.x = 275;
-	cube->p.pos.y = 64;
+	// cube->p.pos.x = 275;
+	// cube->p.pos.y = 64;
 	draw_closest_ray(cube);
 	draw_perspective(cube);
 	draw_map(cube);
