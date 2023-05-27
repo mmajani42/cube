@@ -6,28 +6,11 @@
 /*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 14:21:46 by mmajani           #+#    #+#             */
-/*   Updated: 2023/05/27 12:38:48 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/05/27 17:19:11 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cube.h"
-
-void	init_mlx(t_cube *cube)
-{
-	cube->win_x = WIN_X;
-	cube->win_y = WIN_Y;
-	cube->mlx = mlx_init();
-	cube->mlx_win = mlx_new_window(cube->mlx, cube->win_x,
-			cube->win_y, "Cub3d");
-	cube->img.img = mlx_new_image(cube->mlx, cube->win_x, cube->win_y);
-	cube->img.addr = mlx_get_data_addr(cube->img.img,
-			&cube->img.bits_per_pixel, &cube->img.line_length,
-			&cube->img.endian);
-	cube->img.bytes_per_pixel = cube->img.bits_per_pixel / 8;
-	cube->display_status = 1;
-	init_assets(cube);
-}
-
 
 void	print_tab(char **tab)
 {	

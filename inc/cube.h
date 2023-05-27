@@ -6,7 +6,7 @@
 /*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 15:29:07 by mmajani           #+#    #+#             */
-/*   Updated: 2023/05/27 13:36:05 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/05/27 17:18:17 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -164,6 +164,7 @@ bool	check_file_extension(char *filename, char *format);
 
 // init
 void	init_cube(t_cube *cube);
+void	init_mlx(t_cube *cube);
 void	init_assets(t_cube *cube);
 int		init_map(t_cube *cube);
 void	set_texture(t_asset *asset, void *mlx);
