@@ -6,7 +6,7 @@
 /*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 15:20:58 by mmajani           #+#    #+#             */
-/*   Updated: 2023/05/27 14:03:14 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/05/27 17:23:24 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ void	draw_perspective(t_cube *cube)
 	while (i < WIN_X)
 	{
 		h = 100000 / cube->ray[i].size;
+		texture_display(i, (int)h, cube);
 		// if (h > 5000) Cube SANS TEXTURES OPTIMISE
 		// {
 		// 	draw_vertical_segment(cube, i, 0, 1080, 1000); 
@@ -66,7 +67,6 @@ void	draw_perspective(t_cube *cube)
 		// 	draw_vertical_segment(cube, i, HR - (hh), HR + (hh), 1000);
 
 		// }
-		texture_display(i, h, cube);
 		// draw_segment(cube, (t_point){i, HR - (hh)},
 		// 	(t_point){i, HR + (hh)}, 1000);
 		i++;
@@ -77,12 +77,10 @@ int	gameloop(t_cube *cube)
 {
 	clear_image(cube);
 	move_player(cube);
-	cube->p.pos.x = 275;
-	cube->p.pos.y = 64;
 	draw_closest_ray(cube);
-	draw_perspective(cube);
 	draw_map(cube);
 	draw_player(cube);
+	draw_perspective(cube);
 	mlx_put_image_to_window(cube->mlx, cube->mlx_win, cube->img.img, 0, 0);
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 19:13:43 by mmajani           #+#    #+#             */
-/*   Updated: 2023/05/27 13:57:40 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/05/27 17:20:56 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	init_mlx(t_cube *cube)
 	cube->img.addr = mlx_get_data_addr(cube->img.img,
 			&cube->img.bits_per_pixel, &cube->img.line_length,
 			&cube->img.endian);
-	cube->img.bytes_per_pixel = cube->img.bytes_per_pixel / 8;
+	cube->img.bytes_per_pixel = cube->img.bits_per_pixel / 8;
 	cube->display_status = 1;
 	init_assets(cube);
 }
@@ -67,4 +67,10 @@ void	init_cube(t_cube *cube)
 	cube->off_y = 0;
 	cube->fov_radian = FOV * PI / 180;
 	cube->ts = 64;
+	cube->key_w = 0;
+	cube->key_a = 0;
+	cube->key_s = 0;
+	cube->key_d = 0;
+	cube->key_left = 0;
+	cube->key_right = 0;
 }
