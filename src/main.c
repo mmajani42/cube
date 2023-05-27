@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmajani <mmajani@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 14:21:46 by mmajani           #+#    #+#             */
-/*   Updated: 2023/05/26 17:34:28 by mmajani          ###   ########lyon.fr   */
+/*   Updated: 2023/05/27 12:38:48 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	init_mlx(t_cube *cube)
 	cube->img.addr = mlx_get_data_addr(cube->img.img,
 			&cube->img.bits_per_pixel, &cube->img.line_length,
 			&cube->img.endian);
-	cube->img.bits_per_pixel /= 8;
+	cube->img.bytes_per_pixel = cube->img.bits_per_pixel / 8;
 	cube->display_status = 1;
 	init_assets(cube);
 }

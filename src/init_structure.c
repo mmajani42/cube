@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_structure.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmajani <mmajani@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 19:13:43 by mmajani           #+#    #+#             */
-/*   Updated: 2023/05/26 17:22:18 by mmajani          ###   ########lyon.fr   */
+/*   Updated: 2023/05/27 12:39:10 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void	set_texture(t_asset *asset, void *mlx)
 			&asset->img.bits_per_pixel,
 			&asset->img.line_length,
 			&asset->img.endian);
+	asset->img.bytes_per_pixel = asset->img.bits_per_pixel / 8;
 }
 
 void	init_assets(t_cube *cube)
