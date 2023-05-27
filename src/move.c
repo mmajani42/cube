@@ -6,7 +6,7 @@
 /*   By: mmajani <mmajani@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 18:24:31 by mmajani           #+#    #+#             */
-/*   Updated: 2023/05/26 17:50:47 by mmajani          ###   ########lyon.fr   */
+/*   Updated: 2023/05/27 08:32:27 by mmajani          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #define SPEED 0.1
 
 void	move_player(t_cube *cube)
-{
+{	
 	if (cube->key_w == 1)
 	{
 		cube->p.pos.x += (cos(cube->p.angle)) * SPEED * cube->ts;

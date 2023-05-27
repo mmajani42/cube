@@ -6,7 +6,7 @@
 /*   By: mmajani <mmajani@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 16:35:20 by mmajani           #+#    #+#             */
-/*   Updated: 2023/05/26 19:51:12 by mmajani          ###   ########lyon.fr   */
+/*   Updated: 2023/05/27 10:44:33 by mmajani          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,30 @@ void	draw_dot(t_cube *cube, double x, double y)
 		(t_point){x - (cube->ts / 20), y + (cube->ts / 20)}, 16777215);
 	draw_segment(cube, (t_point){x + (cube->ts / 20), y - (cube->ts / 20)},
 		(t_point){x + (cube->ts / 20), y + (cube->ts / 20)}, 16777215);
+}
+
+void	draw_vertical_segment(t_cube *cube, int x, int y_start, int y_end, int color)
+{
+	int	delta;
+	int	height;
+	int	y;
+	int	i;
+
+	delta = 1;
+	height = y_end - y_start;
+	if (y_start > y_end)
+	{
+		delta = -1;
+		height = y_start - y_end;
+	}
+	y = y_start;
+	i = 0;
+	while (i <= height)
+	{
+		my_offset_pixel_put(cube, x, y, color);
+		y += delta;
+		i++;
+	}
 }
 
 void	draw_map(t_cube *cube)

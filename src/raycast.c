@@ -6,7 +6,7 @@
 /*   By: mmajani <mmajani@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 09:46:36 by mmajani           #+#    #+#             */
-/*   Updated: 2023/05/26 18:20:03 by mmajani          ###   ########lyon.fr   */
+/*   Updated: 2023/05/27 06:55:38 by mmajani          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,7 @@ void	draw_closest_ray(t_cube *cube)
 			cube->ray[i].type = 'h';
 		}
 		cube->ray[i].size *= cos(cube->ray[i].a - cube->p.angle);
+		//draw_segment(cube, cube->p.pos, (t_point){cube->ray[i].x, cube->ray[i].y}, 1000);
 		i++;
 	}
 }

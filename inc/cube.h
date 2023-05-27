@@ -6,7 +6,7 @@
 /*   By: mmajani <mmajani@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 15:29:07 by mmajani           #+#    #+#             */
-/*   Updated: 2023/05/26 17:45:12 by mmajani          ###   ########lyon.fr   */
+/*   Updated: 2023/05/27 07:45:46 by mmajani          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@
 # define R_ONE_DEG	0.0174533
 # define R_ANGLE	0.000636
 # define HR			1080 / 2
-# define WH			1080
 # define RES		1920
 
 typedef struct s_point
@@ -193,6 +192,7 @@ void	draw_map(t_cube *cube);
 void	draw_player(t_cube *cube);
 void	draw_dot(t_cube *cube, double x, double y);
 void	draw_perspective(t_cube *cube);
+void	draw_vertical_segment(t_cube *cube, int x, int y_start, int y_end, int color);
 
 //	raycast
 void	horizontal_ray_maths(t_cube *cube, t_cast *r, t_player *p);
