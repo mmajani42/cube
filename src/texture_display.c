@@ -6,21 +6,11 @@
 /*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 14:19:56 by vimercie          #+#    #+#             */
-/*   Updated: 2023/05/27 13:57:12 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/05/27 13:59:58 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cube.h"
-
-int	get_color(t_data img, int x, int y)
-{
-	int	res;
-
-	res = *((int *)(img.addr
-				+ (y * img.line_length)
-				+ (x * img.bytes_per_pixel)));
-	return (res);
-}
 
 t_point	get_ratio(t_cast ray, int wall_height, int ts)
 {
@@ -33,6 +23,16 @@ t_point	get_ratio(t_cast ray, int wall_height, int ts)
 		ray_pos = ray.x;
 	res.x = ray_pos % ts;
 	res.y = (double)ts / (double)wall_height;
+	return (res);
+}
+
+int	get_color(t_data img, int x, int y)
+{
+	int	res;
+
+	res = *((int *)(img.addr
+				+ (y * img.line_length)
+				+ (x * img.bytes_per_pixel)));
 	return (res);
 }
 
@@ -76,7 +76,7 @@ int	texture_display(int x, int height, t_cube *cube)
 		else
 			draw_texture(x, height, cube->so, cube);
 	}
-	else
+	else if (cube->ray[x].type == 'v')
 	{
 		if (cube->ray[x].a >= (PI / 2)
 			&& cube->ray[x].a < (PI + (PI / 2)))
