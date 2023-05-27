@@ -6,7 +6,7 @@
 /*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 19:13:43 by mmajani           #+#    #+#             */
-/*   Updated: 2023/05/27 13:52:09 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/05/27 13:57:40 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	init_mlx(t_cube *cube)
 	cube->img.addr = mlx_get_data_addr(cube->img.img,
 			&cube->img.bits_per_pixel, &cube->img.line_length,
 			&cube->img.endian);
-	cube->img.bytes_per_pixel == cube->img.bytes_per_pixel / 8;
+	cube->img.bytes_per_pixel = cube->img.bytes_per_pixel / 8;
 	cube->display_status = 1;
 	init_assets(cube);
 }

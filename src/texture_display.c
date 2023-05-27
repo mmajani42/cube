@@ -6,24 +6,19 @@
 /*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 14:19:56 by vimercie          #+#    #+#             */
-/*   Updated: 2023/05/27 13:55:45 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/05/27 13:57:12 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cube.h"
 
-int	get_color(t_data *img, t_cast ray, int y)
+int	get_color(t_data img, int x, int y)
 {
 	int	res;
-	int	x;
 
-	x = 0;
-	if (ray.type == 'v')
-		x = (int)ray.y & 64;
-	else
-		x = (int)ray.x & 64;
-	res = *((int *)(img->addr
-				+ (y * img->line_length + x * img->bytes_per_pixel)));
+	res = *((int *)(img.addr
+				+ (y * img.line_length)
+				+ (x * img.bytes_per_pixel)));
 	return (res);
 }
 
