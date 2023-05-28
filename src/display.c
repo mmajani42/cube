@@ -6,7 +6,7 @@
 /*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 15:20:58 by mmajani           #+#    #+#             */
-/*   Updated: 2023/05/28 16:27:05 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/05/29 01:23:23 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,13 +60,10 @@ void	draw_perspective(t_cube *cube)
 
 int	gameloop(t_cube *cube)
 {
-	//clear_image(cube);
 	move_player(cube);
-	// cube->p.pos.x = 275;
-	// cube->p.pos.y = 64;
 	draw_closest_ray(cube);
-	draw_map(cube);
-	draw_player(cube);
+	// draw_map(cube);
+	// draw_player(cube);
 	draw_perspective(cube);
 	mlx_put_image_to_window(cube->mlx, cube->mlx_win, cube->img.img, 0, 0);
 	return (1);

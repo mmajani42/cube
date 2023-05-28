@@ -6,11 +6,24 @@
 /*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 13:49:14 by vimercie          #+#    #+#             */
-/*   Updated: 2023/05/08 05:51:40 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/05/28 20:58:37 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cube.h"
+
+// char	*color_int_to_hex(t_color color)
+// {
+// 	char	res[9];
+// 	int		quotient;
+// 	int		remainder;
+// 	int		i;
+
+// 	i = 0;
+// 	ft_bzero(res, 9);
+// 	ft_strlcpy(res, "0x", 3);
+	
+// }
 
 char	*dup_and_fill(char *src, char c, size_t size, bool ow_last_char)
 {
