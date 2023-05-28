@@ -1,13 +1,13 @@
 NO ./assets/brick_wall_64x64.xpm
 SO ./assets/brick_wall_64x64_darken.xpm
-EA ./assets/immondice.xpm
-WE ./assets/gradient.xpm
+EA ./assets/brick_wall_64x64.xpm
+WE ./assets/brick_wall_64x64_darken.xpm
 
 F 220,100,0
 C 125,30,253
 
 11111111111111
-1000000N000001
+1S000000000001
 10111011101111
 10100000100001
 10101110111011
