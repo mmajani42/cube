@@ -6,11 +6,18 @@
 /*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 15:20:58 by mmajani           #+#    #+#             */
-/*   Updated: 2023/05/28 01:57:44 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/05/28 16:27:05 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cube.h"
+
+int	get_color(t_data img, t_point pos)
+{
+	return (*((int *)(img.addr
+			+ ((int)pos.y * img.line_length)
+			+ ((int)pos.x * img.bytes_per_pixel))));
+}
 
 void	clear_image(t_cube *cube)
 {
@@ -33,30 +40,22 @@ void	clear_image(t_cube *cube)
 
 void	draw_perspective(t_cube *cube)
 {
-	int		i;
-	double	h;
-	double	hh;
+	int		y;
 
-	i = 0;
-	while (i <= WIN_Y / 2)
+	y = 0;
+	while (y <= WIN_Y / 2)
 	{
-		draw_segment(cube, (t_point){0, i},
-			(t_point){WIN_X - 1, i}, WHITE);
-		i++;
+		draw_segment(cube, (t_point){0, y},
+			(t_point){WIN_X - 1, y}, WHITE);
+		y++;
 	}
-	while (i <= WIN_Y)
+	while (y <= WIN_Y)
 	{
-		draw_segment(cube, (t_point){0, i},
-			(t_point){WIN_X - 1, i}, GREY);
-		i++;
+		draw_segment(cube, (t_point){0, y},
+			(t_point){WIN_X - 1, y}, GREY);
+		y++;
 	}
-	i = 0;
-	while (i < WIN_X)
-	{
-		h = (cube->ts * WIN_X) / cube->ray[i].size;
-		texture_display(i, h, cube);
-		i++;
-	}
+	draw_texture(cube);
 }
 
 int	gameloop(t_cube *cube)

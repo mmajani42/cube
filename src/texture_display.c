@@ -6,82 +6,100 @@
 /*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 14:19:56 by vimercie          #+#    #+#             */
-/*   Updated: 2023/05/28 05:05:35 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/05/28 18:34:42 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cube.h"
 
-int	get_color(t_data img, t_point ratio)
-{
-	return (*((int *)(img.addr
-			+ ((int)ratio.y * img.line_length)
-			+ ((int)ratio.x * img.bytes_per_pixel))));
-}
-
-t_point	get_ratio(t_cast ray, double height, int ts)
-{
-	t_point	res;
-	int		ray_pos;
-
-	if (ray.type == 'v')
-		ray_pos = ray.y;
-	else
-		ray_pos = ray.x;
-
-	res.x = ray_pos % ts;
-	if (res.x < 32)
-		res.x += 32;
-	else
-		res.x -= 32;
-	res.y = ts / height;
-	return (res);
-}
-
-void	draw_texture_column(int x, double height, t_asset ast, t_cube *cube)
-{
-	t_point	ratio;
-	int		pixel_pos;
-	int		y;
-
-	if (x < 0 || x > WIN_X || height <= 0)
-		return ;
-	ratio = get_ratio(cube->ray[x], height, cube->ts);
-	y = (WIN_Y - (int)height) / 2;
-	pixel_pos = (y * cube->img.line_length)
-		+ (x * cube->img.bytes_per_pixel);
-	if (y < 0)
-	{
-		pixel_pos += cube->img.line_length * (-y);
-		ratio.y += (cube->ts / height) * (-y);
-		y = 0;
-	}
-	while (y < height + ((WIN_Y - (int)height) / 2) && y < WIN_Y)
-	{
-		my_custom_pixel_put(&cube->img, pixel_pos, get_color(ast.img, ratio));
-		pixel_pos += cube->img.line_length;
-		if ((int)(ratio.y + (cube->ts / height)) < cube->ts)
-			ratio.y += cube->ts / height;
-		y++;
-	}
-}
-
-int	texture_display(int x, double height, t_cube *cube)
+t_asset	get_texture(int x, t_cube *cube)
 {
 	if (cube->ray[x].type == 'h')
 	{
 		if (cube->ray[x].a >= PI)
-			draw_texture_column(x, height, cube->no, cube);
+			return (cube->no);
 		else
-			draw_texture_column(x, height, cube->so, cube);
+			return (cube->so);
 	}
 	else
 	{
 		if (cube->ray[x].a >= (PI / 2)
 			&& cube->ray[x].a < (PI + (PI / 2)))
-			draw_texture_column(x, height, cube->we, cube);
+			return (cube->we);
 		else
-			draw_texture_column(x, height, cube->ea, cube);
+			return (cube->ea);
 	}
+}
+
+double	get_ratio_x(int x, t_cube *cube)
+{
+	double	res;
+	int		ray_pos;
+
+	if (cube->ray[x].type == 'v')
+		ray_pos = cube->ray[x].y;
+	else
+		ray_pos = cube->ray[x].x;
+	res = ray_pos % (int)cube->ts;
+	if (res < 32)
+		res += 32;
+	else
+		res -= 32;
+	return (res);
+}
+
+int	set_loop_vars(int start, int *win_pos, double *ratio_y, t_cube *cube)
+{
+	double	ratio_y_tmp;
+
+	ratio_y_tmp = *ratio_y;
+	if (start >= 0)
+	{
+		*win_pos += start * cube->img.line_length;
+		return (start);
+	}
+	*ratio_y -= start * ratio_y_tmp;
 	return (0);
+}
+
+void	draw_texture_column(t_point pos, int h, t_asset ast, t_cube *cube)
+{
+	int		wall_top;
+	int		win_pos;
+	t_point	ratio;
+	double	ratio_step;
+
+	if (pos.x < 0 || pos.x > WIN_X)
+		return ;
+	wall_top = (WIN_Y - (int)h) / 2;
+	win_pos = pos.x * cube->img.bytes_per_pixel;
+	ratio.x = get_ratio_x(pos.x, cube);
+	ratio.y = cube->ts / h;
+	ratio_step = ratio.y;
+	pos.y = set_loop_vars(wall_top, &win_pos, &ratio.y, cube);
+	while (pos.y < h + wall_top && pos.y < WIN_Y)
+	{
+		if (ratio.y >= cube->ts)
+			ratio.y--;
+		my_custom_pixel_put(&cube->img, win_pos, get_color(ast.img, ratio));
+		win_pos += cube->img.line_length;
+		ratio.y += ratio_step;
+		pos.y++;
+	}
+}
+
+void	draw_texture(t_cube *cube)
+{
+	t_point	pos;
+	int		wall_top;
+	int		height;
+
+	pos.x = 0;
+	while (pos.x < WIN_X)
+	{
+		height = (cube->ts * WIN_X) / cube->ray[(int)pos.x].size;
+		wall_top = (WIN_Y - (int)height) / 2;
+		draw_texture_column(pos, height, get_texture(pos.x, cube), cube);
+		pos.x++;
+	}
 }

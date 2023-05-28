@@ -6,7 +6,7 @@
 /*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 15:29:07 by mmajani           #+#    #+#             */
-/*   Updated: 2023/05/28 05:05:02 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/05/28 16:26:55 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,6 +138,7 @@ typedef struct s_cube
 }				t_cube;
 
 void	cube_tester(t_cube *cube);
+void	print_tab(char **tab);
 
 // 	parsing
 int		parsing(char *filename, t_cube *cube);
@@ -193,7 +194,7 @@ void	draw_map(t_cube *cube);
 void	draw_player(t_cube *cube);
 void	draw_dot(t_cube *cube, double x, double y);
 void	draw_perspective(t_cube *cube);
-void	draw_texture_column(int x, double height, t_asset ast, t_cube *cube);
+void	draw_texture(t_cube *cube);
 
 //	raycast
 void	horizontal_ray_maths(t_cube *cube, t_cast *r, t_player *p);
@@ -214,8 +215,7 @@ void	draw_closest_ray(t_cube *cube);
 
 //	display
 int		gameloop(t_cube *cube);
-int		texture_display(int x, double height, t_cube *cube);
-void	print_tab(char **tab);
+int		get_color(t_data img, t_point pos);
 
 //	events
 int		key_pressed_events(int keycode, t_cube *cube);
