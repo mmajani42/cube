@@ -6,7 +6,7 @@
 /*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 14:19:56 by vimercie          #+#    #+#             */
-/*   Updated: 2023/05/28 18:34:42 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/05/28 18:38:22 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,14 +91,12 @@ void	draw_texture_column(t_point pos, int h, t_asset ast, t_cube *cube)
 void	draw_texture(t_cube *cube)
 {
 	t_point	pos;
-	int		wall_top;
 	int		height;
 
 	pos.x = 0;
 	while (pos.x < WIN_X)
 	{
 		height = (cube->ts * WIN_X) / cube->ray[(int)pos.x].size;
-		wall_top = (WIN_Y - (int)height) / 2;
 		draw_texture_column(pos, height, get_texture(pos.x, cube), cube);
 		pos.x++;
 	}
