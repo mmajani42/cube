@@ -6,7 +6,7 @@
 /*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 16:55:48 by vimercie          #+#    #+#             */
-/*   Updated: 2023/05/26 15:27:44 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/05/27 20:05:04 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,7 @@ int	parse_elements(t_cube *cube)
 
 	i = 0;
 	n_assets = 0;
-	while (n_assets < 6 && !is_valid_map_line(cube->file[i])
-		&& cube->file[i])
+	while (n_assets < 6 && !is_valid_map_line(cube->file[i]) && cube->file[i])
 	{
 		if (ft_strncmp(cube->file[i], "NO", 2) == 0 && !cube->no.path)
 			n_assets += set_texture_path(&cube->no.path, cube->file[i] + 2);

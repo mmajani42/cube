@@ -6,7 +6,7 @@
 /*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 14:19:56 by vimercie          #+#    #+#             */
-/*   Updated: 2023/05/27 19:11:18 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/05/28 02:06:42 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,29 +23,24 @@ t_point	get_ratio(t_cast ray, double wall_height, int ts)
 		ray_pos = ray.x;
 
 	res.x = ray_pos % ts;
+	if (res.x < 32)
+		res.x += 32;
+	else
+		res.x -= 32;
 	res.y = ts / wall_height;
 	return (res);
 }
 
 int	get_color(t_data img, int x, int y)
 {
-	int	res;
-
-	res = *((int *)(img.addr
-				+ (y * img.line_length)
-				+ (x * img.bytes_per_pixel)));
-	return (res);
-}
-
-int	get_pixel_pos(t_data img, int x, int y)
-{
-	return ((y * img.line_length) + (x * img.bytes_per_pixel));
+	return (*((int *)(img.addr
+			+ (y * img.line_length)
+			+ (x * img.bytes_per_pixel))));
 }
 
 void	draw_texture(int x, double wall_height, t_asset ast, t_cube *cube)
 {
-	int		color;
-	int		start;
+	int		wall_top;
 	t_point	ratio;
 	double	ratio_y;
 	int		pixel_pos;
@@ -53,21 +48,27 @@ void	draw_texture(int x, double wall_height, t_asset ast, t_cube *cube)
 
 	if (x < 0 || x > WIN_X || wall_height <= 0)
 		return ;
-	start = (WIN_Y / 2) - ((int)wall_height / 2);
+	wall_top = (WIN_Y / 2) - ((int)wall_height / 2);
+	i = wall_top;
 	ratio = get_ratio(cube->ray[x], wall_height, cube->ts);
-	pixel_pos = (start * cube->img.line_length)
-		+ (x * cube->img.bytes_per_pixel);
 	ratio_y = ratio.y;
-	i = 0;
-	while (i < wall_height)
+	pixel_pos = (wall_top * cube->img.line_length)
+		+ (x * cube->img.bytes_per_pixel);
+	if (i < 0)
 	{
-		if (i + start >= 0 && i + start <= WIN_Y)
+		pixel_pos += cube->img.line_length * (-i);
+		ratio.y += ratio_y * (-i);
+		i = 0;
+	}
+	while (i < wall_height + wall_top && i < WIN_Y)
+	{
+		if (i >= 0 && i <= WIN_Y)
 		{
-			color = get_color(ast.img, ratio.x, ratio.y);
-			my_custom_pixel_put(&cube->img, pixel_pos, color);
+			my_custom_pixel_put(&cube->img, pixel_pos,
+				get_color(ast.img, ratio.x, ratio.y));
 		}
 		pixel_pos += cube->img.line_length;
-		if ((int)(ratio.y + ratio_y) < 64)
+		if ((int)(ratio.y + ratio_y) < cube->ts)
 			ratio.y += ratio_y;
 		i++;
 	}

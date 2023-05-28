@@ -6,7 +6,7 @@
 /*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 15:29:07 by mmajani           #+#    #+#             */
-/*   Updated: 2023/05/27 18:51:27 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/05/27 20:54:02 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,10 +88,8 @@ typedef struct s_cast
 	double	yo;
 	double	xo;
 	double	size;
-	int		r;
 	int		mx;
 	int		my;
-	int		mp;
 	int		dof;
 	char	type;
 	double	a_tan;
