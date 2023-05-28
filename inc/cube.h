@@ -6,7 +6,7 @@
 /*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 15:29:07 by mmajani           #+#    #+#             */
-/*   Updated: 2023/05/27 20:54:02 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/05/28 05:05:02 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -193,7 +193,7 @@ void	draw_map(t_cube *cube);
 void	draw_player(t_cube *cube);
 void	draw_dot(t_cube *cube, double x, double y);
 void	draw_perspective(t_cube *cube);
-void	draw_texture(int x, double wall_height, t_asset ast, t_cube *cube);
+void	draw_texture_column(int x, double height, t_asset ast, t_cube *cube);
 
 //	raycast
 void	horizontal_ray_maths(t_cube *cube, t_cast *r, t_player *p);
