@@ -6,7 +6,7 @@
 /*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 09:46:36 by mmajani           #+#    #+#             */
-/*   Updated: 2023/05/29 01:28:33 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/05/29 18:28:16 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,8 +134,8 @@ void vertical_raycast2(t_cube *cube)
 void	draw_closest_ray(t_cube *cube)
 {
 	int		i;
-	t_point	pp1;
-	t_point	pp2;
+	// t_point	pp1;
+	// t_point	pp2;
 
 	i = 0;
 	horizontal_raycast(cube);
@@ -157,12 +157,12 @@ void	draw_closest_ray(t_cube *cube)
 		// draw_segment(cube, cube->p.pos, (t_point){cube->ray[RES - 1].x, cube->ray[RES - 1].y}, 4000);
 		if (i == 0)
 		{
-			pp1.x = cube->p.pos.x + cos(cube->p.angle - PI / 2) * cube->ts;
-			pp1.y = cube->p.pos.y + sin(cube->p.angle - PI / 2) * cube->ts;
-			pp2.x = cube->p.pos.x + cos(cube->p.angle + PI / 2) * cube->ts;
-			pp2.y = cube->p.pos.y + sin(cube->p.angle + PI / 2) * cube->ts;
-			draw_segment(cube, cube->p.pos, pp1, 4000);
-			draw_segment(cube, cube->p.pos, pp2, 4000);
+			// pp1.x = cube->p.pos.x + cos(cube->p.angle - PI / 2) * cube->ts;
+			// pp1.y = cube->p.pos.y + sin(cube->p.angle - PI / 2) * cube->ts;
+			// pp2.x = cube->p.pos.x + cos(cube->p.angle + PI / 2) * cube->ts;
+			// pp2.y = cube->p.pos.y + sin(cube->p.angle + PI / 2) * cube->ts;
+			// draw_segment(cube, cube->p.pos, pp1, 4000);
+			// draw_segment(cube, cube->p.pos, pp2, 4000);
 		}
 		i++;
 	}
