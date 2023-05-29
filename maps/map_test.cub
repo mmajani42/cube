@@ -3,8 +3,8 @@ SO ./assets/brick_wall_64x64_darken.xpm
 EA ./assets/brick_wall_64x64.xpm
 WE ./assets/brick_wall_64x64_darken.xpm
 
-F 220,100,0
-C 125,30,253
+C 128,0,255
+F 255,255,255
 
 11111111111111
 1S000000000001

@@ -6,7 +6,7 @@
 /*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 15:29:07 by mmajani           #+#    #+#             */
-/*   Updated: 2023/05/28 16:26:55 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/05/29 18:05:57 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,8 @@ typedef struct s_data
 
 typedef struct s_color
 {
-	int		is_set;
+	char	*hex;
+	int		int_hex;
 	int		r;
 	int		g;
 	int		b;
@@ -159,6 +160,9 @@ double	get_player_angle(char direction);
 bool	wall_sonar(int x, int y, char **map);
 
 bool	check_file_extension(char *filename, char *format);
+
+char	*color_int_to_hex(int n);
+int		color_hex_to_int(char *str);
 
 // init
 void	init_mlx(t_cube *cube);

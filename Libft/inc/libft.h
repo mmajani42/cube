@@ -6,7 +6,7 @@
 /*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 18:12:35 by vimercie          #+#    #+#             */
-/*   Updated: 2023/04/26 17:59:04 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/05/29 17:02:51 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,12 @@
 # include <stdlib.h>
 # include <string.h>
 # include <stdio.h>
+# include <stdbool.h>
 # include "../inc/get_next_line.h"
 
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);
+bool	ft_isxdigit(int c);
 int		ft_isalnum(int c);
 int		ft_isascii(int c);
 int		ft_isprint(int c);

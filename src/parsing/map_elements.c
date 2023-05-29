@@ -6,11 +6,28 @@
 /*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 16:55:48 by vimercie          #+#    #+#             */
-/*   Updated: 2023/05/27 20:05:04 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/05/29 18:09:39 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cube.h"
+
+void	set_hex_color(t_color *color)
+{
+	char	*hex_color;
+
+	color->hex = ft_calloc(9, sizeof(char));
+	ft_strlcpy(color->hex, "0x", 3);
+	hex_color = color_int_to_hex(color->r);
+	ft_strlcpy(color->hex + 2, hex_color, 3);
+	free(hex_color);
+	hex_color = color_int_to_hex(color->g);
+	ft_strlcpy(color->hex + 4, hex_color, 3);
+	free(hex_color);
+	hex_color = color_int_to_hex(color->b);
+	ft_strlcpy(color->hex + 6, hex_color, 3);
+	free(hex_color);
+}
 
 int	set_color(t_color *dest, char *line)
 {
@@ -32,6 +49,8 @@ int	set_color(t_color *dest, char *line)
 	dest->b = ft_atoi(rgb[2]);
 	free(color_str);
 	free_tab(rgb);
+	set_hex_color(dest);
+	dest->int_hex = color_hex_to_int(dest->hex);
 	return (1);
 }
 

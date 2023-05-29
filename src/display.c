@@ -6,7 +6,7 @@
 /*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 15:20:58 by mmajani           #+#    #+#             */
-/*   Updated: 2023/05/29 01:23:23 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/05/29 18:10:19 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,13 +46,13 @@ void	draw_perspective(t_cube *cube)
 	while (y <= WIN_Y / 2)
 	{
 		draw_segment(cube, (t_point){0, y},
-			(t_point){WIN_X - 1, y}, WHITE);
+			(t_point){WIN_X - 1, y}, cube->ceiling.int_hex);
 		y++;
 	}
 	while (y <= WIN_Y)
 	{
 		draw_segment(cube, (t_point){0, y},
-			(t_point){WIN_X - 1, y}, GREY);
+			(t_point){WIN_X - 1, y}, cube->floor.int_hex);
 		y++;
 	}
 	draw_texture(cube);
