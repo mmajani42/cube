@@ -6,7 +6,7 @@
 /*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 18:24:31 by mmajani           #+#    #+#             */
-/*   Updated: 2023/06/01 15:41:58 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/06/01 17:06:20 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,11 +76,15 @@ t_point	handle_collision(t_cube *cube)
 	res = cube->p.pos;
 	step = combined_movement_vector(cube);
 	offset = get_map_offset(cube);
-	if (cube->map[get_map_pos(cube->p.pos.y, cube->ts)]
-		[get_map_pos(cube->p.pos.x + offset.x + step.x, cube->ts)] != '1')
+	if ((cube->map[get_map_pos(cube->p.pos.y + offset.x, cube->ts)]
+			[get_map_pos(cube->p.pos.x + offset.x + step.x, cube->ts)] != '1')
+		&& (cube->map[get_map_pos(cube->p.pos.y - offset.x, cube->ts)]
+			[get_map_pos(cube->p.pos.x + offset.x + step.x, cube->ts)] != '1'))
 		res.x += step.x;
-	if (cube->map[get_map_pos(cube->p.pos.y + offset.y + step.y, cube->ts)]
-		[get_map_pos(cube->p.pos.x, cube->ts)] != '1')
+	if ((cube->map[get_map_pos(cube->p.pos.y + offset.y + step.y, cube->ts)]
+			[get_map_pos(cube->p.pos.x + offset.y, cube->ts)] != '1')
+		&& (cube->map[get_map_pos(cube->p.pos.y + offset.y + step.y, cube->ts)]
+			[get_map_pos(cube->p.pos.x - offset.y, cube->ts)] != '1'))
 		res.y += step.y;
 	return (res);
 }
