@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmajani <mmajani@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 18:24:31 by mmajani           #+#    #+#             */
-/*   Updated: 2023/06/01 10:04:09 by mmajani          ###   ########lyon.fr   */
+/*   Updated: 2023/06/01 15:41:58 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,29 @@
 int	get_map_pos(double pos, double ts)
 {
 	return ((int)round(pos / ts));
+}
+
+t_point	get_map_offset(t_cube *cube)
+{
+	t_point	res;
+	double	offset;
+
+	offset = 20;
+	res = (t_point){0, 0};
+	if (cube->p.angle < PI)
+		res.y = offset;
+	else
+		res.y = -offset;
+	if (cube->p.angle > PI / 2 && cube->p.angle <= PI + (PI / 2))
+		res.x = -offset;
+	else
+		res.x = offset;
+	if (cube->key_s == 1)
+	{
+		res.x = -res.x;
+		res.y = -res.y;
+	}
+	return (res);
 }
 
 t_point	combined_movement_vector(t_cube *cube)
@@ -48,15 +71,15 @@ t_point	handle_collision(t_cube *cube)
 {
 	t_point	res;
 	t_point	step;
-	int		offset;
+	t_point	offset;
 
 	res = cube->p.pos;
 	step = combined_movement_vector(cube);
-	offset = 7;
+	offset = get_map_offset(cube);
 	if (cube->map[get_map_pos(cube->p.pos.y, cube->ts)]
-		[get_map_pos(cube->p.pos.x + (step.x * offset), cube->ts)] != '1')
+		[get_map_pos(cube->p.pos.x + offset.x + step.x, cube->ts)] != '1')
 		res.x += step.x;
-	if (cube->map[get_map_pos(cube->p.pos.y + (step.y * offset), cube->ts)]
+	if (cube->map[get_map_pos(cube->p.pos.y + offset.y + step.y, cube->ts)]
 		[get_map_pos(cube->p.pos.x, cube->ts)] != '1')
 		res.y += step.y;
 	return (res);

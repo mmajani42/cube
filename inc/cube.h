@@ -6,7 +6,7 @@
 /*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 15:29:07 by mmajani           #+#    #+#             */
-/*   Updated: 2023/05/29 18:05:57 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/06/01 15:07:06 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,10 @@
 # define W 			119
 # define A 			97
 # define S 			115
-# define X 			120
 # define D 			100
+# define LEFT		65361
+# define RIGHT		65363
+# define X 			120
 # define O 			111
 # define P 			112
 # define R 			114
