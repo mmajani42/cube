@@ -6,7 +6,7 @@
 /*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 18:24:31 by mmajani           #+#    #+#             */
-/*   Updated: 2023/06/01 02:53:26 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/06/01 02:55:46 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,5 @@ void	move_player(t_cube *cube)
 		cube->p.angle -= R_ANGLE * 70;
 	else if (cube->key_d == 1)
 		cube->p.angle += R_ANGLE * 70;
-	if (cube->p.angle >= 2 * PI)
-		cube->p.angle -= 2 * PI;
-	else if (cube->p.angle < 0)
-		cube->p.angle += 2 * PI;
+	cube->p.angle = reset_angle(cube->p.angle);
 }
