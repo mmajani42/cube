@@ -6,7 +6,7 @@
 /*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 18:24:31 by mmajani           #+#    #+#             */
-/*   Updated: 2023/06/01 02:55:46 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/06/01 04:27:54 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ t_point	handle_collision(t_cube *cube)
 		return (res);
 	x_step = cos(cube->p.angle) * cube->ts * SPEED;
 	y_step = sin(cube->p.angle) * cube->ts * SPEED;
-	offset = 12;
+	offset = 7;
 	if (cube->key_s == 1)
 	{
 		x_step = -x_step;
