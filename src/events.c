@@ -6,7 +6,7 @@
 /*   By: mmajani <mmajani@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 17:27:22 by mmajani           #+#    #+#             */
-/*   Updated: 2023/05/26 17:33:35 by mmajani          ###   ########lyon.fr   */
+/*   Updated: 2023/06/01 10:02:31 by mmajani          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,22 @@ int	key_release_events(int keycode, t_cube *cube)
 {
 	if (keycode == W)
 		cube->key_w = 0;
-	else if (keycode == S)
+	if (keycode == S)
 		cube->key_s = 0;
 	if (keycode == A)
 		cube->key_a = 0;
-	else if (keycode == D)
+	if (keycode == D)
 		cube->key_d = 0;
+	if (keycode == LEFT)
+		cube->key_left = 0;
+	if (keycode == RIGHT)
+		cube->key_right = 0;
 	return (0);
 }
 
 int	key_pressed_events(int keycode, t_cube *cube)
 {
+	dprintf(1, "keycode = %d\n", keycode);
 	if (keycode == ESC || keycode == X)
 	{
 		mlx_destroy_window(cube->mlx, cube->mlx_win);
@@ -40,5 +45,9 @@ int	key_pressed_events(int keycode, t_cube *cube)
 		cube->key_a = 1;
 	else if (keycode == D)
 		cube->key_d = 1;
+	if (keycode == LEFT)
+		cube->key_left = 1;
+	else if (keycode == RIGHT)
+		cube->key_right = 1;
 	return (0);
 }

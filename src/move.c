@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: mmajani <mmajani@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 18:24:31 by mmajani           #+#    #+#             */
-/*   Updated: 2023/06/01 04:27:54 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/06/01 10:04:09 by mmajani          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,30 +19,46 @@ int	get_map_pos(double pos, double ts)
 	return ((int)round(pos / ts));
 }
 
+t_point	combined_movement_vector(t_cube *cube)
+{
+	t_point	step_walk;
+	t_point	step_strafe;
+	t_point	final_step;
+
+	step_walk = (t_point){0, 0};
+	step_strafe = (t_point){0, 0};
+	if (cube->key_w == 1)
+		step_walk = (t_point){cos(cube->p.angle) * cube->ts * SPEED,
+			sin(cube->p.angle) * cube->ts * SPEED};
+	else if (cube->key_s == 1)
+		step_walk = (t_point){cos(cube->p.angle) * cube->ts * SPEED * -1,
+			sin(cube->p.angle) * cube->ts * SPEED * -1};
+	if (cube->key_left == 1)
+		step_strafe = (t_point){cos(cube->p.angle - PI / 2),
+			sin(cube->p.angle - PI / 2)};
+	else if (cube->key_right == 1)
+		step_strafe = (t_point){cos(cube->p.angle + PI / 2),
+			sin(cube->p.angle + PI / 2)};
+	final_step = (t_point){step_walk.x + step_strafe.x,
+		step_walk.y + step_strafe.y};
+	return (final_step);
+}
+
 t_point	handle_collision(t_cube *cube)
 {
 	t_point	res;
-	double	x_step;
-	double	y_step;
+	t_point	step;
 	int		offset;
 
 	res = cube->p.pos;
-	if (!cube->key_w && !cube->key_s)
-		return (res);
-	x_step = cos(cube->p.angle) * cube->ts * SPEED;
-	y_step = sin(cube->p.angle) * cube->ts * SPEED;
+	step = combined_movement_vector(cube);
 	offset = 7;
-	if (cube->key_s == 1)
-	{
-		x_step = -x_step;
-		y_step = -y_step;
-	}
 	if (cube->map[get_map_pos(cube->p.pos.y, cube->ts)]
-		[get_map_pos(cube->p.pos.x + (x_step * offset), cube->ts)] != '1')
-		res.x += x_step;
-	if (cube->map[get_map_pos(cube->p.pos.y + (y_step * offset), cube->ts)]
+		[get_map_pos(cube->p.pos.x + (step.x * offset), cube->ts)] != '1')
+		res.x += step.x;
+	if (cube->map[get_map_pos(cube->p.pos.y + (step.y * offset), cube->ts)]
 		[get_map_pos(cube->p.pos.x, cube->ts)] != '1')
-		res.y += y_step;
+		res.y += step.y;
 	return (res);
 }
 
