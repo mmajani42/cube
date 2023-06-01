@@ -6,7 +6,7 @@
 /*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 18:24:31 by mmajani           #+#    #+#             */
-/*   Updated: 2023/06/01 02:11:56 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/06/01 02:53:26 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,21 +24,23 @@ t_point	handle_collision(t_cube *cube)
 	t_point	res;
 	double	x_step;
 	double	y_step;
+	int		offset;
 
 	res = cube->p.pos;
 	if (!cube->key_w && !cube->key_s)
 		return (res);
 	x_step = cos(cube->p.angle) * cube->ts * SPEED;
 	y_step = sin(cube->p.angle) * cube->ts * SPEED;
+	offset = 12;
 	if (cube->key_s == 1)
 	{
 		x_step = -x_step;
 		y_step = -y_step;
 	}
 	if (cube->map[get_map_pos(cube->p.pos.y, cube->ts)]
-		[get_map_pos(cube->p.pos.x + x_step, cube->ts)] != '1')
+		[get_map_pos(cube->p.pos.x + (x_step * offset), cube->ts)] != '1')
 		res.x += x_step;
-	if (cube->map[get_map_pos(cube->p.pos.y + y_step, cube->ts)]
+	if (cube->map[get_map_pos(cube->p.pos.y + (y_step * offset), cube->ts)]
 		[get_map_pos(cube->p.pos.x, cube->ts)] != '1')
 		res.y += y_step;
 	return (res);
