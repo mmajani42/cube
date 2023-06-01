@@ -6,7 +6,7 @@
 /*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 13:49:14 by vimercie          #+#    #+#             */
-/*   Updated: 2023/05/29 18:09:26 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/06/01 18:15:53 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,8 @@ char	*dup_and_fill(char *src, char c, size_t size, bool ow_last_char)
 	len = ft_strlen(src) - ow_last_char;
 	if (len <= 0)
 		return (NULL);
-	if (len <= size)
-		return (ft_strndup(src, len));
+	if (len >= size)
+		return (ft_strndup(src, size));
 	res = ft_calloc(size + 1, sizeof(char));
 	ft_strlcpy(res, src, len + 1);
 	memset(res + len, c, size - len);

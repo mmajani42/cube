@@ -6,7 +6,7 @@
 /*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 15:29:07 by mmajani           #+#    #+#             */
-/*   Updated: 2023/06/01 15:07:06 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/06/01 18:19:00 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@
 # define R_ANGLE	0.000636
 # define HR			1080 / 2
 # define RES		1920
-# define FOV	    50
+# define FOV	    60
 
 typedef struct s_point
 {
