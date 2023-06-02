@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmajani <mmajani@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 18:24:31 by mmajani           #+#    #+#             */
-/*   Updated: 2023/06/02 17:19:09 by mmajani          ###   ########lyon.fr   */
+/*   Updated: 2023/06/02 17:28:41 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,26 +19,18 @@ int	get_map_pos(double pos, double ts)
 	return ((int)round(pos / ts));
 }
 
-t_point	get_map_offset(t_cube *cube)
+t_point	get_map_offset(t_point step)
 {
 	t_point	res;
-	double	offset;
 
-	offset = 20;
-	res = (t_point){0, 0};
-	if (cube->p.angle < PI)
-		res.y = offset;
+	if (step.x > 0)
+		res.x = 20;
 	else
-		res.y = -offset;
-	if (cube->p.angle > PI / 2 && cube->p.angle <= PI + (PI / 2))
-		res.x = -offset;
+		res.x = -20;
+	if (step.y > 0)
+		res.y = 20;
 	else
-		res.x = offset;
-	if (cube->key_s == 1)
-	{
-		res.x = -res.x;
-		res.y = -res.y;
-	}
+		res.y = -20;
 	return (res);
 }
 
@@ -75,14 +67,7 @@ t_point	handle_collision(t_cube *cube)
 
 	res = cube->p.pos;
 	step = combined_movement_vector(cube);
-	if (step.x > 0)
-		offset.x = 20;
-	else
-		offset.x = -20;
-	if (step.y > 0)
-		offset.y = 20;
-	else
-		offset.y = -20;
+	offset = get_map_offset(step);
 	if ((cube->map[get_map_pos(cube->p.pos.y + offset.x, cube->ts)]
 			[get_map_pos(cube->p.pos.x + offset.x + step.x, cube->ts)] != '1')
 		&& (cube->map[get_map_pos(cube->p.pos.y - offset.x, cube->ts)]
