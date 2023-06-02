@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: mmajani <mmajani@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 18:24:31 by mmajani           #+#    #+#             */
-/*   Updated: 2023/06/01 17:06:20 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/06/02 17:19:09 by mmajani          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,14 @@ t_point	handle_collision(t_cube *cube)
 
 	res = cube->p.pos;
 	step = combined_movement_vector(cube);
-	offset = get_map_offset(cube);
+	if (step.x > 0)
+		offset.x = 20;
+	else
+		offset.x = -20;
+	if (step.y > 0)
+		offset.y = 20;
+	else
+		offset.y = -20;
 	if ((cube->map[get_map_pos(cube->p.pos.y + offset.x, cube->ts)]
 			[get_map_pos(cube->p.pos.x + offset.x + step.x, cube->ts)] != '1')
 		&& (cube->map[get_map_pos(cube->p.pos.y - offset.x, cube->ts)]

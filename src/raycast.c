@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycast.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: mmajani <mmajani@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 09:46:36 by mmajani           #+#    #+#             */
-/*   Updated: 2023/05/31 20:49:46 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/06/02 17:17:27 by mmajani          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,77 +55,6 @@ void	vertical_raycast(t_cube *cube)
 		// 	r.size *= cos(r.a);
 		cube->v_ray[i] = r;
 		r.a += cube->fov_radian / RES;
-		r.a = reset_angle(r.a);
-		i++;
-	}
-}
-
-void horizontal_raycast2(t_cube *cube)
-{
-	t_cast r;
-	t_player p;
-	int i;
-
-	i = 0;
-	p = cube->p;
-	r.a = p.angle - (cube->fov_radian) / 2;
-	r.a = reset_angle(r.a);
-
-	// Calcul de l'incrément angulaire
-	float angle_increment = cube->fov_radian / RES;
-
-	while (i < RES)
-	{
-		horizontal_ray_maths(cube, &r, &p);
-		horizontal_step(cube, &r);
-		r.size = sqrt(((r.x - p.pos.x) * (r.x - p.pos.x))
-					+ (r.y - p.pos.y) * (r.y - p.pos.y));
-		cube->h_ray[i] = r;
-
-		// Calcul du décalage cartésien correspondant à l'angle
-		float cartesian_offset = r.size * tan(r.a - p.angle);
-
-		// Ajustement de la position d'impact en fonction du décalage cartésien
-		r.x += cartesian_offset * cos(r.a);
-		r.y += cartesian_offset * sin(r.a);
-
-		r.a += angle_increment;
-		r.a = reset_angle(r.a);
-		i++;
-	}
-}
-
-void vertical_raycast2(t_cube *cube)
-{
-	t_cast r;
-	t_player p;
-	int i;
-
-	i = 0;
-	p = cube->p;
-	r.a = p.angle - (cube->fov_radian) / 2;
-	r.a = reset_angle(r.a);
-
-	// Calcul de l'incrément angulaire
-	float angle_increment = cube->fov_radian / RES;
-
-	while (i < RES)
-	{
-		vertical_ray_maths(cube, &r, &p);
-		vertical_step(cube, &r);
-		r.size = sqrt(((r.x - p.pos.x) * (r.x - p.pos.x))
-				+ (r.y - p.pos.y) * (r.y - p.pos.y));
-
-		// Calcul du décalage cartésien correspondant à l'angle
-		float cartesian_offset = r.size * tan(r.a - p.angle);
-
-		// Ajustement de la position d'impact en fonction du décalage cartésien
-		r.x += cartesian_offset * cos(r.a);
-		r.y += cartesian_offset * sin(r.a);
-
-		cube->v_ray[i] = r;
-
-		r.a += angle_increment;
 		r.a = reset_angle(r.a);
 		i++;
 	}
