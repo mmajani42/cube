@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmajani <mmajani@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 14:21:46 by mmajani           #+#    #+#             */
-/*   Updated: 2023/06/03 16:43:07 by mmajani          ###   ########lyon.fr   */
+/*   Updated: 2023/06/03 16:51:06 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ int	main(int ac, char **av)
 	mlx_hook(cube.mlx_win, 17, 1L << 0, &close_cube, &cube);
 	mlx_loop_hook(cube.mlx, gameloop, &cube);
 	mlx_loop(cube.mlx);
-	cube_tester(&cube);
 	free_cube(&cube);
 	return (0);
 }

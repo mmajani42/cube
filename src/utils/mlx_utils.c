@@ -6,11 +6,11 @@
 /*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/03 16:17:17 by vimercie          #+#    #+#             */
-/*   Updated: 2023/06/03 16:18:02 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/06/03 16:49:08 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/cube.h"
+#include "../../inc/cube.h"
 
 void	my_custom_pixel_put(t_data *img, int pos, int color)
 {

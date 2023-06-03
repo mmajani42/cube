@@ -6,11 +6,11 @@
 /*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 08:51:54 by mmajani           #+#    #+#             */
-/*   Updated: 2023/06/03 16:27:14 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/06/03 16:47:20 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/cube.h"
+#include "../../inc/cube.h"
 
 void	horizontal_step(t_cube *cube, t_cast *r)
 {

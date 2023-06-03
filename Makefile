@@ -2,14 +2,14 @@ NAME=		cub3d
 
 VPATH=		src/						\
 			src/parsing					\
+			src/raycast					\
 			src/utils
 
 OBJDIR=		obj
 
 INCDIR=		inc
 
-SRC=		testing.c					\
-			main.c						\
+SRC=		main.c						\
 			init.c						\
 			parsing.c					\
 			parsing_utils.c				\

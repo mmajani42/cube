@@ -6,11 +6,11 @@
 /*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 20:04:30 by mmajani           #+#    #+#             */
-/*   Updated: 2023/05/26 15:32:01 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/06/03 16:47:16 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/cube.h"
+#include "../../inc/cube.h"
 
 double	reset_angle(double angle)
 {

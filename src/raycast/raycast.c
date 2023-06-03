@@ -6,11 +6,11 @@
 /*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 09:46:36 by mmajani           #+#    #+#             */
-/*   Updated: 2023/06/02 17:28:24 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/06/03 16:47:13 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/cube.h"
+#include "../../inc/cube.h"
 
 void	horizontal_raycast(t_cube *cube)
 {

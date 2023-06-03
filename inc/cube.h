@@ -6,7 +6,7 @@
 /*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 15:29:07 by mmajani           #+#    #+#             */
-/*   Updated: 2023/06/03 16:18:48 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/06/03 16:50:58 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,8 +141,6 @@ typedef struct s_cube
 	bool		key_right;
 }				t_cube;
 
-void	cube_tester(t_cube *cube);
-void	print_tab(char **tab);
 
 // 	parsing
 int		parsing(char *filename, t_cube *cube);
@@ -213,8 +211,6 @@ void	vertical_step(t_cube *cube, t_cast *r);
 void	vertical_raycast(t_cube *cube);
 
 // ray_utils
-void	hit_detection(t_cube *cube, t_cast *r);
-int		hit(t_cube *cube, int mx, int my);
 int		p_map_pos(t_cube *cube, char c);
 int		is_in_map(t_cube *cube, int x, int y);
 double	reset_angle(double angle);
