@@ -6,7 +6,7 @@
 /*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 15:29:07 by mmajani           #+#    #+#             */
-/*   Updated: 2023/06/01 18:19:00 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/06/03 16:18:48 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@
 # define ESC		65307
 # define TAB		48
 # define SPACE		49
+
 // Colors
 # define WHITE		0xFFFFFF
 # define GREY		0x808080
@@ -49,7 +50,7 @@
 # define R_ANGLE	0.000636
 # define HR			1080 / 2
 # define RES		1920
-# define FOV	    60
+# define FOV	    50
 
 typedef struct s_point
 {
@@ -190,17 +191,17 @@ void	free_tab(char **tab);
 void	free_cube(t_cube *cube);
 
 //	drawing
-void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
-void	my_custom_pixel_put(t_data *img, int pos, int color);
-void	my_offset_pixel_put(t_cube *cube, int x, int y, int color);
 void	draw_segment(t_cube *cube, t_point a, t_point b, int color);
-void	draw_vertical_segment(t_cube *cube, int x, int y_start, int y_end, int color);
+void	draw_vertical_segment(t_cube *cube, int x, t_point pos, int color);
 void	draw_square(t_cube *cube, double x, double y);
 void	draw_map(t_cube *cube);
 void	draw_player(t_cube *cube);
 void	draw_dot(t_cube *cube, double x, double y);
 void	draw_perspective(t_cube *cube);
 void	draw_texture(t_cube *cube);
+
+void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
+void	my_custom_pixel_put(t_data *img, int pos, int color);
 
 //	raycast
 void	horizontal_ray_maths(t_cube *cube, t_cast *r, t_player *p);

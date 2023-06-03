@@ -6,7 +6,7 @@
 /*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 18:24:31 by mmajani           #+#    #+#             */
-/*   Updated: 2023/06/02 17:28:41 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/06/03 16:30:23 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,12 +48,12 @@ t_point	combined_movement_vector(t_cube *cube)
 	else if (cube->key_s == 1)
 		step_walk = (t_point){cos(cube->p.angle) * cube->ts * SPEED * -1,
 			sin(cube->p.angle) * cube->ts * SPEED * -1};
-	if (cube->key_left == 1)
-		step_strafe = (t_point){cos(cube->p.angle - PI / 2),
-			sin(cube->p.angle - PI / 2)};
-	else if (cube->key_right == 1)
-		step_strafe = (t_point){cos(cube->p.angle + PI / 2),
-			sin(cube->p.angle + PI / 2)};
+	if (cube->key_a == 1)
+		step_strafe = (t_point){cos(cube->p.angle - PI / 2) * cube->ts * SPEED,
+			sin(cube->p.angle - PI / 2) * cube->ts * SPEED};
+	else if (cube->key_d == 1)
+		step_strafe = (t_point){cos(cube->p.angle + PI / 2) * cube->ts * SPEED,
+			sin(cube->p.angle + PI / 2) * cube->ts * SPEED};
 	final_step = (t_point){step_walk.x + step_strafe.x,
 		step_walk.y + step_strafe.y};
 	return (final_step);
@@ -84,9 +84,9 @@ t_point	handle_collision(t_cube *cube)
 void	move_player(t_cube *cube)
 {
 	cube->p.pos = handle_collision(cube);
-	if (cube->key_a == 1)
+	if (cube->key_left == 1)
 		cube->p.angle -= R_ANGLE * 70;
-	else if (cube->key_d == 1)
+	else if (cube->key_right == 1)
 		cube->p.angle += R_ANGLE * 70;
 	cube->p.angle = reset_angle(cube->p.angle);
 }

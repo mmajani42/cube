@@ -6,7 +6,7 @@
 /*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 13:49:14 by vimercie          #+#    #+#             */
-/*   Updated: 2023/06/01 18:15:53 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/06/03 16:22:19 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,24 +54,6 @@ char	*color_int_to_hex(int n)
 		res[0] = hex[(n / 16) % 16];
 		res[1] = hex[n % 16];
 	}
-	return (res);
-}
-
-char	*dup_and_fill(char *src, char c, size_t size, bool ow_last_char)
-{
-	char	*res;
-	size_t	len;
-
-	if (!src || !size)
-		return (NULL);
-	len = ft_strlen(src) - ow_last_char;
-	if (len <= 0)
-		return (NULL);
-	if (len >= size)
-		return (ft_strndup(src, size));
-	res = ft_calloc(size + 1, sizeof(char));
-	ft_strlcpy(res, src, len + 1);
-	memset(res + len, c, size - len);
 	return (res);
 }
 

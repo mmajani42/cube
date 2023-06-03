@@ -22,11 +22,12 @@ SRC=		testing.c					\
 			cleaning.c					\
 			draw.c						\
 			display.c					\
+			mlx_utils.c					\
 			player.c					\
 			move.c						\
 			raycast.c					\
 			raycast_utils.c				\
-			ray_cast_maths.c			\
+			raycast_maths.c				\
 			texture_display.c			\
 			events.c
 
@@ -39,7 +40,7 @@ LIB=		Libft/libft.a
 
 CC=			cc
 
-CFLAGS=		-Wall -Wextra -O3 -march=native -funroll-loops -ffast-math -g3
+CFLAGS=		-Wall -Wextra -Werror -O2 -march=native -funroll-loops -ffast-math -g3
 
 all:		${OBJDIR} ${NAME}
 
