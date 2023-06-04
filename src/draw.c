@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: mmajani <mmajani@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 16:35:20 by mmajani           #+#    #+#             */
-/*   Updated: 2023/06/03 16:25:04 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/06/04 14:02:55 by mmajani          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,24 +77,5 @@ void	draw_vertical_segment(t_cube *cube, int x, t_point pos, int color)
 		my_mlx_pixel_put(&cube->img, x, y, color);
 		y += delta;
 		i++;
-	}
-}
-
-void	draw_map(t_cube *cube)
-{
-	int	y;
-	int	x;
-
-	y = 0;
-	while (cube->map[y])
-	{
-		x = 0;
-		while (cube->map[y][x])
-		{
-			if (cube->map[y][x] == '1')
-				draw_square(cube, (x * cube->ts), (y * cube->ts));
-			x++;
-		}
-		y++;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: mmajani <mmajani@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 16:18:16 by mmajani           #+#    #+#             */
-/*   Updated: 2023/05/26 17:50:04 by mmajani          ###   ########lyon.fr   */
+/*   Updated: 2023/06/04 17:37:38 by mmajani          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,29 +28,36 @@ void	set_player(t_cube *cube)
 	cube->key_right = 0;
 }
 
-void	draw_orientation(t_cube *cube)
+void	draw_player(t_cube *cube)
+{
+	int			i;
+	t_point		m_pos;
+	double		ts;
+
+	ts = cube->m_ts / 4;
+	m_pos = cube->p.pos;
+	m_pos.x = (m_pos.x / 64);
+	m_pos.y = (m_pos.y / 64);
+	m_pos = to_map_coordinates(cube, m_pos);
+	m_pos.x += ts + ts / 2;
+	m_pos.y += ts + ts / 2;
+	i = 0;
+	draw_orientation(cube, m_pos);
+	while (i < ts)
+	{
+		draw_segment(cube, (t_point){m_pos.x, m_pos.y + i},
+			(t_point){m_pos.x + ts, m_pos.y + i}, RED);
+		i++;
+	}
+}
+
+void	draw_orientation(t_cube *cube, t_point	pos)
 {
 	t_point	end;
 
-	end.x = cube->p.pos.x + (cos(cube->p.angle) * 50);
-	end.y = cube->p.pos.y + (sin(cube->p.angle) * 50);
-	draw_segment(cube, cube->p.pos, end, 0xFFFFF);
-}
-
-void	draw_player(t_cube *cube)
-{
-	double	x;
-	double	y;
-
-	x = cube->p.pos.x;
-	y = cube->p.pos.y;
-	draw_segment(cube, (t_point){x - (cube->ts / 8), y - (cube->ts / 8)},
-		(t_point){x + (cube->ts / 8), y - (cube->ts / 8)}, 16711680);
-	draw_segment(cube, (t_point){x - (cube->ts / 8), y + (cube->ts / 8)},
-		(t_point){x + (cube->ts / 8), y + (cube->ts / 8)}, 16711680);
-	draw_segment(cube, (t_point){x - (cube->ts / 8), y - (cube->ts / 8)},
-		(t_point){x - (cube->ts / 8), y + (cube->ts / 8)}, 16711680);
-	draw_segment(cube, (t_point){x + (cube->ts / 8), y - (cube->ts / 8)},
-		(t_point){x + (cube->ts / 8), y + (cube->ts / 8)}, 16711680);
-	draw_orientation(cube);
+	pos.x += cube->m_ts / 8;
+	pos.y += cube->m_ts / 8;
+	end.x = pos.x + (cos(cube->p.angle) * cube->m_ts);
+	end.y = pos.y + (sin(cube->p.angle) * cube->m_ts);
+	draw_segment(cube, pos, end, 0xFFFFF);
 }

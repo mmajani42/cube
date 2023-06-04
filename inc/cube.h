@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: mmajani <mmajani@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 15:29:07 by mmajani           #+#    #+#             */
-/*   Updated: 2023/06/04 02:36:00 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/06/04 17:44:16 by mmajani          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@
 // Colors
 # define WHITE		0xFFFFFF
 # define GREY		0x808080
+# define RED		16711680
+# define GREEN		65280
 
 // Raycast
 # define PI			3.1415926535
@@ -114,6 +116,8 @@ typedef struct s_cube
 	int			win_x;
 	int			win_y;
 	double		ts;
+	double		m_ts;
+	t_point		m_off;
 	double		fov_radian;
 	t_cast		v_ray[RES];
 	t_cast		h_ray[RES];
@@ -154,6 +158,8 @@ int		get_map_dimensions(char **file, t_cube *cube);
 void	get_player_coordinates(t_player *p, char **map);
 t_point	get_player_pos(char **map);
 double	get_player_angle(char direction);
+t_point	to_map_coordinates(t_cube *cube, t_point p);
+void	get_map_ts(t_cube *cube);
 
 bool	wall_sonar(int x, int y, char **map);
 
@@ -171,6 +177,7 @@ int		init_map(t_cube *cube);
 int		init_texture(t_asset *ast, char *line, void *mlx);
 void	set_tile_size(t_cube *cube);
 void	set_player(t_cube *cube);
+void	get_map_ts(t_cube *cube);
 
 // checking
 bool	is_rgb(char **tab);
@@ -196,6 +203,8 @@ void	draw_player(t_cube *cube);
 void	draw_dot(t_cube *cube, double x, double y);
 void	draw_perspective(t_cube *cube);
 void	draw_texture(t_cube *cube);
+void	draw_minimap(t_cube *cube);
+void	draw_orientation(t_cube *cube, t_point	pos);
 
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 void	my_custom_pixel_put(t_data *img, int pos, int color);

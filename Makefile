@@ -30,7 +30,8 @@ SRC=		main.c						\
 			raycast_utils.c				\
 			raycast_maths.c				\
 			texture_display.c			\
-			events.c
+			events.c					\
+			minimap.c
 
 OBJ=		${addprefix ${OBJDIR}/,		\
 			${SRC:.c=.o}}

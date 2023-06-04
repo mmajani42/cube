@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: mmajani <mmajani@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 19:13:43 by mmajani           #+#    #+#             */
-/*   Updated: 2023/06/04 05:28:48 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/06/04 17:44:02 by mmajani          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,4 +75,15 @@ void	init_mlx(t_cube *cube)
 			&cube->img.endian);
 	cube->img.bytes_per_pixel = cube->img.bits_per_pixel / 8;
 	cube->display_status = 1;
+}
+
+void	get_map_ts(t_cube *cube)
+{
+	int			size;
+
+	size = RES / 8;
+	if (cube->map_width >= cube->map_height)
+		cube->m_ts = size / (cube->map_width + 2);
+	else
+		cube->m_ts = size / (cube->map_height + 2);
 }
