@@ -6,7 +6,7 @@
 /*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 14:03:43 by vimercie          #+#    #+#             */
-/*   Updated: 2023/06/01 18:12:45 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/06/04 05:43:52 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,23 +20,24 @@ bool	is_rgb(char **tab)
 
 	i = 0;
 	if (!tab)
-		return (false);
+		return (print_error("Malloc failed", NULL));
 	while (tab[i])
 	{
 		j = 0;
 		while (tab[i][j])
 		{
 			if (!ft_isdigit(tab[i][j]))
-				return (false);
+				return (print_error("Colors must be numbers in range {0,255}",
+						NULL));
 			j++;
 		}
 		n = ft_atoi(tab[i]);
 		if (n < 0 || n > 255)
-			return (false);
+			return (print_error("Color not in range {0,255}", NULL));
 		i++;
 	}
 	if (i != 3)
-		return (false);
+		return (print_error("Must be 3 colors", NULL));
 	return (true);
 }
 

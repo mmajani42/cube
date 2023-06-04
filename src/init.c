@@ -6,7 +6,7 @@
 /*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 19:13:43 by mmajani           #+#    #+#             */
-/*   Updated: 2023/06/04 03:10:44 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/06/04 05:28:48 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	init_texture(t_asset *ast, char *line, void *mlx)
 		return (print_error("Same texture key in multiple lines", NULL));
 	ast->path = get_texture_path(line);
 	if (!ast->path)
-		return (print_error("No texture path", NULL));
+		return (0);
 	ast->img.img = mlx_xpm_file_to_image(mlx, ast->path,
 			&ast->width, &ast->height);
 	if (!ast->img.img)

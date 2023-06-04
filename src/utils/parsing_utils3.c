@@ -6,7 +6,7 @@
 /*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/04 01:45:48 by vimercie          #+#    #+#             */
-/*   Updated: 2023/06/04 02:51:54 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/06/04 05:29:01 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,10 @@ char	*get_texture_path(char *line)
 
 	res = get_next_word(line);
 	if (!res)
+	{
+		print_error("No texture path", NULL);
 		return (NULL);
+	}
 	if (!check_file_extension(res, ".xpm"))
 	{
 		print_error("Invalid asset format", res);

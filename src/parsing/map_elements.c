@@ -6,7 +6,7 @@
 /*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 16:55:48 by vimercie          #+#    #+#             */
-/*   Updated: 2023/06/04 03:01:28 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/06/04 05:40:57 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	set_rgb(t_color *dest, char *line)
 		return (print_error("Same color key in multiple lines", NULL));
 	color_str = get_next_word(line);
 	if (!color_str)
-		return (0);
+		return (print_error("Missing color data", NULL));
 	rgb = ft_split(color_str, ',');
 	if (!is_rgb(rgb))
 	{

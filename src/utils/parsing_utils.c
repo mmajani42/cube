@@ -6,7 +6,7 @@
 /*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 13:49:14 by vimercie          #+#    #+#             */
-/*   Updated: 2023/06/04 01:50:25 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/06/04 05:56:47 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,8 @@ int	count_file_lines(char *filename)
 
 	res = 0;
 	fd = get_fd(filename);
+	if (fd == -1)
+		return (0);
 	buffer = get_next_line(fd);
 	while (buffer)
 	{
@@ -91,6 +93,8 @@ int	count_file_lines(char *filename)
 	}
 	if (fd > 0)
 		close(fd);
+	if (res == 0)
+		return (print_error("Empty file", filename));
 	return (res);
 }
 
@@ -107,8 +111,8 @@ char	**file_to_tab(char *filename)
 	if (file_height == 0)
 		return (NULL);
 	fd = get_fd(filename);
-	buffer = get_next_line(fd);
 	res = ft_calloc(file_height + 1, sizeof(char *));
+	buffer = get_next_line(fd);
 	while (buffer)
 	{
 		res[i] = ft_strdup(buffer);
