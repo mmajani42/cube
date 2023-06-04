@@ -6,7 +6,7 @@
 /*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 14:40:16 by vimercie          #+#    #+#             */
-/*   Updated: 2023/06/04 02:43:22 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/06/04 03:17:08 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,6 @@ void	free_tab(char **tab)
 
 void	free_cube(t_cube *cube)
 {
-	mlx_destroy_image(cube->mlx, cube->no.img.img);
-	mlx_destroy_image(cube->mlx, cube->so.img.img);
-	mlx_destroy_image(cube->mlx, cube->ea.img.img);
-	mlx_destroy_image(cube->mlx, cube->we.img.img);
-	mlx_destroy_image(cube->mlx, cube->img.img);
 	free(cube->no.path);
 	free(cube->so.path);
 	free(cube->ea.path);
@@ -47,6 +42,7 @@ void	free_cube(t_cube *cube)
 int	close_cube(t_cube *cube)
 {
 	free_cube(cube);
+	mlx_destroy_image(cube->mlx, cube->img.img);
 	mlx_destroy_window(cube->mlx, cube->mlx_win);
 	mlx_destroy_display(cube->mlx);
 	exit(1);

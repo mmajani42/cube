@@ -6,7 +6,7 @@
 /*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 19:54:31 by vimercie          #+#    #+#             */
-/*   Updated: 2023/06/04 01:43:43 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/06/04 02:58:55 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ char	*get_next_word(char *str)
 {
 	size_t	len;
 
-	if (!str)
+	if (!str || ft_is_string_blank(str))
 		return (NULL);
 	len = 0;
 	while (ft_isspace(str[0]) && str[0] != '\n' && str[0])

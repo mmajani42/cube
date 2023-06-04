@@ -6,7 +6,7 @@
 /*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 19:13:43 by mmajani           #+#    #+#             */
-/*   Updated: 2023/06/04 02:29:15 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/06/04 03:10:44 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	init_texture(t_asset *ast, char *line, void *mlx)
 		return (print_error("Same texture key in multiple lines", NULL));
 	ast->path = get_texture_path(line);
 	if (!ast->path)
-		return (0);
+		return (print_error("No texture path", NULL));
 	ast->img.img = mlx_xpm_file_to_image(mlx, ast->path,
 			&ast->width, &ast->height);
 	if (!ast->img.img)
@@ -41,6 +41,8 @@ void	init_cube(t_cube *cube)
 	cube->so.path = NULL;
 	cube->we.path = NULL;
 	cube->ea.path = NULL;
+	cube->floor.hex = NULL;
+	cube->ceiling.hex = NULL;
 	cube->floor.r = -1;
 	cube->floor.g = -1;
 	cube->floor.b = -1;
@@ -64,8 +66,8 @@ void	init_mlx(t_cube *cube)
 	cube->win_x = WIN_X;
 	cube->win_y = WIN_Y;
 	cube->mlx = mlx_init();
-	cube->mlx_win = mlx_new_window(cube->mlx, cube->win_x,
-			cube->win_y, "cub3D");
+	cube->mlx_win = mlx_new_window(cube->mlx,
+			cube->win_x, cube->win_y, "cub3D");
 	cube->img.img = mlx_new_image(cube->mlx, cube->win_x, cube->win_y);
 	cube->img.addr = mlx_get_data_addr(cube->img.img,
 			&cube->img.bits_per_pixel,
