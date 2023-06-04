@@ -1,9 +1,11 @@
+
+C 120,150,255
+
 NO ./assets/brick_wall_64x64.xpm
 SO ./assets/brick_wall_64x64_darken.xpm
 EA ./assets/brick_wall_64x64.xpm
 WE ./assets/brick_wall_64x64_darken.xpm
 
-C 120,150,255
 F 120,120,120
 
 11111111111111

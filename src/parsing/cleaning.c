@@ -6,7 +6,7 @@
 /*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 14:40:16 by vimercie          #+#    #+#             */
-/*   Updated: 2023/06/04 03:17:08 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/06/04 03:24:46 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,20 @@ void	free_tab(char **tab)
 	free(tab);
 }
 
+void	free_asset(t_asset *ast, void *mlx)
+{
+	if (!ast->path)
+		return ;
+	free(ast->path);
+	mlx_destroy_image(mlx, ast->img.img);
+}
+
 void	free_cube(t_cube *cube)
 {
-	free(cube->no.path);
-	free(cube->so.path);
-	free(cube->ea.path);
-	free(cube->we.path);
+	free_asset(&cube->no, cube->mlx);
+	free_asset(&cube->so, cube->mlx);
+	free_asset(&cube->ea, cube->mlx);
+	free_asset(&cube->we, cube->mlx);
 	free(cube->ceiling.hex);
 	free(cube->floor.hex);
 	free_tab(cube->map);
