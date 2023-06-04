@@ -6,46 +6,31 @@
 /*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 19:13:43 by mmajani           #+#    #+#             */
-/*   Updated: 2023/05/27 20:17:37 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/06/04 02:29:15 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cube.h"
 
-void	set_texture(t_asset *asset, void *mlx)
+int	init_texture(t_asset *ast, char *line, void *mlx)
 {
-	asset->img.img = mlx_xpm_file_to_image(mlx, asset->path,
-			&asset->width, &asset->height);
-	asset->img.addr = mlx_get_data_addr(asset->img.img,
-			&asset->img.bits_per_pixel,
-			&asset->img.line_length,
-			&asset->img.endian);
-	asset->img.bytes_per_pixel = asset->img.bits_per_pixel / 8;
-}
-
-void	init_assets(t_cube *cube)
-{
-	set_texture(&cube->no, cube->mlx);
-	set_texture(&cube->so, cube->mlx);
-	set_texture(&cube->we, cube->mlx);
-	set_texture(&cube->ea, cube->mlx);
-}
-
-void	init_mlx(t_cube *cube)
-{
-	cube->win_x = WIN_X;
-	cube->win_y = WIN_Y;
-	cube->mlx = mlx_init();
-	cube->mlx_win = mlx_new_window(cube->mlx, cube->win_x,
-			cube->win_y, "Cub3d");
-	cube->img.img = mlx_new_image(cube->mlx, cube->win_x, cube->win_y);
-	cube->img.addr = mlx_get_data_addr(cube->img.img,
-			&cube->img.bits_per_pixel,
-			&cube->img.line_length,
-			&cube->img.endian);
-	cube->img.bytes_per_pixel = cube->img.bits_per_pixel / 8;
-	cube->display_status = 1;
-	init_assets(cube);
+	if (ast->path != NULL)
+		return (print_error("Same texture key in multiple lines", NULL));
+	ast->path = get_texture_path(line);
+	if (!ast->path)
+		return (0);
+	ast->img.img = mlx_xpm_file_to_image(mlx, ast->path,
+			&ast->width, &ast->height);
+	if (!ast->img.img)
+		return (print_error("Invalid .xpm file", ast->path));
+	ast->img.addr = mlx_get_data_addr(ast->img.img,
+			&ast->img.bits_per_pixel,
+			&ast->img.line_length,
+			&ast->img.endian);
+	if (!ast->img.addr)
+		return (print_error("Can't get data adress", ast->path));
+	ast->img.bytes_per_pixel = ast->img.bits_per_pixel / 8;
+	return (1);
 }
 
 void	init_cube(t_cube *cube)
@@ -64,8 +49,6 @@ void	init_cube(t_cube *cube)
 	cube->ceiling.b = -1;
 	cube->map_height = 0;
 	cube->map_width = 0;
-	cube->off_x = 0;
-	cube->off_y = 0;
 	cube->fov_radian = FOV * PI / 180;
 	cube->ts = 64;
 	cube->key_w = 0;
@@ -74,4 +57,20 @@ void	init_cube(t_cube *cube)
 	cube->key_d = 0;
 	cube->key_left = 0;
 	cube->key_right = 0;
+}
+
+void	init_mlx(t_cube *cube)
+{
+	cube->win_x = WIN_X;
+	cube->win_y = WIN_Y;
+	cube->mlx = mlx_init();
+	cube->mlx_win = mlx_new_window(cube->mlx, cube->win_x,
+			cube->win_y, "cub3D");
+	cube->img.img = mlx_new_image(cube->mlx, cube->win_x, cube->win_y);
+	cube->img.addr = mlx_get_data_addr(cube->img.img,
+			&cube->img.bits_per_pixel,
+			&cube->img.line_length,
+			&cube->img.endian);
+	cube->img.bytes_per_pixel = cube->img.bits_per_pixel / 8;
+	cube->display_status = 1;
 }

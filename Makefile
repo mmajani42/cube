@@ -1,4 +1,4 @@
-NAME=		cub3d
+NAME=		cub3D
 
 VPATH=		src/						\
 			src/parsing					\
@@ -14,6 +14,7 @@ SRC=		main.c						\
 			parsing.c					\
 			parsing_utils.c				\
 			parsing_utils2.c			\
+			parsing_utils3.c			\
 			map_elements.c				\
 			map_description.c			\
 			sonar.c						\

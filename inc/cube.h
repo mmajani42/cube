@@ -6,7 +6,7 @@
 /*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 15:29:07 by mmajani           #+#    #+#             */
-/*   Updated: 2023/06/03 16:50:58 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/06/04 02:36:00 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,15 +48,8 @@
 # define PI			3.1415926535
 # define R_ONE_DEG	0.0174533
 # define R_ANGLE	0.000636
-# define HR			1080 / 2
 # define RES		1920
-# define FOV	    50
-
-typedef struct s_point
-{
-	double	x;
-	double	y;
-}			t_point;
+# define FOV	    60
 
 typedef struct s_data
 {
@@ -68,14 +61,11 @@ typedef struct s_data
 	int		endian;
 }			t_data;
 
-typedef struct s_color
+typedef struct s_point
 {
-	char	*hex;
-	int		int_hex;
-	int		r;
-	int		g;
-	int		b;
-}			t_color;
+	double	x;
+	double	y;
+}			t_point;
 
 typedef struct s_player
 {
@@ -99,6 +89,15 @@ typedef struct s_cast
 	double	a_tan;
 }			t_cast;
 
+typedef struct s_color
+{
+	char	*hex;
+	int		int_hex;
+	int		r;
+	int		g;
+	int		b;
+}			t_color;
+
 typedef struct s_asset
 {
 	t_data	img;
@@ -115,8 +114,6 @@ typedef struct s_cube
 	int			win_x;
 	int			win_y;
 	double		ts;
-	double		off_x;
-	double		off_y;
 	double		fov_radian;
 	t_cast		v_ray[RES];
 	t_cast		h_ray[RES];
@@ -141,13 +138,13 @@ typedef struct s_cube
 	bool		key_right;
 }				t_cube;
 
-
 // 	parsing
 int		parsing(char *filename, t_cube *cube);
 int		parse_elements(t_cube *cube);
 int		parse_description(t_cube *cube);
 
 int		get_fd(char *filename);
+char	*get_texture_path(char *line);
 char	**file_to_tab(char *filename);
 char	*get_next_word(char *str);
 char	*dup_and_fill(char *src, char c, size_t size, bool ow_last_char);
@@ -164,13 +161,14 @@ bool	check_file_extension(char *filename, char *format);
 
 char	*color_int_to_hex(int n);
 int		color_hex_to_int(char *str);
+void	set_hex_color(t_color *color);
 
 // init
 void	init_mlx(t_cube *cube);
 void	init_cube(t_cube *cube);
 void	init_assets(t_cube *cube);
 int		init_map(t_cube *cube);
-void	set_texture(t_asset *asset, void *mlx);
+int		init_texture(t_asset *ast, char *line, void *mlx);
 void	set_tile_size(t_cube *cube);
 void	set_player(t_cube *cube);
 
@@ -182,11 +180,12 @@ bool	is_map_bordered(char **map);
 bool	is_unique_player(char **map);
 
 // errors
-int		print_error(char *error);
+int		print_error(char *error, char *token);
 
 // cleaning
 void	free_tab(char **tab);
 void	free_cube(t_cube *cube);
+int		close_cube(t_cube *cube);
 
 //	drawing
 void	draw_segment(t_cube *cube, t_point a, t_point b, int color);
@@ -217,7 +216,7 @@ double	reset_angle(double angle);
 void	draw_closest_ray(t_cube *cube);
 
 //	display
-int		gameloop(t_cube *cube);
+int		cube_loop(t_cube *cube);
 int		get_color(t_data img, t_point pos);
 
 //	events

@@ -6,13 +6,13 @@
 /*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 18:24:31 by mmajani           #+#    #+#             */
-/*   Updated: 2023/06/03 16:30:23 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/06/04 01:58:14 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cube.h"
 
-#define SPEED 0.07
+#define SPEED 4.5
 
 int	get_map_pos(double pos, double ts)
 {
@@ -43,19 +43,17 @@ t_point	combined_movement_vector(t_cube *cube)
 	step_walk = (t_point){0, 0};
 	step_strafe = (t_point){0, 0};
 	if (cube->key_w == 1)
-		step_walk = (t_point){cos(cube->p.angle) * cube->ts * SPEED,
-			sin(cube->p.angle) * cube->ts * SPEED};
+		step_walk = (t_point){cos(cube->p.angle), sin(cube->p.angle)};
 	else if (cube->key_s == 1)
-		step_walk = (t_point){cos(cube->p.angle) * cube->ts * SPEED * -1,
-			sin(cube->p.angle) * cube->ts * SPEED * -1};
+		step_walk = (t_point){-cos(cube->p.angle), -sin(cube->p.angle)};
 	if (cube->key_a == 1)
-		step_strafe = (t_point){cos(cube->p.angle - PI / 2) * cube->ts * SPEED,
-			sin(cube->p.angle - PI / 2) * cube->ts * SPEED};
+		step_strafe = (t_point){cos(cube->p.angle - PI / 2),
+			sin(cube->p.angle - PI / 2)};
 	else if (cube->key_d == 1)
-		step_strafe = (t_point){cos(cube->p.angle + PI / 2) * cube->ts * SPEED,
-			sin(cube->p.angle + PI / 2) * cube->ts * SPEED};
-	final_step = (t_point){step_walk.x + step_strafe.x,
-		step_walk.y + step_strafe.y};
+		step_strafe = (t_point){cos(cube->p.angle + PI / 2),
+			sin(cube->p.angle + PI / 2)};
+	final_step = (t_point){(step_walk.x + step_strafe.x) * SPEED,
+		(step_walk.y + step_strafe.y) * SPEED};
 	return (final_step);
 }
 

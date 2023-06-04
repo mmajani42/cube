@@ -6,7 +6,7 @@
 /*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 13:49:14 by vimercie          #+#    #+#             */
-/*   Updated: 2023/06/03 16:22:19 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/06/04 01:50:25 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,28 +57,21 @@ char	*color_int_to_hex(int n)
 	return (res);
 }
 
-int	get_fd(char *filename)
+void	set_hex_color(t_color *color)
 {
-	int	fd;
+	char	*hex_color;
 
-	if (!check_file_extension(filename, ".cub"))
-	{
-		print_error("Invalid argument format (*.cub required)");
-		return (-1);
-	}
-	if (access(filename, R_OK) == -1)
-	{
-		print_error(NULL);
-		perror(filename);
-		return (-1);
-	}
-	fd = open(filename, O_RDONLY);
-	if (fd == -1)
-	{
-		print_error(NULL);
-		perror(filename);
-	}
-	return (fd);
+	color->hex = ft_calloc(9, sizeof(char));
+	ft_strlcpy(color->hex, "0x", 3);
+	hex_color = color_int_to_hex(color->r);
+	ft_strlcpy(color->hex + 2, hex_color, 3);
+	free(hex_color);
+	hex_color = color_int_to_hex(color->g);
+	ft_strlcpy(color->hex + 4, hex_color, 3);
+	free(hex_color);
+	hex_color = color_int_to_hex(color->b);
+	ft_strlcpy(color->hex + 6, hex_color, 3);
+	free(hex_color);
 }
 
 int	count_file_lines(char *filename)

@@ -6,7 +6,7 @@
 /*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 15:20:58 by mmajani           #+#    #+#             */
-/*   Updated: 2023/06/03 16:52:54 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/06/04 02:40:21 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	draw_perspective(t_cube *cube)
 	draw_texture(cube);
 }
 
-int	gameloop(t_cube *cube)
+int	cube_loop(t_cube *cube)
 {
 	move_player(cube);
 	draw_closest_ray(cube);

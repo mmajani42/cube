@@ -6,7 +6,7 @@
 /*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 16:08:01 by vimercie          #+#    #+#             */
-/*   Updated: 2023/06/03 16:22:38 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/06/04 01:41:49 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	map_cpy(char **file, t_cube *cube)
 
 	cube->map = ft_calloc(cube->map_height + 1, sizeof(char *));
 	if (!cube->map)
-		return (print_error("Malloc failed"));
+		return (print_error("Malloc failed", NULL));
 	i = 0;
 	while (file[i])
 	{
@@ -76,9 +76,9 @@ int	init_map(t_cube *cube)
 	while (!is_valid_map_line(cube->file[i]))
 		i++;
 	if (!cube->file[i])
-		return (print_error("No map description"));
+		return (print_error("No map description", NULL));
 	if (!get_map_dimensions(cube->file + i, cube))
-		return (print_error("Bad map description"));
+		return (print_error("Bad map description", NULL));
 	if (!map_cpy(cube->file + i, cube))
 		return (0);
 	return (1);
@@ -89,8 +89,8 @@ int	parse_description(t_cube *cube)
 	if (!init_map(cube))
 		return (0);
 	if (!is_map_bordered(cube->map))
-		return (print_error("Map is not surrounded by walls"));
+		return (print_error("Map is not surrounded by walls", NULL));
 	if (!is_unique_player(cube->map))
-		return (print_error("One player required"));
+		return (print_error("One player required", NULL));
 	return (1);
 }

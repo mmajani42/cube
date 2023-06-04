@@ -6,7 +6,7 @@
 /*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 19:54:31 by vimercie          #+#    #+#             */
-/*   Updated: 2023/05/27 19:25:43 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/06/04 01:43:43 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ t_point	get_player_pos(char **map)
 		y++;
 	}
 	if (!map[y])
-		print_error("No player found in map description");
+		print_error("No player found in map description", NULL);
 	return (res);
 }
 
