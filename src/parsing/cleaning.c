@@ -6,7 +6,7 @@
 /*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 14:40:16 by vimercie          #+#    #+#             */
-/*   Updated: 2023/06/04 03:24:46 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/06/04 05:22:40 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,5 +53,6 @@ int	close_cube(t_cube *cube)
 	mlx_destroy_image(cube->mlx, cube->img.img);
 	mlx_destroy_window(cube->mlx, cube->mlx_win);
 	mlx_destroy_display(cube->mlx);
+	free(cube->mlx);
 	exit(1);
 }
