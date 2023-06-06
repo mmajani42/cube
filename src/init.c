@@ -6,7 +6,7 @@
 /*   By: mmajani <mmajani@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 19:13:43 by mmajani           #+#    #+#             */
-/*   Updated: 2023/06/06 11:30:38 by mmajani          ###   ########lyon.fr   */
+/*   Updated: 2023/06/06 16:42:49 by mmajani          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,18 @@ int	init_texture(t_asset *ast, char *line, void *mlx)
 	return (1);
 }
 
+void	init_keyboard(t_cube *cube)
+{
+	cube->key_w = 0;
+	cube->key_a = 0;
+	cube->key_s = 0;
+	cube->key_d = 0;
+	cube->key_left = 0;
+	cube->key_right = 0;
+	cube->key_plus = 0;
+	cube->key_minus = 0;
+}
+
 void	init_cube(t_cube *cube)
 {
 	cube->map = NULL;
@@ -52,13 +64,9 @@ void	init_cube(t_cube *cube)
 	cube->map_height = 0;
 	cube->map_width = 0;
 	cube->fov_radian = FOV * PI / 180;
+	cube->fov_mult = 1;
 	cube->ts = 64;
-	cube->key_w = 0;
-	cube->key_a = 0;
-	cube->key_s = 0;
-	cube->key_d = 0;
-	cube->key_left = 0;
-	cube->key_right = 0;
+	init_keyboard(cube);
 }
 
 void	init_mlx(t_cube *cube)

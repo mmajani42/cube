@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   texture_display.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: mmajani <mmajani@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 14:19:56 by vimercie          #+#    #+#             */
-/*   Updated: 2023/05/28 18:38:22 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/06/06 17:06:22 by mmajani          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ void	draw_texture(t_cube *cube)
 	pos.x = 0;
 	while (pos.x < WIN_X)
 	{
-		height = (cube->ts * WIN_X) / cube->ray[(int)pos.x].size;
+		height = (cube->ts * WIN_X) / cube->ray[(int)pos.x].size * 2;
 		draw_texture_column(pos, height, get_texture(pos.x, cube), cube);
 		pos.x++;
 	}

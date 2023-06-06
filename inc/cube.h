@@ -6,7 +6,7 @@
 /*   By: mmajani <mmajani@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 15:29:07 by mmajani           #+#    #+#             */
-/*   Updated: 2023/06/06 15:57:58 by mmajani          ###   ########lyon.fr   */
+/*   Updated: 2023/06/06 16:39:22 by mmajani          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@
 # define ESC		65307
 # define TAB		48
 # define SPACE		49
+# define PLUS		65451
+# define MINUS		65453
 
 // Colors
 # define WHITE		0xFFFFFF
@@ -126,6 +128,7 @@ typedef struct s_cube
 	int			display_status;
 	t_player	p;
 	char		**file;
+	double		fov_mult;
 	char		**map;
 	int			map_width;
 	int			map_height;
@@ -141,6 +144,8 @@ typedef struct s_cube
 	bool		key_d;
 	bool		key_left;
 	bool		key_right;
+	bool		key_plus;
+	bool		key_minus;
 }				t_cube;
 
 // 	parsing

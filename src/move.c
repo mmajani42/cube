@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: mmajani <mmajani@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 18:24:31 by mmajani           #+#    #+#             */
-/*   Updated: 2023/06/04 01:58:14 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/06/06 17:04:49 by mmajani          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,8 +83,12 @@ void	move_player(t_cube *cube)
 {
 	cube->p.pos = handle_collision(cube);
 	if (cube->key_left == 1)
-		cube->p.angle -= R_ANGLE * 70;
+		cube->p.angle -= R_ANGLE * 60;
 	else if (cube->key_right == 1)
-		cube->p.angle += R_ANGLE * 70;
+		cube->p.angle += R_ANGLE * 60;
 	cube->p.angle = reset_angle(cube->p.angle);
+	if (cube->key_plus == 1 && cube->fov_mult + 0.1 < 2.5)
+		cube->fov_mult += 0.1;
+	else if (cube->key_minus == 1 && cube->fov_mult - 0.1 > 1)
+		cube->fov_mult -= 0.1;
 }
