@@ -6,7 +6,7 @@
 /*   By: mmajani <mmajani@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 16:35:20 by mmajani           #+#    #+#             */
-/*   Updated: 2023/06/04 14:02:55 by mmajani          ###   ########lyon.fr   */
+/*   Updated: 2023/06/06 10:23:41 by mmajani          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,30 +30,6 @@ void	draw_segment(t_cube *cube, t_point a, t_point b, int color)
 		my_mlx_pixel_put(&cube->img, round(check.x), round(check.y), color);
 		t += offset;
 	}
-}
-
-void	draw_square(t_cube *cube, double x, double y)
-{
-	draw_segment(cube, (t_point){x - (cube->ts / 2), y - (cube->ts / 2)},
-		(t_point){x + (cube->ts / 2), y - (cube->ts / 2)}, 16777215);
-	draw_segment(cube, (t_point){x - (cube->ts / 2), y + (cube->ts / 2)},
-		(t_point){x + (cube->ts / 2), y + (cube->ts / 2)}, 16777215);
-	draw_segment(cube, (t_point){x - (cube->ts / 2), y - (cube->ts / 2)},
-		(t_point){x - (cube->ts / 2), y + (cube->ts / 2)}, 16777215);
-	draw_segment(cube, (t_point){x + (cube->ts / 2), y - (cube->ts / 2)},
-		(t_point){x + (cube->ts / 2), y + (cube->ts / 2)}, 16777215);
-}
-
-void	draw_dot(t_cube *cube, double x, double y)
-{
-	draw_segment(cube, (t_point){x - (cube->ts / 20), y - (cube->ts / 20)},
-		(t_point){x + (cube->ts / 20), y - (cube->ts / 20)}, 16777215);
-	draw_segment(cube, (t_point){x - (cube->ts / 20), y + (cube->ts / 20)},
-		(t_point){x + (cube->ts / 20), y + (cube->ts / 20)}, 16777215);
-	draw_segment(cube, (t_point){x - (cube->ts / 20), y - (cube->ts / 20)},
-		(t_point){x - (cube->ts / 20), y + (cube->ts / 20)}, 16777215);
-	draw_segment(cube, (t_point){x + (cube->ts / 20), y - (cube->ts / 20)},
-		(t_point){x + (cube->ts / 20), y + (cube->ts / 20)}, 16777215);
 }
 
 void	draw_vertical_segment(t_cube *cube, int x, t_point pos, int color)

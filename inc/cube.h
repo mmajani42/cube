@@ -6,7 +6,7 @@
 /*   By: mmajani <mmajani@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 15:29:07 by mmajani           #+#    #+#             */
-/*   Updated: 2023/06/04 17:44:16 by mmajani          ###   ########lyon.fr   */
+/*   Updated: 2023/06/06 15:57:58 by mmajani          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@
 # define R_ONE_DEG	0.0174533
 # define R_ANGLE	0.000636
 # define RES		1920
-# define FOV	    60
+# define FOV	    100
 
 typedef struct s_data
 {
@@ -121,6 +121,7 @@ typedef struct s_cube
 	double		fov_radian;
 	t_cast		v_ray[RES];
 	t_cast		h_ray[RES];
+	double		angles[RES];
 	t_cast		ray[RES];
 	int			display_status;
 	t_player	p;
@@ -178,6 +179,7 @@ int		init_texture(t_asset *ast, char *line, void *mlx);
 void	set_tile_size(t_cube *cube);
 void	set_player(t_cube *cube);
 void	get_map_ts(t_cube *cube);
+void	find_map_offset(t_cube *cube);
 
 // checking
 bool	is_rgb(char **tab);
@@ -204,7 +206,6 @@ void	draw_dot(t_cube *cube, double x, double y);
 void	draw_perspective(t_cube *cube);
 void	draw_texture(t_cube *cube);
 void	draw_minimap(t_cube *cube);
-void	draw_orientation(t_cube *cube, t_point	pos);
 
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 void	my_custom_pixel_put(t_data *img, int pos, int color);

@@ -6,7 +6,7 @@
 /*   By: mmajani <mmajani@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 15:20:58 by mmajani           #+#    #+#             */
-/*   Updated: 2023/06/04 14:08:36 by mmajani          ###   ########lyon.fr   */
+/*   Updated: 2023/06/06 10:13:39 by mmajani          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	draw_perspective(t_cube *cube)
 	int	x;
 
 	x = 0;
-	while (x <= WIN_X)
+	while (x < WIN_X)
 	{
 		draw_vertical_segment(cube, x, (t_point){0, WIN_Y / 2},
 			cube->ceiling.int_hex);

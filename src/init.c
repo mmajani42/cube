@@ -6,7 +6,7 @@
 /*   By: mmajani <mmajani@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 19:13:43 by mmajani           #+#    #+#             */
-/*   Updated: 2023/06/04 17:44:02 by mmajani          ###   ########lyon.fr   */
+/*   Updated: 2023/06/06 11:30:38 by mmajani          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,10 +80,18 @@ void	init_mlx(t_cube *cube)
 void	get_map_ts(t_cube *cube)
 {
 	int			size;
+	t_point		mid;
 
 	size = RES / 8;
 	if (cube->map_width >= cube->map_height)
 		cube->m_ts = size / (cube->map_width + 2);
 	else
 		cube->m_ts = size / (cube->map_height + 2);
+	mid = to_map_coordinates(cube, (t_point)
+		{cube->map_width / 2, cube->map_height / 2});
+	cube->m_off = (t_point){0, 0};
+	while (mid.x + (cube->m_ts / 2) + cube->m_off.x <= RES - RES / 16)
+		cube->m_off.x++;
+	while (mid.y + cube->m_off.y <= RES / 16)
+		cube->m_off.y++;
 }
