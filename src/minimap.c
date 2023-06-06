@@ -6,7 +6,7 @@
 /*   By: mmajani <mmajani@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/04 13:59:43 by mmajani           #+#    #+#             */
-/*   Updated: 2023/06/06 16:14:56 by mmajani          ###   ########lyon.fr   */
+/*   Updated: 2023/06/06 16:15:15 by mmajani          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,6 @@ void	draw_map(t_cube *cube)
 
 void	draw_minimap(t_cube *cube)
 {
-	printf("cube ->m_ts = %.2f\n", cube->m_ts);
 	draw_map_background(cube);
 	draw_player(cube);
 	draw_map(cube);
