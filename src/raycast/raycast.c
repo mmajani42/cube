@@ -6,7 +6,7 @@
 /*   By: mmajani <mmajani@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 09:46:36 by mmajani           #+#    #+#             */
-/*   Updated: 2023/06/06 17:02:19 by mmajani          ###   ########lyon.fr   */
+/*   Updated: 2023/06/06 17:08:16 by mmajani          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ void	horizontal_raycast(t_cube *cube)
 		cube->h_ray[i] = r;
 		i++;
 	}
-	dprintf(1, "cube->fov mult = %.2f\n", cube->fov_mult);
 }
 
 void	vertical_raycast(t_cube *cube)
