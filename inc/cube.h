@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmajani <mmajani@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 15:29:07 by mmajani           #+#    #+#             */
-/*   Updated: 2023/06/06 16:39:22 by mmajani          ###   ########lyon.fr   */
+/*   Updated: 2023/06/07 00:13:41 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -209,7 +209,7 @@ void	draw_map(t_cube *cube);
 void	draw_player(t_cube *cube);
 void	draw_dot(t_cube *cube, double x, double y);
 void	draw_perspective(t_cube *cube);
-void	draw_texture(t_cube *cube);
+void	draw_wall_texture(t_cube *cube);
 void	draw_minimap(t_cube *cube);
 
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);

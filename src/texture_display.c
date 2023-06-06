@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   texture_display.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmajani <mmajani@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 14:19:56 by vimercie          #+#    #+#             */
-/*   Updated: 2023/06/06 17:06:22 by mmajani          ###   ########lyon.fr   */
+/*   Updated: 2023/06/07 00:13:41 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ void	draw_texture_column(t_point pos, int h, t_asset ast, t_cube *cube)
 	}
 }
 
-void	draw_texture(t_cube *cube)
+void	draw_wall_texture(t_cube *cube)
 {
 	t_point	pos;
 	int		height;
@@ -96,7 +96,8 @@ void	draw_texture(t_cube *cube)
 	pos.x = 0;
 	while (pos.x < WIN_X)
 	{
-		height = (cube->ts * WIN_X) / cube->ray[(int)pos.x].size * 2;
+		height = ((((cube->ts * WIN_X) / cube->fov_radian) * PI)
+				/ cube->ray[(int)pos.x].size) / cube->fov_mult;
 		draw_texture_column(pos, height, get_texture(pos.x, cube), cube);
 		pos.x++;
 	}

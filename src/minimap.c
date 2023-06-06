@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minimap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmajani <mmajani@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/04 13:59:43 by mmajani           #+#    #+#             */
-/*   Updated: 2023/06/06 16:15:15 by mmajani          ###   ########lyon.fr   */
+/*   Updated: 2023/06/07 00:20:41 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,14 +47,13 @@ void	draw_map_background(t_cube *cube)
 	i = 0;
 	while (i < size)
 	{
-		draw_segment(cube, (t_point){origin, i}, (t_point){RES - 1, i}, GREY);
+		draw_vertical_segment(cube, origin + i, (t_point){0, size}, GREY);
 		i++;
 	}
+	draw_vertical_segment(cube, origin, (t_point){0, size}, RED);
+	draw_vertical_segment(cube, RES - 1, (t_point){0, size}, RED);
 	draw_segment(cube, (t_point){origin, 0}, (t_point){RES, 0}, RED);
 	draw_segment(cube, (t_point){origin, size}, (t_point){RES, size}, RED);
-	draw_segment(cube, (t_point){origin, 0},
-		(t_point){origin, size}, RED);
-	draw_segment(cube, (t_point){RES - 1, 0}, (t_point){RES - 1, size}, RED);
 }
 
 void	draw_map(t_cube *cube)

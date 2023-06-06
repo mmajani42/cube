@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   display.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmajani <mmajani@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 15:20:58 by mmajani           #+#    #+#             */
-/*   Updated: 2023/06/06 10:13:39 by mmajani          ###   ########lyon.fr   */
+/*   Updated: 2023/06/07 00:13:41 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	draw_perspective(t_cube *cube)
 			cube->floor.int_hex);
 		x++;
 	}
-	draw_texture(cube);
+	draw_wall_texture(cube);
 }
 
 int	cube_loop(t_cube *cube)
