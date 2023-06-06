@@ -6,7 +6,7 @@
 /*   By: mmajani <mmajani@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/04 13:59:43 by mmajani           #+#    #+#             */
-/*   Updated: 2023/06/04 17:44:22 by mmajani          ###   ########lyon.fr   */
+/*   Updated: 2023/06/06 16:14:56 by mmajani          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ void	draw_map_wall(t_cube *cube, t_point	pos)
 	t_point		m_pos;
 
 	m_pos = to_map_coordinates(cube, pos);
+	m_pos.x += cube->m_off.x;
+	m_pos.y += cube->m_off.y;
 	i = 0;
 	while (i < cube->m_ts)
 	{
