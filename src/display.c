@@ -6,17 +6,21 @@
 /*   By: mmajani <mmajani@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 15:20:58 by mmajani           #+#    #+#             */
-/*   Updated: 2023/06/07 12:32:47 by mmajani          ###   ########lyon.fr   */
+/*   Updated: 2023/06/07 12:36:26 by mmajani          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cube.h"
 
-int	get_color(t_data img, t_point pos)
+int	get_color(t_data img, t_point ratio)
 {
+	if (ratio.y < 0)
+		ratio.y = 0;
+	if (ratio.y > 63)
+		ratio.y = 63;
 	return (*((int *)(img.addr
-			+ ((int)pos.y * img.line_length)
-			+ ((int)pos.x * img.bytes_per_pixel))));
+			+ ((int)ratio.y * img.line_length)
+			+ ((int)ratio.x * img.bytes_per_pixel))));
 }
 
 void	clear_image(t_cube *cube)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   texture_display.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmajani <mmajani@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 14:19:56 by vimercie          #+#    #+#             */
-/*   Updated: 2023/06/07 11:40:21 by mmajani          ###   ########lyon.fr   */
+/*   Updated: 2023/06/07 12:23:04 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,47 +56,48 @@ int	set_loop_vars(int start, int *win_pos, double *ratio_y, t_cube *cube)
 	if (start >= 0)
 	{
 		*win_pos += start * cube->img.line_length;
-		return (round(start));
+		return (start);
 	}
 	*ratio_y -= start * ratio_y_tmp;
 	return (0);
 }
 
-void	draw_texture_column(t_point pos, double h, t_asset ast, t_cube *cube)
+void	draw_texture_column(int x, double height, t_asset ast, t_cube *cube)
 {
 	int		win_pos;
-	int		wall_top;
 	t_point	ratio;
 	double	ratio_y;
+	double	wall_top;
+	int		y;
 
-	if (pos.x < 0 || pos.x > WIN_X)
+	if (x < 0 || x > WIN_X)
 		return ;
-	wall_top = (int)round((WIN_Y - h) / 2);
-	win_pos = (int)pos.x * cube->img.bytes_per_pixel;
-	ratio.x = get_ratio_x(pos.x, cube);
-	ratio.y = cube->ts / h;
+	wall_top = (WIN_Y - height) / 2;
+	win_pos = x * cube->img.bytes_per_pixel;
+	ratio.x = get_ratio_x(x, cube);
+	ratio.y = cube->ts / height;
 	ratio_y = ratio.y;
-	pos.y = set_loop_vars(wall_top, &win_pos, &ratio.y, cube);
-	while (pos.y < h + wall_top && pos.y < WIN_Y)
+	y = set_loop_vars((int)wall_top, &win_pos, &ratio.y, cube);
+	while (y < (int)round(height + wall_top) && y < WIN_Y)
 	{
 		my_custom_pixel_put(&cube->img, win_pos, get_color(ast.img, ratio));
 		win_pos += cube->img.line_length;
-		ratio.y = ratio_y * (pos.y - wall_top);
-		pos.y++;
+		ratio.y = ratio_y * (y - wall_top);
+		y++;
 	}
 }
 
 void	draw_wall_texture(t_cube *cube)
 {
-	t_point	pos;
+	int		x;
 	double	height;
 
-	pos.x = 0;
-	while (pos.x < WIN_X)
+	x = 0;
+	while (x < WIN_X)
 	{
-		height = ((((cube->ts * WIN_X) / cube->fov_radian) * PI)
-				/ cube->ray[(int)pos.x].size) / cube->fov_mult;
-		draw_texture_column(pos, height, get_texture(pos.x, cube), cube);
-		pos.x++;
+		height = (((cube->ts * WIN_X / cube->fov_radian) * PI)
+				/ cube->ray[x].size) / cube->fov_mult;
+		draw_texture_column(x, height, get_texture(x, cube), cube);
+		x++;
 	}
 }
