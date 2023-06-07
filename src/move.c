@@ -6,7 +6,7 @@
 /*   By: mmajani <mmajani@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 18:24:31 by mmajani           #+#    #+#             */
-/*   Updated: 2023/06/07 11:46:00 by mmajani          ###   ########lyon.fr   */
+/*   Updated: 2023/06/07 15:06:49 by mmajani          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,11 +81,13 @@ t_point	handle_collision(t_cube *cube)
 
 void	move_player(t_cube *cube)
 {
+	static float	rotate = R_ANGLE * 50;	
+
 	cube->p.pos = handle_collision(cube);
 	if (cube->key_left == 1)
-		cube->p.angle -= R_ANGLE * 60;
+		cube->p.angle -= rotate;
 	else if (cube->key_right == 1)
-		cube->p.angle += R_ANGLE * 60;
+		cube->p.angle += rotate;
 	cube->p.angle = reset_angle(cube->p.angle);
 	if (cube->key_plus == 1 && cube->fov_mult + 0.1 < 2.5)
 		cube->fov_mult += 0.1;

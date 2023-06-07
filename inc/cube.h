@@ -6,7 +6,7 @@
 /*   By: mmajani <mmajani@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 15:29:07 by mmajani           #+#    #+#             */
-/*   Updated: 2023/06/07 13:04:56 by mmajani          ###   ########lyon.fr   */
+/*   Updated: 2023/06/07 15:01:52 by mmajani          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@
 # include <math.h>
 # include <stdbool.h>
 
-# define RES		3800
-# define WIN_X		3800
-# define WIN_Y		1000
+# define RES		1920
+# define WIN_X		1920
+# define WIN_Y		1080
 # define Z			122
 # define Q			113
 # define W 			119

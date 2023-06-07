@@ -6,7 +6,7 @@
 /*   By: mmajani <mmajani@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 14:19:56 by vimercie          #+#    #+#             */
-/*   Updated: 2023/06/07 12:49:48 by mmajani          ###   ########lyon.fr   */
+/*   Updated: 2023/06/07 15:00:29 by mmajani          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ void	draw_texture_column(int x, double height, t_asset ast, t_cube *cube)
 
 void	draw_wall_texture(t_cube *cube, int x)
 {
-	float	height;
+	int	height;
 
 	height = (((cube->ts * WIN_X / cube->fov_radian) * PI)
 			/ cube->ray[x].size) / cube->fov_mult;

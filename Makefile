@@ -42,7 +42,7 @@ LIB=		Libft/libft.a
 
 CC=			cc
 
-CFLAGS=		-Wall -Wextra -Werror -O2 -march=native -funroll-loops -ffast-math -g3
+CFLAGS=		-Wall -Wextra -Werror -O2 -march=native -funroll-loops -ffast-math
 
 all:		${OBJDIR} ${NAME}
 
