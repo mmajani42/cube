@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   texture_display.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: mmajani <mmajani@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 14:19:56 by vimercie          #+#    #+#             */
-/*   Updated: 2023/06/07 12:23:04 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/06/07 12:49:48 by mmajani          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ double	get_ratio_x(int x, t_cube *cube)
 	return (res);
 }
 
-int	set_loop_vars(int start, int *win_pos, double *ratio_y, t_cube *cube)
+int	set_loop_vars(int start, int *win_pos, float *ratio_y, t_cube *cube)
 {
 	double	ratio_y_tmp;
 
@@ -87,17 +87,11 @@ void	draw_texture_column(int x, double height, t_asset ast, t_cube *cube)
 	}
 }
 
-void	draw_wall_texture(t_cube *cube)
+void	draw_wall_texture(t_cube *cube, int x)
 {
-	int		x;
-	double	height;
+	float	height;
 
-	x = 0;
-	while (x < WIN_X)
-	{
-		height = (((cube->ts * WIN_X / cube->fov_radian) * PI)
-				/ cube->ray[x].size) / cube->fov_mult;
-		draw_texture_column(x, height, get_texture(x, cube), cube);
-		x++;
-	}
+	height = (((cube->ts * WIN_X / cube->fov_radian) * PI)
+			/ cube->ray[x].size) / cube->fov_mult;
+	draw_texture_column(x, height, get_texture(x, cube), cube);
 }

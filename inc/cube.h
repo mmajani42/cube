@@ -6,7 +6,7 @@
 /*   By: mmajani <mmajani@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 15:29:07 by mmajani           #+#    #+#             */
-/*   Updated: 2023/06/07 12:00:11 by mmajani          ###   ########lyon.fr   */
+/*   Updated: 2023/06/07 13:04:56 by mmajani          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@
 # include <math.h>
 # include <stdbool.h>
 
-# define RES		3000
-# define WIN_X		3000
-# define WIN_Y		2000
+# define RES		3800
+# define WIN_X		3800
+# define WIN_Y		1000
 # define Z			122
 # define Q			113
 # define W 			119
@@ -67,30 +67,30 @@ typedef struct s_data
 
 typedef struct s_point
 {
-	double	x;
-	double	y;
+	float	x;
+	float	y;
 }			t_point;
 
 typedef struct s_player
 {
-	double	angle;
+	float	angle;
 	t_point	pos;
 	t_point	vec;
 }			t_player;
 
 typedef struct s_cast
 {
-	double	a;
-	double	x;
-	double	y;
-	double	yo;
-	double	xo;
-	double	size;
+	float	a;
+	float	x;
+	float	y;
+	float	yo;
+	float	xo;
+	float	size;
 	int		mx;
 	int		my;
 	int		dof;
 	char	type;
-	double	a_tan;
+	float	a_tan;
 }			t_cast;
 
 typedef struct s_color
@@ -117,21 +117,21 @@ typedef struct s_cube
 	void		*mlx_win;
 	int			win_x;
 	int			win_y;
-	double		ts;
-	double		m_ts;
+	float		ts;
+	float		m_ts;
 	float		pi_two;
 	float		two_pi;
 	float		three_pi_two;
 	t_point		m_off;
-	double		fov_radian;
+	float		fov_radian;
 	t_cast		v_ray[RES];
 	t_cast		h_ray[RES];
-	double		angles[RES];
+	float		angles[RES];
 	t_cast		ray[RES];
 	int			display_status;
 	t_player	p;
 	char		**file;
-	double		fov_mult;
+	float		fov_mult;
 	char		**map;
 	int			map_width;
 	int			map_height;
@@ -207,13 +207,12 @@ int		close_cube(t_cube *cube);
 //	drawing
 void	draw_segment(t_cube *cube, t_point a, t_point b, int color);
 void	draw_vertical_segment(t_cube *cube, int x, t_point pos, int color);
-void	draw_square(t_cube *cube, double x, double y);
 void	draw_map(t_cube *cube);
 void	draw_player(t_cube *cube);
-void	draw_dot(t_cube *cube, double x, double y);
-void	draw_perspective(t_cube *cube);
-void	draw_wall_texture(t_cube *cube);
+void	draw_perspective(t_cube *cube, int x);
 void	draw_minimap(t_cube *cube);
+void	draw_wall_texture(t_cube *cube, int i);
+void	display_perspective(t_cube *cube);
 
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 void	my_custom_pixel_put(t_data *img, int pos, int color);
@@ -232,7 +231,6 @@ void	vertical_raycast(t_cube *cube);
 int		p_map_pos(t_cube *cube, char c);
 int		is_in_map(t_cube *cube, int x, int y);
 double	reset_angle(double angle);
-void	draw_closest_ray(t_cube *cube);
 
 //	display
 int		cube_loop(t_cube *cube);

@@ -6,7 +6,7 @@
 /*   By: mmajani <mmajani@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 09:46:36 by mmajani           #+#    #+#             */
-/*   Updated: 2023/06/07 12:20:34 by mmajani          ###   ########lyon.fr   */
+/*   Updated: 2023/06/07 12:54:24 by mmajani          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	vertical_raycast(t_cube *cube)
 	}
 }
 
-void	draw_closest_ray(t_cube *cube)
+void	display_perspective(t_cube *cube)
 {
 	int		i;
 
@@ -72,6 +72,7 @@ void	draw_closest_ray(t_cube *cube)
 			cube->ray[i].type = 'h';
 		}
 		cube->ray[i].size *= (cos(cube->ray[i].a - cube->p.angle));
+		draw_perspective(cube, i);
 		i++;
 	}
 }
