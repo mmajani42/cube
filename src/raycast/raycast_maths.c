@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycast_maths.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: mmajani <mmajani@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 08:51:54 by mmajani           #+#    #+#             */
-/*   Updated: 2023/06/03 16:47:20 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/06/07 11:44:41 by mmajani          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	horizontal_step(t_cube *cube, t_cast *r)
 {
 	while (r->dof < cube->map_height - 1)
 	{
-		r->mx = (int)(r->x + cube->ts / 2) / cube->ts;
+		r->mx = (int)(r->x + 32) / cube->ts;
 		r->my = (int)(r->y) / cube->ts;
 		if (r->a > PI && is_in_map(cube, r->mx, r->my) == 1
 			&& cube->map[r->my][r->mx] == '1')
@@ -37,7 +37,7 @@ void	vertical_step(t_cube *cube, t_cast *r)
 {
 	while (r->dof < cube->map_width - 1)
 	{
-		r->my = (int)(r->y + cube->ts / 2) / cube->ts;
+		r->my = (int)(r->y + 32) / cube->ts;
 		r->mx = (int)(r->x) / cube->ts + 1;
 		if (cos(r->a) >= 0 && is_in_map(cube, r->mx, r->my) == 1
 			&& cube->map[r->my][r->mx] == '1')
@@ -90,7 +90,7 @@ void	vertical_ray_maths(t_cube *cube, t_cast *r, t_player *p)
 		r->x = p->pos.x;
 		r->dof = cube->map_width;
 	}
-	else if (r->a < PI / 2 || r->a > 3 * PI / 2)
+	else if (r->a < cube->pi_two || r->a > cube->three_pi_two)
 	{
 		r->a_tan = -tan(r->a);
 		r->x = p_map_pos(cube, 'x') * cube->ts + (cube->ts / 2);

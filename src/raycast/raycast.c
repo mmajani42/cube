@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycast.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: mmajani <mmajani@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 09:46:36 by mmajani           #+#    #+#             */
-/*   Updated: 2023/06/06 23:21:58 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/06/07 12:04:13 by mmajani          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	horizontal_raycast(t_cube *cube)
 	p = cube->p;
 	while (i < RES)
 	{
-		r.a = cube->fov_mult * -atan((RES / 2 - i + 0.5) / RES / 2) + p.angle;
+		r.a = cube->fov_mult * cube->angles[i] + p.angle;
 		r.a = reset_angle(r.a);
 		horizontal_ray_maths(cube, &r, &p);
 		horizontal_step(cube, &r);
@@ -42,7 +42,7 @@ void	vertical_raycast(t_cube *cube)
 	p = cube->p;
 	while (i < RES)
 	{
-		r.a = cube->fov_mult * -atan((RES / 2 - i + 0.5) / RES / 2) + p.angle;
+		r.a = cube->fov_mult * cube->angles[i] + p.angle;
 		r.a = reset_angle(r.a);
 		vertical_ray_maths(cube, &r, &p);
 		vertical_step(cube, &r);

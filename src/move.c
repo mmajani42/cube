@@ -6,7 +6,7 @@
 /*   By: mmajani <mmajani@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 18:24:31 by mmajani           #+#    #+#             */
-/*   Updated: 2023/06/06 17:04:49 by mmajani          ###   ########lyon.fr   */
+/*   Updated: 2023/06/07 11:46:00 by mmajani          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,11 +47,11 @@ t_point	combined_movement_vector(t_cube *cube)
 	else if (cube->key_s == 1)
 		step_walk = (t_point){-cos(cube->p.angle), -sin(cube->p.angle)};
 	if (cube->key_a == 1)
-		step_strafe = (t_point){cos(cube->p.angle - PI / 2),
-			sin(cube->p.angle - PI / 2)};
+		step_strafe = (t_point){cos(cube->p.angle - cube->pi_two),
+			sin(cube->p.angle - cube->pi_two)};
 	else if (cube->key_d == 1)
-		step_strafe = (t_point){cos(cube->p.angle + PI / 2),
-			sin(cube->p.angle + PI / 2)};
+		step_strafe = (t_point){cos(cube->p.angle + cube->pi_two),
+			sin(cube->p.angle + cube->pi_two)};
 	final_step = (t_point){(step_walk.x + step_strafe.x) * SPEED,
 		(step_walk.y + step_strafe.y) * SPEED};
 	return (final_step);
