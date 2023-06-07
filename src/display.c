@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   display.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: mmajani <mmajani@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 15:20:58 by mmajani           #+#    #+#             */
-/*   Updated: 2023/06/07 10:18:52 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/06/07 12:32:47 by mmajani          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,14 +39,15 @@ void	clear_image(t_cube *cube)
 
 void	draw_perspective(t_cube *cube)
 {
-	int	x;
+	int			x;
+	static int	win2 = WIN_Y / 2;
 
 	x = 0;
 	while (x < WIN_X)
 	{
-		draw_vertical_segment(cube, x, (t_point){0, WIN_Y / 2},
+		draw_vertical_segment(cube, x, (t_point){0, win2},
 			cube->ceiling.int_hex);
-		draw_vertical_segment(cube, x, (t_point){WIN_Y / 2, WIN_Y},
+		draw_vertical_segment(cube, x, (t_point){win2, WIN_Y},
 			cube->floor.int_hex);
 		x++;
 	}

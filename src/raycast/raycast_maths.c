@@ -6,7 +6,7 @@
 /*   By: mmajani <mmajani@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 08:51:54 by mmajani           #+#    #+#             */
-/*   Updated: 2023/06/07 11:44:41 by mmajani          ###   ########lyon.fr   */
+/*   Updated: 2023/06/07 12:18:27 by mmajani          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void	horizontal_ray_maths(t_cube *cube, t_cast *r, t_player *p)
 	else if (sin(r->a) < 0)
 	{
 		r->a_tan = -1 / tan(r->a);
-		r->y = p_map_pos(cube, 'y') * cube->ts - (cube->ts / 2);
+		r->y = p_map_pos(cube, 'y') * cube->ts - 32;
 		r->x = (p->pos.y - r->y) * r->a_tan + p->pos.x;
 		r->yo = -cube->ts;
 		r->xo = -r->yo * r->a_tan;
@@ -74,7 +74,7 @@ void	horizontal_ray_maths(t_cube *cube, t_cast *r, t_player *p)
 	else
 	{
 		r->a_tan = -1 / tan(r->a);
-		r->y = (p_map_pos(cube, 'y') * cube->ts) + (cube->ts / 2);
+		r->y = (p_map_pos(cube, 'y') * cube->ts) + 32;
 		r->x = (p->pos.y - r->y) * r->a_tan + p->pos.x;
 		r->yo = cube->ts;
 		r->xo = -r->yo * r->a_tan;
@@ -93,7 +93,7 @@ void	vertical_ray_maths(t_cube *cube, t_cast *r, t_player *p)
 	else if (r->a < cube->pi_two || r->a > cube->three_pi_two)
 	{
 		r->a_tan = -tan(r->a);
-		r->x = p_map_pos(cube, 'x') * cube->ts + (cube->ts / 2);
+		r->x = p_map_pos(cube, 'x') * cube->ts + 32;
 		r->y = (p->pos.x - r->x) * r->a_tan + p->pos.y;
 		r->xo = -cube->ts;
 		r->yo = -r->xo * r->a_tan;
@@ -101,7 +101,7 @@ void	vertical_ray_maths(t_cube *cube, t_cast *r, t_player *p)
 	else
 	{
 		r->a_tan = -tan(r->a);
-		r->x = (p_map_pos(cube, 'x') * cube->ts) - (cube->ts / 2);
+		r->x = (p_map_pos(cube, 'x') * cube->ts) - 32;
 		r->y = (p->pos.x - r->x) * r->a_tan + p->pos.y;
 		r->xo = cube->ts;
 		r->yo = -r->xo * r->a_tan;
