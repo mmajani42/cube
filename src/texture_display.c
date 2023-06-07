@@ -6,7 +6,7 @@
 /*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 14:19:56 by vimercie          #+#    #+#             */
-/*   Updated: 2023/06/07 12:19:11 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/06/07 12:23:04 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ t_asset	get_texture(int x, t_cube *cube)
 	}
 	else
 	{
-		if (cube->ray[x].a >= (PI / 2)
-			&& cube->ray[x].a < (PI + (PI / 2)))
+		if (cube->ray[x].a >= (cube->pi_two)
+			&& cube->ray[x].a < (PI + (cube->pi_two)))
 			return (cube->we);
 		else
 			return (cube->ea);

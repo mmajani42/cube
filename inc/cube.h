@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: mmajani <mmajani@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 15:29:07 by mmajani           #+#    #+#             */
-/*   Updated: 2023/06/07 00:13:41 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/06/07 12:00:11 by mmajani          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,9 @@
 # include <math.h>
 # include <stdbool.h>
 
-# define WIN_X		1920
-# define WIN_Y		1080
+# define RES		3000
+# define WIN_X		3000
+# define WIN_Y		2000
 # define Z			122
 # define Q			113
 # define W 			119
@@ -52,7 +53,6 @@
 # define PI			3.1415926535
 # define R_ONE_DEG	0.0174533
 # define R_ANGLE	0.000636
-# define RES		1920
 # define FOV	    100
 
 typedef struct s_data
@@ -119,6 +119,9 @@ typedef struct s_cube
 	int			win_y;
 	double		ts;
 	double		m_ts;
+	float		pi_two;
+	float		two_pi;
+	float		three_pi_two;
 	t_point		m_off;
 	double		fov_radian;
 	t_cast		v_ray[RES];
@@ -216,6 +219,7 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 void	my_custom_pixel_put(t_data *img, int pos, int color);
 
 //	raycast
+void	set_angles(t_cube *cube);
 void	horizontal_ray_maths(t_cube *cube, t_cast *r, t_player *p);
 void	horizontal_step(t_cube *cube, t_cast *r);
 void	horizontal_raycast(t_cube *cube);

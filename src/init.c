@@ -6,7 +6,7 @@
 /*   By: mmajani <mmajani@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 19:13:43 by mmajani           #+#    #+#             */
-/*   Updated: 2023/06/06 16:42:49 by mmajani          ###   ########lyon.fr   */
+/*   Updated: 2023/06/07 11:57:32 by mmajani          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,11 @@ void	init_cube(t_cube *cube)
 	cube->fov_radian = FOV * PI / 180;
 	cube->fov_mult = 1;
 	cube->ts = 64;
+	cube->pi_two = PI / 2;
+	cube->two_pi = PI * 2;
+	cube->three_pi_two = 3 * PI / 2;
 	init_keyboard(cube);
+	set_angles(cube);
 }
 
 void	init_mlx(t_cube *cube)

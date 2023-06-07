@@ -6,11 +6,23 @@
 /*   By: mmajani <mmajani@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 20:04:30 by mmajani           #+#    #+#             */
-/*   Updated: 2023/06/06 16:58:41 by mmajani          ###   ########lyon.fr   */
+/*   Updated: 2023/06/07 12:01:47 by mmajani          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cube.h"
+
+void	set_angles(t_cube *cube)
+{
+	int	i;
+
+	i = 0;
+	while (i < RES)
+	{
+		cube->angles[i] = -atan((RES / 2 - i + 0.5) / RES / 2);
+		i++;
+	}
+}
 
 double	reset_angle(double angle)
 {
