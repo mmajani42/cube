@@ -6,7 +6,7 @@
 /*   By: vimercie <vimercie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 14:19:56 by vimercie          #+#    #+#             */
-/*   Updated: 2023/06/07 00:13:41 by vimercie         ###   ########lyon.fr   */
+/*   Updated: 2023/06/07 02:33:21 by vimercie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,28 +62,28 @@ int	set_loop_vars(int start, int *win_pos, double *ratio_y, t_cube *cube)
 	return (0);
 }
 
-void	draw_texture_column(t_point pos, int h, t_asset ast, t_cube *cube)
+void	draw_texture_column(t_point pos, double h, t_asset ast, t_cube *cube)
 {
-	int		wall_top;
 	int		win_pos;
 	t_point	ratio;
-	double	ratio_step;
+	double	ratio_y;
+	double	wall_top;
 
 	if (pos.x < 0 || pos.x > WIN_X)
 		return ;
-	wall_top = (WIN_Y - (int)h) / 2;
-	win_pos = pos.x * cube->img.bytes_per_pixel;
+	wall_top = (WIN_Y - h) / 2;
+	win_pos = (int)pos.x * cube->img.bytes_per_pixel;
 	ratio.x = get_ratio_x(pos.x, cube);
 	ratio.y = cube->ts / h;
-	ratio_step = ratio.y;
-	pos.y = set_loop_vars(wall_top, &win_pos, &ratio.y, cube);
+	ratio_y = ratio.y;
+	pos.y = set_loop_vars((int)wall_top, &win_pos, &ratio.y, cube);
 	while (pos.y < h + wall_top && pos.y < WIN_Y)
 	{
 		if (ratio.y >= cube->ts)
 			ratio.y--;
 		my_custom_pixel_put(&cube->img, win_pos, get_color(ast.img, ratio));
 		win_pos += cube->img.line_length;
-		ratio.y += ratio_step;
+		ratio.y = ratio_y * (pos.y - wall_top);
 		pos.y++;
 	}
 }
@@ -91,7 +91,7 @@ void	draw_texture_column(t_point pos, int h, t_asset ast, t_cube *cube)
 void	draw_wall_texture(t_cube *cube)
 {
 	t_point	pos;
-	int		height;
+	double	height;
 
 	pos.x = 0;
 	while (pos.x < WIN_X)
